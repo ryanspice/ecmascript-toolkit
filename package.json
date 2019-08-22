@@ -1,0 +1,39 @@
+{
+	"name": "ecmascript-toolkit",
+	"short_name": "etk",
+	"main": "./src/index.js",
+	"version": "1.0.0-alpha.0",
+	"description": "",
+	"scripts": {
+		"start": "yarn build",
+		"build": "yarn webpack --config=./config/webpack.master.js",
+		"watch": "yarn build --watch"
+	},
+	"author": "Ryan Tyler Spice-Finnie <spice.ryan@hotmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/core": "^7.4.3",
+		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-proposal-decorators": "^7.4.4",
+		"@babel/plugin-proposal-export-default-from": "^7.5.2",
+		"@babel/plugin-proposal-export-namespace-from": "^7.5.2",
+		"@babel/plugin-proposal-function-sent": "^7.5.0",
+		"@babel/plugin-proposal-json-strings": "^7.2.0",
+		"@babel/plugin-proposal-numeric-separator": "^7.2.0",
+		"@babel/plugin-proposal-optional-chaining": "^7.2.0",
+		"@babel/plugin-proposal-throw-expressions": "^7.2.0",
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+		"@babel/plugin-syntax-import-meta": "^7.2.0",
+		"@babel/plugin-transform-flow-strip-types": "^7.4.4",
+		"@babel/plugin-transform-runtime": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-flow": "^7.0.0",
+		"@babel/runtime": "^7.5.5",
+		"babel-loader": "^8.0.6",
+		"babel-minify-webpack-plugin": "^0.3.1",
+		"duplicate-package-checker-webpack-plugin": "^3.0.0",
+		"flow-bin": "^0.105.2",
+		"webpack": "ryanspice/webpack",
+		"webpack-cli": "^3.3.7"
+	}
+}
