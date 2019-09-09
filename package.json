@@ -2,7 +2,7 @@
 	"name": "ecmascript-toolkit",
 	"short_name": "etk",
 	"main": "./src/index.js",
-	"version": "1.0.0-alpha.0",
+	"version": "1.0.0-alpha.1",
 	"description": "",
 	"scripts": {
 		"start": "yarn build",
