@@ -1,4 +1,5 @@
 
+
 //
 const path = require('path');
 const package = require("../package.json");
@@ -13,17 +14,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 */
 
+//const analyze = require("./webpack.analyze.js");
+
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+
+
+
 
 // TODO :: make sure that we only query the type once
 //
 const type = 'standard';
-const	env = {
+
+let env = {
 NODE_ENV: "development",
 production: "true"
 };
-
 //const custom_config = {
 	//entry:{app:`./src/index.js`}
 //}
@@ -31,8 +37,7 @@ production: "true"
 // export master config, merging custom_config
 // TODO :: import into webpack.config, supporting configs, and using file for local custom_config
 
-module.exports = ((custom_config)=>{
-
+const build = ((evt, custom_config = {name:"app"})=>{
 
 	const overrideName = custom_config.name || "[name]";
 	const outputName = custom_config.short_name || package.short_name;
@@ -103,7 +108,8 @@ module.exports = ((custom_config)=>{
 		},
 
 		optimization: {
-			moduleIds: 'named',
+			chunkIds: 'deterministic', //named
+			moduleIds: 'deterministic',
 			runtimeChunk: {
 				name: entrypoint => `${entrypoint.name}.entry`
 			},
@@ -475,3 +481,5 @@ module.exports = ((custom_config)=>{
 			};
 */
 });
+
+module.exports = build;

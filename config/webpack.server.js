@@ -18,5 +18,11 @@ module.exports = {
 	  "colors": {
 	     "green": "#012456"
 	  }
+	},
+	watchOptions: {
+		ignored: ["node_modules"]
+	},
+	after: function(app, server, compiler) {
+		// do fancy stuff
 	}
 }
