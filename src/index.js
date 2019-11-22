@@ -1,11 +1,9 @@
 
-requestAnimationFrame(e=>{console.info("[Etk]",window.etk);});
-
 class etk {
-    static info:string = 'eh';
+    static info:string = 'created by ryanspice';
     date = new Date().getTime();
 }
 
-export {etk};
+requestAnimationFrame(e=>{console.info("[Etk]",window.etk);});
 
-export default etk;
+export default new etk();
