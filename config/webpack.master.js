@@ -2,6 +2,7 @@
 
 //
 const path = require('path');
+const webpack = require('webpack');
 const package = require("../package.json");
 const settings = require('./webpack.settings.js');
 
@@ -11,13 +12,11 @@ const settings = require('./webpack.settings.js');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 */
 
 //const analyze = require("./webpack.analyze.js");
 
 const MinifyPlugin = require("babel-minify-webpack-plugin");
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 
 
 
@@ -82,7 +81,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 	return assign({
 
-		mode: settings.environment,
+		//mode: settings.environment,
 
 		devtool: settings.devtool,
 
@@ -94,11 +93,11 @@ const build = ((evt, custom_config = {name:"app"})=>{
 			filename: outputFilename,
 			library: outputName,
 			libraryTarget: 'umd',
-			chunkFilename: isHashed?env.production?chunkFilenameProd:chunkFilename:chunkFilename,
 			umdNamedDefine: true,
+			chunkFilename: isHashed?env.production?chunkFilenameProd:chunkFilename:chunkFilename,
 			jsonpFunction: 'json'+outputName,
 			path: path.resolve(`./dist`),
-    	globalObject: 'window'
+    		globalObject: 'window'
 		},
 
 		performance: {
@@ -116,7 +115,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 			usedExports: true,
 		},
 
-		devServer: require('./webpack.server'),
+		//devServer: require('./webpack.server'),
 
 		resolve: {
 
@@ -270,44 +269,39 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 		plugins: [
 
-	    new MinifyPlugin({
+			new MinifyPlugin({
 
-				"booleans":true,
-				"builtIns":true,
-				"consecutiveAdds":true,
-				"deadcode":true,
-				"evaluate":false,
-				"flipComparisons":true,
-				"guards":true,
-				"infinity":true,
-				"memberExpressions":true,
-				"mergeVars":true,
-				"numericLiterals":true,
-				"propertyLiterals":true,
-				"regexpConstructors":true,
-				"replace":true,
-				"simplify":true,
-				"simplifyComparisons":true,
-				"typeConstructors":true,
+					"booleans":true,
+					"builtIns":true,
+					"consecutiveAdds":true,
+					"deadcode":true,
+					"evaluate":false,
+					"flipComparisons":true,
+					"guards":true,
+					"infinity":true,
+					"memberExpressions":true,
+					"mergeVars":true,
+					"numericLiterals":true,
+					"propertyLiterals":true,
+					"regexpConstructors":true,
+					"replace":true,
+					"simplify":true,
+					"simplifyComparisons":true,
+					"typeConstructors":true,
 
-				//
+					//
 
-				"removeConsole":false,
-				"removeDebugger":false,
-				"removeUndefined":true,
-				"undefinedToVoid":true,
+					"removeConsole":false,
+					"removeDebugger":false,
+					"removeUndefined":true,
+					"undefinedToVoid":true,
 
-				//
+					//
 
-				"mangle": true,
-				"keepFnName": true
+					"mangle": true,
+					"keepFnName": true
 
-			}),
-
-			new DuplicatePackageCheckerPlugin({
-				verbose: true,
-				strict: true
-			})
+				})
 
 			//		...plugins,
 

@@ -8,17 +8,58 @@ entry[name] = `./src`;
 /**/
 
 const app = (env) => {
-    return merge(
-        require('./config/webpack.master.js')(env),
-        {
-            entry:entry,
-            output:{
-                library : name,
-                chunkFilename : `[name].js`,
-                filename : `[name].js`
-            }
+
+    // override env for parallel-webpack implementation
+
+    if (!env)
+        env = {};
+
+    process.argv.forEach(e=>{
+        e.indexOf("=")>0?
+            env[
+                e.split('=')[0].replace('--','').replace('env.','')
+                ] = e.split('=')[1]:null;
+    });
+
+    // merge configuration scripts together based on flags
+
+    const builds = [];
+    const config = {
+        mode:env.production?'production':'development',
+        entry:entry,
+        output:{
+            library : name,
+            chunkFilename : `[name].js`,
+            filename : `[name].js`
         }
-    );
+    };
+
+    // standard build
+
+    (!env.legacy || (env.legacy && env.production)) ?
+    builds.push(merge(
+        require('./config/webpack.settings.js'),
+        require('./config/webpack.server.js'),
+        env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
+        require('./config/webpack.plugins.js'),
+        env.production?require('./config/webpack.prod.js')(env)[0]:{},
+        config
+    )):null;
+
+    // legacy build
+
+    env.legacy?
+        builds.push(merge(
+            require('./config/webpack.settings.js'),
+            require('./config/webpack.server.js'),
+            env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
+            require('./config/webpack.plugins.js'),
+            env.production?require('./config/webpack.prod.js')(env)[0]:{},
+            config,
+            env.legacy?require('./config/webpack.legacy.js')(env)[0]:{}
+        )):null;
+
+    return builds;
 };
 
 /**/
