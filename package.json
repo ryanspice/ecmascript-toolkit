@@ -9,6 +9,11 @@
 		"start:analyze": "yarn analyze",
 		"start:analyze:static": "yarn analyze:static",
 		"start:prod": "yarn prod",
+		"docs": "yarn esdoc",
+		"clean:all": "yarn clean:dist && yarn clean:lib",
+		"clean:install": "yarn rimraf node_modules",
+		"clean:dist": "yarn rimraf dist",
+		"clean:lib": "yarn rimraf lib",
 		"build": "yarn parallel --",
 		"prod": "parallel-webpack -- --env.production=true",
 		"legacy": "parallel-webpack -- --env.legacy=true",
@@ -19,6 +24,7 @@
 		"analyze": "webpack-dev-server --env.analyze=true",
 		"analyze:static": "parallel-webpack -- --env.analyze=true --env.static=true ",
 		"analyze:manual": "parallel-webpack --profile --json > stats.json && yarn webpack-bundle-analyzer",
+		"library": "yarn clean:lib && node ./config/script.minify.js",
 		"watch": "yarn build --watch"
 	},
 	"author": "Ryan Tyler Spice-Finnie <spice.ryan@hotmail.com>",
@@ -45,8 +51,10 @@
 		"@babel/preset-flow": "^7.0.0",
 		"@babel/runtime": "^7.7.2",
 		"babel-loader": "^8.0.6",
+		"babel-minify": "^0.5.1",
 		"babel-minify-webpack-plugin": "^0.3.1",
 		"circular-dependency-plugin": "^5.2.0",
+		"copyfiles": "^2.1.1",
 		"duplicate-package-checker-webpack-plugin": "^3.0.0",
 		"flow-bin": "^0.112.0",
 		"http-server": "^0.11.1",
@@ -57,6 +65,8 @@
 		"webpack-dev-server": "^3.9.0",
 		"webpack-merge": "^4.2.2",
 		"webpack-polyfill-injector": "^3.0.2"
+		"rimraf": "^3.0.0"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+	}
 }
