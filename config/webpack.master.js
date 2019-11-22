@@ -1,6 +1,8 @@
 
+
 //
 const path = require('path');
+const webpack = require('webpack');
 const package = require("../package.json");
 const settings = require('./webpack.settings.js');
 
@@ -10,20 +12,23 @@ const settings = require('./webpack.settings.js');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
 */
 
+//const analyze = require("./webpack.analyze.js");
+
 const MinifyPlugin = require("babel-minify-webpack-plugin");
-const DuplicatePackageCheckerPlugin = require("duplicate-package-checker-webpack-plugin");
+
+
+
 
 // TODO :: make sure that we only query the type once
 //
 const type = 'standard';
-const	env = {
+
+let env = {
 NODE_ENV: "development",
 production: "true"
 };
-
 //const custom_config = {
 	//entry:{app:`./src/index.js`}
 //}
@@ -31,8 +36,7 @@ production: "true"
 // export master config, merging custom_config
 // TODO :: import into webpack.config, supporting configs, and using file for local custom_config
 
-module.exports = ((custom_config)=>{
-
+const build = ((evt, custom_config = {name:"app"})=>{
 
 	const overrideName = custom_config.name || "[name]";
 	const outputName = custom_config.short_name || package.short_name;
@@ -77,7 +81,7 @@ module.exports = ((custom_config)=>{
 
 	return assign({
 
-		mode: settings.environment,
+		//mode: settings.environment,
 
 		devtool: settings.devtool,
 
@@ -89,11 +93,11 @@ module.exports = ((custom_config)=>{
 			filename: outputFilename,
 			library: outputName,
 			libraryTarget: 'umd',
-			chunkFilename: isHashed?env.production?chunkFilenameProd:chunkFilename:chunkFilename,
 			umdNamedDefine: true,
+			chunkFilename: isHashed?env.production?chunkFilenameProd:chunkFilename:chunkFilename,
 			jsonpFunction: 'json'+outputName,
 			path: path.resolve(`./dist`),
-    	globalObject: 'window'
+    		globalObject: 'window'
 		},
 
 		performance: {
@@ -103,14 +107,15 @@ module.exports = ((custom_config)=>{
 		},
 
 		optimization: {
-			moduleIds: 'named',
+			chunkIds: 'deterministic', //named
+			moduleIds: 'deterministic',
 			runtimeChunk: {
 				name: entrypoint => `${entrypoint.name}.entry`
 			},
 			usedExports: true,
 		},
 
-		devServer: require('./webpack.server'),
+		//devServer: require('./webpack.server'),
 
 		resolve: {
 
@@ -264,44 +269,7 @@ module.exports = ((custom_config)=>{
 
 		plugins: [
 
-	    new MinifyPlugin({
-
-				"booleans":true,
-				"builtIns":true,
-				"consecutiveAdds":true,
-				"deadcode":true,
-				"evaluate":false,
-				"flipComparisons":true,
-				"guards":true,
-				"infinity":true,
-				"memberExpressions":true,
-				"mergeVars":true,
-				"numericLiterals":true,
-				"propertyLiterals":true,
-				"regexpConstructors":true,
-				"replace":true,
-				"simplify":true,
-				"simplifyComparisons":true,
-				"typeConstructors":true,
-
-				//
-
-				"removeConsole":false,
-				"removeDebugger":false,
-				"removeUndefined":true,
-				"undefinedToVoid":true,
-
-				//
-
-				"mangle": true,
-				"keepFnName": true
-
-			}),
-
-			new DuplicatePackageCheckerPlugin({
-				verbose: true,
-				strict: true
-			})
+			new MinifyPlugin(require('./minify.config.js'))
 
 			//		...plugins,
 
@@ -475,3 +443,5 @@ module.exports = ((custom_config)=>{
 			};
 */
 });
+
+module.exports = build;
