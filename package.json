@@ -65,6 +65,7 @@
 		"webpack-dev-server": "^3.9.0",
 		"webpack-merge": "^4.2.2",
 		"webpack-polyfill-injector": "^3.0.2",
+		"webpack-manifest-plugin": "^3.0.0-rc.0",
 		"rimraf": "^3.0.0",
 		"diff": "^4.0.1"
 	},
