@@ -1,10 +1,6 @@
 
 
 //
-const path = require('path');
-const webpack = require('webpack');
-const package = require("../package.json");
-const settings = require('./webpack.settings.js');
 
 // TODO :: remove unnecessary plugins_custom
 
@@ -16,7 +12,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //const analyze = require("./webpack.analyze.js");
 
-const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 
 
@@ -38,6 +33,11 @@ production: "true"
 
 const build = ((evt, custom_config = {name:"app"})=>{
 
+	const path = require('path');
+	const webpack = require('webpack');
+	const settings = require('./webpack.settings.js');
+	const MinifyPlugin = require("babel-minify-webpack-plugin");
+	const package = require("../package.json");
 	const overrideName = custom_config.name || "[name]";
 	const outputName = custom_config.short_name || package.short_name;
 
@@ -55,10 +55,11 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 	const assign = (a,b) => {return Object.assign(a,b)};
 
+	// create default entry
+	const entry = './src/index.js';
 	// create default entry file name based on the package_shortname
-
-	const entry = {};
-	entry[outputName] = './src/index.js';
+	//entry["app"] = './src/index.js';
+	//entry[package.short_name] = './src/index.js';
 
 	// create default external in configs, useful for use with external projects
 
@@ -87,7 +88,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 		externals:externals,
 
-  	entry: entry,
+		entry: entry,
 
 		output:{
 			filename: outputFilename,
