@@ -22,6 +22,7 @@ module.exports = {
             allowAsyncCycles: false,
             // set the current working directory for displaying module paths
             cwd: process.cwd(),
-        })
+        }),
+        new (require("babel-minify-webpack-plugin"))(require('./webpack.minify.config.js'))
     ]
 }

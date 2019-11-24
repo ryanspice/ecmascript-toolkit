@@ -1,6 +1,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const assign = (a,b) => {return Object.assign(a,b)};
 //
 
@@ -26,20 +27,15 @@ let env = {
 NODE_ENV: "development",
 production: "true"
 };
-//const custom_config = {
-	//entry:{app:`./src/index.js`}
-//}
 
 // export master config, merging custom_config
-// TODO :: import into webpack.config, supporting configs, and using file for local custom_config
 
-const build = ((evt, custom_config = {name:"app"})=>{
+const build = evt=>{
 
 	const settings = require('./webpack.settings.js');
-	const MinifyPlugin = require("babel-minify-webpack-plugin");
 	const package = require("../package.json");
-	const overrideName = custom_config.name || "[name]";
-	const outputName = custom_config.short_name || package.short_name;
+	const overrideName = package.short_name || "[name]";
+	const outputName = package.short_name;
 
 	// TODO :: set names of output based on need
 
@@ -52,42 +48,25 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 
 	// TODO :: replace this assign with a deep merging method (webpack merge?)
-
-
 	// create default entry
-	const entry = {};// './src/index.js';
 	// create default entry file name based on the package_shortname
-	//entry["app"] = './src/index.js';
-	entry[package.short_name] = './src/index.js';
+	const entry = {}; entry[package.short_name] = './src';
 
 	// create default external in configs, useful for use with external projects
-
 	const self = {}
 	self[outputName] = outputName;
 	const externals = [];
-	externals.push(self)
+	externals.push(self);
 
-	// temp
+	return {
 
-
-
-
-
-
-
-
-
-
-
-	return assign({
-
-		//mode: settings.environment,
+		mode: 'development',
 
 		devtool: settings.devtool,
 
 		externals:externals,
 
-//		entry: entry,
+		entry: entry,
 
 		output:{
 			filename: outputFilename,
@@ -114,8 +93,6 @@ const build = ((evt, custom_config = {name:"app"})=>{
 			},
 			usedExports: true,
 		},
-
-		//devServer: require('./webpack.server'),
 
 		resolve: {
 
@@ -250,6 +227,8 @@ const build = ((evt, custom_config = {name:"app"})=>{
 						//TODO :: Tidy
 
 						path.resolve('src'),
+						path.resolve('src/*.js'),
+						path.resolve('src/**/*.js'),
 						path.resolve('test'),
 						path.resolve('async.2018/src/*.js'),
 						path.resolve('async.2018/src/**/*.js'),
@@ -263,24 +242,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 		},
 
-		/*
-		 *	Webpack Pluigins
-		 */
-
-		plugins: [
-
-			new MinifyPlugin(require('./minify.config.js'))
-
-			//		...plugins,
-
-			//...plugins_custom
-
-		]
-
-		/*
-	 */
-
-		}, custom_config)
+    };
 
 /**
 			 * legacy
@@ -442,6 +404,6 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 			};
 */
-});
+};
 
 module.exports = build;
