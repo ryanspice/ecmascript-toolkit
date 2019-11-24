@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const name = require("./package.json").short_name;
 const entry = {};
 entry[name] = `./src`;
+const builds = [];
 
 /**/
 
@@ -23,18 +24,18 @@ const app = (env) => {
 
     // merge configuration scripts together based on flags
 
-    const builds = [];
     const config = {
         mode:env.production?'production':'development',
         entry:entry,
         output:{
+            libraryExport:`[name]`,
             library : name,
-            chunkFilename : `[name].js`,
-            filename : `[name].js`
+            chunkFilename : `[name].[contenthash].js`,
+            filename : `[name].[contenthash].js`
         }
     };
 
-    // standard build
+    // STANDARD
 
     (!env.legacy || (env.legacy && env.production)) ?
     builds.push(merge(
@@ -46,7 +47,13 @@ const app = (env) => {
         config
     )):null;
 
-    // legacy build
+    if (false){
+        console.log(builds[0].entry);
+        console.log(builds[0].output);
+        return builds;
+    }
+
+    // LEGACY
 
     env.legacy?
         builds.push(merge(
@@ -58,7 +65,6 @@ const app = (env) => {
             config,
             env.legacy?require('./config/webpack.legacy.js')(env)[0]:{}
         )):null;
-
     return builds;
 };
 
