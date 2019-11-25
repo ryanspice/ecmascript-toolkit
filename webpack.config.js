@@ -30,8 +30,8 @@ const app = (env) => {
         output:{
             libraryExport:`[name]`,
             library : name,
-            chunkFilename : `[name].[contenthash].js`,
-            filename : `[name].[contenthash].js`
+            chunkFilename : `[name].js`,
+            filename : `[name].js`
         }
     };
 
@@ -44,7 +44,7 @@ const app = (env) => {
         env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
         require('./config/webpack.plugins.js'),
         env.production?require('./config/webpack.prod.js')(env)[0]:{},
-        config
+        //config
     )):null;
 
     if (false){

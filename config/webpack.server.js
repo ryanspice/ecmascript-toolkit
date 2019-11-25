@@ -7,7 +7,7 @@ module.exports = {
 	devServer:{
 		//"proxy": require('./webpack.proxy'),
 		"historyApiFallback": true,
-		"contentBase": "./dist",
+		//"contentBase": "./dist",
 		"hot": false,
 		"inline": true,
 		"compress": false,

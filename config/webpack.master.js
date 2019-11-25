@@ -50,23 +50,24 @@ const build = evt=>{
 	// TODO :: replace this assign with a deep merging method (webpack merge?)
 	// create default entry
 	// create default entry file name based on the package_shortname
-	const entry = {}; entry[package.short_name] = './src';
+	const entry = {}; entry[package.short_name] = './src/index.js';
 
 	// create default external in configs, useful for use with external projects
 	const self = {}
-	self[outputName] = outputName;
+	//self[outputName] = outputName;
 	const externals = [];
-	externals.push(self);
+	//externals.push(self);
 
 	return {
 
-		mode: 'development',
+//		mode: 'development',
 
 		devtool: settings.devtool,
 
 		externals:externals,
 
 		entry: entry,
+
 
 		output:{
 			filename: outputFilename,
