@@ -5,9 +5,12 @@
  */
 module.exports = {
 	devServer:{
+		//bonjour: true,
 		//"proxy": require('./webpack.proxy'),
 		"historyApiFallback": true,
+		//writeToDisk: true,
 		//"contentBase": "./dist",
+		//"contentBase": false,
 		"hot": false,
 		"inline": true,
 		"compress": false,
@@ -27,7 +30,7 @@ module.exports = {
 		},
 		after: function(app, server, compiler) {
 			// do fancy stuff
-			console.log('[etk] server start');
+			//console.log('[Etk] server start');
 		}
 	}
 };

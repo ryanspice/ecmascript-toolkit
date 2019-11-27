@@ -1,7 +1,6 @@
 {
 	"name": "ecmascript-toolkit",
 	"short_name": "etk",
-	"main": "./src/index.js",
 	"version": "1.0.0-alpha.2",
 	"description": "",
 	"scripts": {
@@ -17,7 +16,7 @@
 		"build": "yarn parallel --",
 		"prod": "parallel-webpack -- --env.production=true",
 		"legacy": "parallel-webpack -- --env.legacy=true",
-		"deploy": "parallel-webpack -- --env.legacy=true --env.production=true --env.analyze=true --env.static=true",
+		"deploy": "parallel-webpack -- --env.legacy=false --env.production=true --env.analyze=false --env.static=false",
 		"parallel": "parallel-webpack",
 		"serve": "webpack-dev-server",
 		"serve:prod": "webpack-dev-server --env.production=true --env.server=true",
@@ -28,6 +27,7 @@
 		"watch": "yarn build --watch"
 	},
 	"author": "Ryan Tyler Spice-Finnie <spice.ryan@hotmail.com>",
+	"private": true,
 	"license": "MIT",
 	"peerDependencies": {
 		"webpack-cli": "^3.3.10"
@@ -55,20 +55,21 @@
 		"babel-minify-webpack-plugin": "^0.3.1",
 		"circular-dependency-plugin": "^5.2.0",
 		"copyfiles": "^2.1.1",
+		"diff": "^4.0.1",
 		"duplicate-package-checker-webpack-plugin": "^3.0.0",
 		"flow-bin": "^0.112.0",
+		"html-webpack-plugin": "https://github.com/PutziSan/html-webpack-plugin.git",
 		"http-server": "^0.11.1",
 		"parallel-webpack": "^2.4.0",
+		"rimraf": "^3.0.0",
+		"script-ext-html-webpack-plugin": "^2.1.4",
 		"webpack": "^5.0.0-beta.7",
 		"webpack-bundle-analyzer": "^3.6.0",
 		"webpack-cli": "^3.3.10",
 		"webpack-dev-server": "^3.9.0",
-		"webpack-merge": "^4.2.2",
-		"webpack-polyfill-injector": "^3.0.2",
 		"webpack-manifest-plugin": "^3.0.0-rc.0",
-		"rimraf": "^3.0.0",
-		"diff": "^4.0.1"
+		"webpack-merge": "^4.2.2",
+		"webpack-polyfill-injector": "^3.0.2"
 	},
-	"devDependencies": {
-	}
+	"devDependencies": {}
 }

@@ -3,7 +3,7 @@
 const merge = require('webpack-merge');
 const name = require("./package.json").short_name;
 const entry = {};
-entry[name] = `./src`;
+entry[name] = `./src/index.js`;
 const builds = [];
 
 /**/
@@ -37,19 +37,19 @@ const app = (env) => {
 
     // STANDARD
 
-    (!env.legacy || (env.legacy && env.production)) ?
-    builds.push(merge(
+    //(!env.legacy || (env.legacy && env.production)) ?
+    true?builds.push(merge(
         require('./config/webpack.settings.js'),
         require('./config/webpack.server.js'),
         env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
-        require('./config/webpack.plugins.js'),
+        require('./config/webpack.plugins.js')(env),
         env.production?require('./config/webpack.prod.js')(env)[0]:{},
         //config
     )):null;
 
-    if (false){
-        console.log(builds[0].entry);
-        console.log(builds[0].output);
+    if (true){
+        //console.log(builds[0].entry);
+        //console.log(builds[0].output);
         return builds;
     }
 
@@ -60,7 +60,7 @@ const app = (env) => {
             require('./config/webpack.settings.js'),
             require('./config/webpack.server.js'),
             env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
-            require('./config/webpack.plugins.js'),
+            require('./config/webpack.plugins.js')(env),
             env.production?require('./config/webpack.prod.js')(env)[0]:{},
             config,
             env.legacy?require('./config/webpack.legacy.js')(env)[0]:{}

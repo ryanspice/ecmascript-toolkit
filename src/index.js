@@ -3,13 +3,13 @@
  */
 
 class etk {
-    static info:string = 'created by ryan spice';
     static factory = e => new etk();
-    static ready = (DOMHighResTimeStamp) => {
+    static requestAnimationFrame(DOMHighResTimeStamp){
 
+        console.log("[Etk] requestAnimationFrame ", window.etk);
         if (window.etk)
         if (!window.etk.default){
-            window.etk = etk.factory();
+            window.etk = etk;// etk.factory();
 
             console.info("[Etk]","Running on Webpack-Dev-Server at "+DOMHighResTimeStamp+"ms");
 
@@ -20,11 +20,12 @@ class etk {
 
         return window.etk;
     };
-    date = new Date().getTime();
 }
+
 
 //
 
-requestAnimationFrame(etk.ready);
+requestAnimationFrame(etk.requestAnimationFrame);
 
-export default etk.factory();
+export default etk;
+module.exports = etk;

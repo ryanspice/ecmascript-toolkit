@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <base href="./">
+  <title>etk.js + async.2018</title>
   <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
   <link rel="icon" href="/favicon.png" type="image/x-icon">
   <!--<link href="style.css" rel="stylesheet" type="text/css">-->
@@ -177,9 +178,26 @@
 	@-ms-keyframes fade-top-down{0%{opacity:0.23;-ms-transform:translate(0px, -25px);}100%{opacity:1;-ms-transform:translate(0px, 0px);}}
 
   </style>
-  <script defer="defer" src="./etk.entry.js" type="module"></script>
-  <script defer="defer" src="./etk.js" type="module"></script>
-  <title>etk.js + async.2018</title>
+  <script async defer src="./dist/etk.entry.js" type="module"></script>
+  <script async defer src="./dist/etk.js" type="module"></script>
+  <script async defer >
+      const DEBUG = true;
+      DEBUG?console.info('[Etk]', window.etk):null;
+
+      const test = ()=>{
+          console.error('1');
+          setTimeout(()=>{window.location=window.location;},1000);
+      }
+
+      window.addEventListener('DOMContentLoaded',e=>{DEBUG?console.info('[Etk] DOMContentLoaded', window.etk):null;});
+      window.addEventListener('load',e=>{
+          window.etk==1? test():null;
+          DEBUG?console.info('[Etk] load', window.etk):null;
+
+          setTimeout(()=>{DEBUG?console.info('[Etk] +200ms', window.etk):null; },200)
+          setTimeout(()=>{DEBUG?console.info('[Etk] +600ms', window.etk):null; },600)
+      })
+  </script>
 </head>
 <body>
 <loader>
@@ -234,7 +252,5 @@
   </p></copy>
   <!--end footer-->
 </main>
-<script defer="defer" type="module">
-</script>
 </body>
 </html>

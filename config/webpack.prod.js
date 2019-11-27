@@ -25,8 +25,7 @@ module.exports = function(env){
             plugins: [
                 //new webpack.NamedModulesPlugin(),
                 new webpack.optimize.ModuleConcatenationPlugin(),
-                //new webpack.optimize.OccurrenceOrderPlugin(true),
-                //...plugins
+                //new webpack.optimize.OccurrenceOrderPlugin(true)
             ],
             optimization: {
                 minimizer: [
