@@ -240,6 +240,7 @@ const build = evt=>{
 
 		},
 
+		plugins:[]
     };
 /*
 

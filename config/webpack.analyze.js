@@ -14,14 +14,16 @@ module.exports = function(env){
     const WebpackVisualizerPlugin = require("webpack-visualizer-plugin");
     new WebpackVisualizerPlugin();
     */
-    const build = config();
+
+    const build = config(env);
 
     // merge analyzer plugin
 
     env.analyze?build.plugins.push(new analyzer({
         "analyzerMode":env.static?'static':'server',
         "excludeAssets":[
-            "node_modules"
+            "node_modules",
+            "./node_modules"
         ]
     })):null;
 

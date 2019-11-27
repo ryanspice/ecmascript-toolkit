@@ -28,7 +28,6 @@ const app = (env) => {
         mode:env.production?'production':'development',
         entry:entry,
         output:{
-            libraryExport:`[name]`,
             library : name,
             chunkFilename : `[name].js`,
             filename : `[name].js`
@@ -37,21 +36,15 @@ const app = (env) => {
 
     // STANDARD
 
-    //(!env.legacy || (env.legacy && env.production)) ?
-    true?builds.push(merge(
-        require('./config/webpack.settings.js'),
-        require('./config/webpack.server.js'),
-        env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
-        require('./config/webpack.plugins.js')(env),
-        env.production?require('./config/webpack.prod.js')(env)[0]:{},
-        //config
-    )):null;
-
-    if (true){
-        //console.log(builds[0].entry);
-        //console.log(builds[0].output);
-        return builds;
-    }
+    (!env.legacy || (env.legacy && env.production))?
+        builds.push(merge(
+            require('./config/webpack.settings.js'),
+            require('./config/webpack.server.js'),
+            env.analyze?require('./config/webpack.analyze.js')(env)[0]:require('./config/webpack.master.js')(env),
+            require('./config/webpack.plugins.js')(env),
+            env.production?require('./config/webpack.prod.js')(env)[0]:{},
+            config
+        )):null;
 
     // LEGACY
 

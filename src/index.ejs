@@ -72,25 +72,36 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
     <script async <% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
     } %>
-<!--
-    <script  defer  src="./etk.entry.js" type="module"></script>
-    <script  defer  src="./etk.js" type="module"></script>
--->
 
-    <!-- eh -->
+      <!-- TESTING -->
+
+  </head>
+
     <script async defer="defer" type="application/javascript" >
       const DEBUG = true;
       //window.etk==1?window.location=window.location:null;
       DEBUG?console.info('[Etk]', window.etk):null;
-      window.addEventListener('DOMContentLoaded',e=>{DEBUG?console.info('[Etk] DOMContentLoaded', window.etk):null;});
-      window.addEventListener('load',e=>{
-        DEBUG?console.info('[Etk] load', window.etk):null;
+      //
 
-        setTimeout(()=>{DEBUG?console.info('[Etk] +200ms', window.etk):null; },200)
-        setTimeout(()=>{DEBUG?console.info('[Etk] +600ms', window.etk):null; },600)
+      //document.addEventListener('readystatechange', () => console.log('[Etk] readyState:' + document.readyState,window.etk));
+      document.addEventListener('DOMContentLoaded',function(){
+        DEBUG?console.info('[Etk] DOMContentLoaded', window.etk):null;
+      });
+      //
+      window.addEventListener('load',function(){
+        //window.etk = new etk()
+        DEBUG?console.info('[Etk] load', window.etk):null;
+        //
+        if (!window.etk)
+        setTimeout(function(){
+          DEBUG?console.info('[Etk] +200ms', window.etk):null;
+          //
+          if (!window.etk)
+          setTimeout(function(){
+            DEBUG?console.info('[Etk] +600ms', window.etk):null; },600)
+        },200)
       })
     </script>
-  </head>
 
   <body>
 		<%

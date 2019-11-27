@@ -19,7 +19,7 @@ module.exports = function(env){
         {
             entry:entry,
             output:{
-                library : `${name}_legacy`,
+                library : `${name}.legacy`,
                 chunkFilename : `[name].legacy.js`,
                 filename : `[name].legacy.js`,
             },
