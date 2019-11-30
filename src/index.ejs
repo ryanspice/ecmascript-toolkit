@@ -76,33 +76,38 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       <!-- TESTING -->
 
   </head>
+  <script async defer="defer" type="application/javascript" >
+    const DEBUG = true;
+    let EcmaToolkit;
+    DEBUG?console.info('[EtkHtml] ', window.etk):null;
+    document.addEventListener('readystatechange', () => {
+      DEBUG?console.log('[EtkHtml] readyState:' + document.readyState,window.etk):null;
+      if (document.readyState == 'complete'){
+        let Etk = window.etk.default;
+        Etk.onLoad = ()=>{
+          console.log("[EtkHtml] Works! (overridden)")
+          console.log("[EtkHtml] Timestamps", etk.default.info.timestamps )
 
-    <script async defer="defer" type="application/javascript" >
-      const DEBUG = true;
-      //window.etk==1?window.location=window.location:null;
-      DEBUG?console.info('[Etk]', window.etk):null;
-      //
+        };
+        EcmaToolkit =  new Etk();
+      };
 
-      //document.addEventListener('readystatechange', () => console.log('[Etk] readyState:' + document.readyState,window.etk));
-      document.addEventListener('DOMContentLoaded',function(){
-        DEBUG?console.info('[Etk] DOMContentLoaded', window.etk):null;
-      });
-      //
-      window.addEventListener('load',function(){
-        //window.etk = new etk()
-        DEBUG?console.info('[Etk] load', window.etk):null;
-        //
+    });
+    document.addEventListener('DOMContentLoaded',function(){
+      DEBUG?console.info('[EtkHtml]  DOMContentLoaded', window.etk):null;
+    });
+    window.addEventListener('load',function(){
+      DEBUG?console.info('[EtkHtml]  load', window.etk):null;
+      return;
+      if (!window.etk)
+      setTimeout(function(){
+        DEBUG?console.info('[EtkHtml]  +200ms', window.etk):null;
         if (!window.etk)
         setTimeout(function(){
-          DEBUG?console.info('[Etk] +200ms', window.etk):null;
-          //
-          if (!window.etk)
-          setTimeout(function(){
-            DEBUG?console.info('[Etk] +600ms', window.etk):null; },600)
-        },200)
-      })
-    </script>
-
+          DEBUG?console.info('[EtkHtml]  +600ms', window.etk):null; },600)
+      },200)
+    });
+  </script>
   <body>
 		<%
     if (htmlWebpackPlugin.options.unsupportedBrowser) { %>
@@ -145,13 +150,6 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     if (htmlWebpackPlugin.options.devServer) { %>
     <script async  src="<%= htmlWebpackPlugin.options.devServer %>/webpack-dev-server.js" type="text/javascript"></script><%
     } %>
-  <style>
-    html {
-      background: darkslategrey;
-    }
-  </style>
-
-		</body>
-
+</body>
 </html>
 

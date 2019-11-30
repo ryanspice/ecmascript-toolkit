@@ -127,7 +127,7 @@ module.exports = env => {
                 module: /\.js$/,
                // prefetch: /\.js$/,
                 inline:[
-                    `${name}.entry.js`
+                   // `${name}.entry.js`
                 ],
                 custom: [
                     {

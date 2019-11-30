@@ -219,6 +219,7 @@ const build = evt=>{
 									}
 								],
 								"@babel/plugin-proposal-json-strings",
+								"@babel/plugin-proposal-private-methods"
 							]
 
 						}
