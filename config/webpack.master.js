@@ -1,95 +1,53 @@
+/**
+ * webpack.master.js
+ * master config all others merge into
+ * @param evt
+ * @returns {{mode: string, devtool: string, output: {chunkFilename: string, jsonpFunction: string, libraryTarget: string, path: string, filename: string, library, umdNamedDefine: boolean, globalObject: string}, entry, performance: {maxEntrypointSize: number, maxAssetSize: number, hints: *}, resolve: {extensions: string[], plugins: Array, alias: {}, modules: string[]}, optimization: {moduleIds: string, chunkIds: string, usedExports: boolean, runtimeChunk: {name: (function(*): string)}}, plugins: Array, module: {rules: {include: string[], test: RegExp, use: {loader: string, options: {presets: *[], sourceType: string, plugins: *[]}}, exclude: string[]}[]}, externals: Array}}
+ */
+const build = evt=>{
 
-const path = require('path');
-const webpack = require('webpack');
-const assign = (a,b) => {return Object.assign(a,b)};
-//
+	const type = 'standard';
 
-// TODO :: remove unnecessary plugins_custom
+	let env = {
+		NODE_ENV: "development",
+		production: "true"
+	};
 
-/*
-const ManifestPlugin = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-*/
-
-//const analyze = require("./webpack.analyze.js");
-
-
-
-
-
-// TODO :: make sure that we only query the type once
-//
-const type = 'standard';
-
-let env = {
-NODE_ENV: "development",
-production: "true"
-};
-//const custom_config = {
-	//entry:{app:`./src/index.js`}
-//}
-
-// export master config, merging custom_config
-// TODO :: import into webpack.config, supporting configs, and using file for local custom_config
-
-const build = ((evt, custom_config = {name:"app"})=>{
-
+	const path = require('path');
 	const settings = require('./webpack.settings.js');
-	const MinifyPlugin = require("babel-minify-webpack-plugin");
 	const package = require("../package.json");
-	const overrideName = custom_config.name || "[name]";
-	const outputName = custom_config.short_name || package.short_name;
-
-	// TODO :: set names of output based on need
+	const overrideName = package.short_name || "[name]";
+	const name = package.short_name || "[name]";
+	const outputName = package.short_name;
 
 	const isHashed = true;
 	const isLegacy = type!=="legacy"?true:false;
+
 
 	const outputFilename = isLegacy?`[name].js`:`[name].legacy.js`;
 	const chunkFilename = isLegacy?`module~[name].js`:`module~[name].legacy.js`;
 	const chunkFilenameProd = isLegacy?`module~[name].[contenthash].js`:`module~[name].[contenthash].legacy.js`;
 
-
-	// TODO :: replace this assign with a deep merging method (webpack merge?)
-
-
 	// create default entry
-	const entry = {};// './src/index.js';
-	// create default entry file name based on the package_shortname
-	//entry["app"] = './src/index.js';
-	entry[package.short_name] = './src/index.js';
-
+	const entry = {}; entry[outputName] = './src';
 	// create default external in configs, useful for use with external projects
-
-	const self = {}
+	const self = {};
 	self[outputName] = outputName;
 	const externals = [];
-	externals.push(self)
+	externals.push(self);
 
-	// temp
+	return {
 
-
-
-
-
-
-
-
-
-
-
-	return assign({
-
-		//mode: settings.environment,
+		mode: 'development',
 
 		devtool: settings.devtool,
 
 		externals:externals,
 
-//		entry: entry,
+		entry: entry,
 
 		output:{
+			//compareBeforeEmit: false,
 			filename: outputFilename,
 			library: outputName,
 			libraryTarget: 'umd',
@@ -101,7 +59,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 		},
 
 		performance: {
-			hints:'warning',
+			hints:env.production?false:'warning',
 			maxEntrypointSize: true?1560000:560000,
 			maxAssetSize: true?1500000:500000
 		},
@@ -114,8 +72,6 @@ const build = ((evt, custom_config = {name:"app"})=>{
 			},
 			usedExports: true,
 		},
-
-		//devServer: require('./webpack.server'),
 
 		resolve: {
 
@@ -151,9 +107,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 						path.resolve('./dist'),
 						path.resolve('./lib'),
 						path.resolve('./docker'),
-						path.resolve('./node_modules'),
-						path.resolve('../async.2018/node_modules'),
-						path.resolve('../async-2018/node_modules')
+						path.resolve('./node_modules')
 
 					],
 
@@ -179,7 +133,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 										"targets": {
 
-											"browsers": type == "legacy" ? "last 1 year, cover 97% in CA, not ie<=11" : "cover 20% in CA, not ie<11"
+											"browsers": type === "legacy" ? "last 1 year, cover 97% in CA, not ie<=11" : "cover 20% in CA, not ie<11"
 											//"browsers":"> 2%, not dead, not IE 11"
 											//	,"esmodules":type != "legacy"?true:false // This seems to create a larger bundle???
 
@@ -191,8 +145,13 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 								],
 
-								"@babel/flow"
+								"@babel/flow",
 
+									["minify", {
+									builtIns: false,
+									evaluate: false,
+									mangle: false,
+								}]
 							],
 
 							"plugins": [
@@ -238,6 +197,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 									}
 								],
 								"@babel/plugin-proposal-json-strings",
+								"@babel/plugin-proposal-private-methods"
 							]
 
 						}
@@ -250,11 +210,7 @@ const build = ((evt, custom_config = {name:"app"})=>{
 						//TODO :: Tidy
 
 						path.resolve('src'),
-						path.resolve('test'),
-						path.resolve('async.2018/src/*.js'),
-						path.resolve('async.2018/src/**/*.js'),
-						path.resolve('async.2018/config/*.js'),
-						path.resolve('async.2018/config/**/*.js')
+						path.resolve('test')
 					]
 
 				}
@@ -263,185 +219,8 @@ const build = ((evt, custom_config = {name:"app"})=>{
 
 		},
 
-		/*
-		 *	Webpack Pluigins
-		 */
-
-		plugins: [
-
-			new MinifyPlugin(require('./minify.config.js'))
-
-			//		...plugins,
-
-			//...plugins_custom
-
-		]
-
-		/*
-	 */
-
-		}, custom_config)
-
-/**
-			 * legacy
-
-
-			if (type != "legacy"){
-
-				const FlowWebpackPlugin = require('flow-webpack-plugin');
-
-				bundle.plugins.push(new FlowWebpackPlugin({
-					failOnError: false,
-					failOnErrorWatch: false,
-					reportingSeverity: 'warning',
-					printFlowOutput: false,
-					flowPath: require.main.require('flow-bin'),
-					flowArgs: ['--color=always', '--include-warnings'],
-					verbose: false,
-					callback: (...args) => {
-
-						return true;
-					}
-				}));
-
-				let scripts = (require('./script.files'))();
-
-
-				bundle.plugins.push(
-
-					new HtmlWebpackPlugin({
-
-						//required
-
-						inject: false,
-						template: ('./src/index.ejs'),
-
-						//html
-
-						headHtmlSnippet: `
-
-							<link rel="manifest" href="manifest.json">
-							<style>
-
-								html {
-									background:#252525;
-		    					height: 100%;
-								}
-
-								body {
-									background:transparent;
-									display:inline-block;
-									width:100%;
-									height:100%;
-									margin:0px;
-								}
-
-								.spinner {
-									position: absolute;
-									left: 50%;
-									top: 35%;
-									margin: 0px auto;
-									margin-left: -25px;
-									width: 50px;
-								}
-
-								watermark {
-									position: fixed;
-									bottom: 5px;
-									right: 5px;
-									opacity: 0.5;
-									z-index: 99;
-									color: rgba(25, 25, 25, 0.75);
-								}
-
-								loader {
-									width: 100%;
-									height: 100%;
-									position: fixed;
-									left: 0px;
-									top: 0px;
-									z-index: 10;
-									text-align: center;
-								}
-
-								 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-								 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-								 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-								spinner {
-							    height: 111px;
-							    width: 111px;
-							    background-color: transparent;
-							    border-radius: 50%;
-							    display: inline-block;
-							    -webkit-animation: spin 1s linear infinite;
-							    -moz-animation: spin 1s linear infinite;
-							    animation: spin 1s linear infinite;
-							    box-shadow: 0px 2px 0 0 rgba(255,255,255,0.25);
-								}
-
-							</style>
-						`,
-						bodyHtmlSnippet:`
-							<loader>
-								<spinner></spinner>
-								<message></message>
-							</loader>
-						`,
-						//
-
-						fileName: `index.html`,
-						baseHref: `./`,
-						title: package.name,
-						cache: true,
-						minify: true,
-
-						//
-
-						scripts: scripts[0] || [],
-						inlineManifestWebpackName: package.short_name + 'Manifest',
-						inlineSource: '.(js|css)',
-
-						//
-
-						meta:{
-							'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
-							'theme-color': '#252525'
-						}
-
-					}
-				));
-
-
-				//Manifest
-
-				bundle.plugins.push(new ManifestPlugin({
-
-					fileName: `manifest.json`,
-
-					seed: Object.assign({
-						"short_name": package.short_name,
-						"name": package.name,
-						"start_url": ``,
-						"background_color": "#3367D6",
-						"display": "standalone",
-						"orientation": "landscape",
-						"scope": "/",
-						"theme_color": "#3367D6",
-
-					},scripts[1]),
-
-					map: (file) => {
-
-						file.name = file.name.replace(/\./g, '');
-						return file;
-					}
-
-				}));
-
-
-			};
-*/
-});
+		plugins:[]
+    };
+};
 
 module.exports = build;
