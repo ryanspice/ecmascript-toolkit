@@ -1,11 +1,41 @@
-
 /**
  * EcmaToolkit - designed to be an entry point for webpack configs
  */
 
 class etk {
 
+    static package = require('../package');
+    static version:number = etk.package.version;
+    static title:number = 'E c m a T o o l K i t';
+
     static #time:number = Date.now();
+    static #clients:Map = new Map();
+    static #timestamps = new Map();
+    static #debug:boolean = true;
+    static #demo:boolean = true;
+    static #demo_template:string = `
+      <style>
+            @import url("https://fonts.googleapis.com/css?family=Niramit");
+            html, body {
+            font-family:Niramit;
+            }
+            body{color:honeydew;background:darkslategrey;text-align:center; } li{list-style: none;} article {max-width:320px; margin:0px auto;text-align:left;}
+        </style>
+        <main>
+          <h1>${etk.title}</h1>
+          <h2>v${etk.version}</h2>
+          <h3>release notes</h3>
+          <article>
+            <p>
+              <ul>
+                <li>- hooks</li>
+                <li>- timestamps</li>
+                <li>- private scope</li>
+                <li>- exports</li>
+              </ul>
+            </p>
+          </article>
+      </main>`;
 
     static get time(){
         return ((Date.now()-etk.#time)/1000);
@@ -17,10 +47,31 @@ class etk {
         };
     }
 
-    static #clients:Map = new Map();
-    static #timestamps = new Map();
-    static #debug:boolean = true;
-    static #demo:boolean = true;
+    static onPreLoad():Function<any>{};
+    static onLoad():Function<any>{};
+    static onLibraryLoad():Function<any>{};
+    static onPostLoad():Function<any>{};
+
+    // To avoid interfering with the browser, init during 'requestAnimationFrame'
+    static async requestAnimationFrame(DOMHighResTimeStamp:number):Function<void> {
+
+        etk.#timestamps.set('requestAnimationFrame', etk.time);
+        //if (document.readyState==="complete") {
+        //k.#DOMContentLoaded();
+        //etk.#readystatechange();
+        //etk.#load();
+        //} else {
+        document.addEventListener('readystatechange', etk.#readystatechange);
+        document.addEventListener('DOMContentLoaded',etk.#DOMContentLoaded);
+        //window.addEventListener('load',etk.load);
+        //}
+        window.addEventListener('load',etk.load);
+
+        await etk.#debug?console.log("[Etk] requestAnimationFrame ",window.etk.default === etk,  window.etk):null;
+
+        const engine = await etk.#implement(DOMHighResTimeStamp);
+        await etk.#debug?console.log("[Etk] runtime "+etk.time+"ms"):null;
+    };
 
     static #implement:Function<etk> = (DOMHighResTimeStamp:number) => {
 
@@ -28,8 +79,7 @@ class etk {
 
             window.etk = {
                 default:etk,
-                __esModule: false,
-                ...etk
+                __esModule: false
             };
 
 
@@ -59,39 +109,15 @@ class etk {
         etk.#timestamps.set('load', etk.time);
         if (etk.#debug){
             console.log("[Etk] Works!", window.etk.default === etk, window.etk);
-            document.body.insertAdjacentHTML(`afterbegin`,`<style>body{color:honeydew;background:darkslategrey;text-align:center; }</style><main><h1>E c m a T o o l K i t</h1></main>`)
+            if (etk.#demo) {
+                document.body.insertAdjacentHTML(`afterbegin`, etk.#demo_template)
+            }
         }
 
         etk.onLibraryLoad(...arguments);
         etk.onLoad(...arguments);
         etk.#timestamps.set('DOMContentLoaded', etk.time);
     }
-
-    static onPreLoad():Function<any>{};
-    static onLoad():Function<any>{};
-    static onLibraryLoad():Function<any>{};
-    static onPostLoad():Function<any>{};
-
-    // To avoid interfering with the browser, init during 'requestAnimationFrame'
-    static async requestAnimationFrame(DOMHighResTimeStamp:number):Function<void> {
-
-        etk.#timestamps.set('requestAnimationFrame', etk.time);
-        //if (document.readyState==="complete") {
-            //k.#DOMContentLoaded();
-            //etk.#readystatechange();
-            //etk.#load();
-        //} else {
-            document.addEventListener('readystatechange', etk.#readystatechange);
-            document.addEventListener('DOMContentLoaded',etk.#DOMContentLoaded);
-            //window.addEventListener('load',etk.load);
-        //}
-        window.addEventListener('load',etk.load);
-
-        await etk.#debug?console.log("[Etk] requestAnimationFrame ",window.etk.default === etk,  window.etk):null;
-
-        const engine = await etk.#implement(DOMHighResTimeStamp);
-        await etk.#debug?console.log("[Etk] runtime "+etk.time+"ms"):null;
-    };
 
     #preload():Function<any>{};
     #postload():Function<any>{};

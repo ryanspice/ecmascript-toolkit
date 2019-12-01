@@ -18,7 +18,7 @@
 		"prod": "parallel-webpack -- --env.production=true",
 		"legacy": "parallel-webpack -- --env.legacy=true",
 		"deploy": "parallel-webpack -- --env.legacy=false --env.production=true --env.analyze=false --env.static=false",
-		"parallel": "parallel-webpack",
+		"parallel": "parallel-webpack --",
 		"serve": "webpack-dev-server",
 		"serve:prod": "webpack-dev-server --env.production=true --env.server=true",
 		"serve:static": "parallel-webpack -- --env.production=false --env.server=false --env.static=true  && http-server ./dist",

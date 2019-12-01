@@ -1,59 +1,37 @@
-
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const assign = (a,b) => {return Object.assign(a,b)};
-//
-
-// TODO :: remove unnecessary plugins_custom
-
-/*
-const ManifestPlugin = require('webpack-manifest-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-*/
-
-//const analyze = require("./webpack.analyze.js");
-
-
-
-
-
-// TODO :: make sure that we only query the type once
-//
-const type = 'standard';
-
-let env = {
-NODE_ENV: "development",
-production: "true"
-};
-
-// export master config, merging custom_config
-
+/**
+ * webpack.master.js
+ * master config all others merge into
+ * @param evt
+ * @returns {{mode: string, devtool: string, output: {chunkFilename: string, jsonpFunction: string, libraryTarget: string, path: string, filename: string, library, umdNamedDefine: boolean, globalObject: string}, entry, performance: {maxEntrypointSize: number, maxAssetSize: number, hints: *}, resolve: {extensions: string[], plugins: Array, alias: {}, modules: string[]}, optimization: {moduleIds: string, chunkIds: string, usedExports: boolean, runtimeChunk: {name: (function(*): string)}}, plugins: Array, module: {rules: {include: string[], test: RegExp, use: {loader: string, options: {presets: *[], sourceType: string, plugins: *[]}}, exclude: string[]}[]}, externals: Array}}
+ */
 const build = evt=>{
 
+	const type = 'standard';
+
+	let env = {
+		NODE_ENV: "development",
+		production: "true"
+	};
+
+	const path = require('path');
 	const settings = require('./webpack.settings.js');
 	const package = require("../package.json");
 	const overrideName = package.short_name || "[name]";
+	const name = package.short_name || "[name]";
 	const outputName = package.short_name;
-
-	// TODO :: set names of output based on need
 
 	const isHashed = true;
 	const isLegacy = type!=="legacy"?true:false;
+
 
 	const outputFilename = isLegacy?`[name].js`:`[name].legacy.js`;
 	const chunkFilename = isLegacy?`module~[name].js`:`module~[name].legacy.js`;
 	const chunkFilenameProd = isLegacy?`module~[name].[contenthash].js`:`module~[name].[contenthash].legacy.js`;
 
-
-	// TODO :: replace this assign with a deep merging method (webpack merge?)
 	// create default entry
-	// create default entry file name based on the package_shortname
 	const entry = {}; entry[outputName] = './src';
-
 	// create default external in configs, useful for use with external projects
-	const self = {}
+	const self = {};
 	self[outputName] = outputName;
 	const externals = [];
 	externals.push(self);
@@ -155,7 +133,7 @@ const build = evt=>{
 
 										"targets": {
 
-											"browsers": type == "legacy" ? "last 1 year, cover 97% in CA, not ie<=11" : "cover 20% in CA, not ie<11"
+											"browsers": type === "legacy" ? "last 1 year, cover 97% in CA, not ie<=11" : "cover 20% in CA, not ie<11"
 											//"browsers":"> 2%, not dead, not IE 11"
 											//	,"esmodules":type != "legacy"?true:false // This seems to create a larger bundle???
 
@@ -243,58 +221,6 @@ const build = evt=>{
 
 		plugins:[]
     };
-/*
-
-			if (type != "legacy"){
-
-				const FlowWebpackPlugin = require('flow-webpack-plugin');
-
-				bundle.plugins.push(new FlowWebpackPlugin({
-					failOnError: false,
-					failOnErrorWatch: false,
-					reportingSeverity: 'warning',
-					printFlowOutput: false,
-					flowPath: require.main.require('flow-bin'),
-					flowArgs: ['--color=always', '--include-warnings'],
-					verbose: false,
-					callback: (...args) => {
-
-						return true;
-					}
-				}));
-
-				let scripts = (require('./script.files'))();
-
-
-				//Manifest
-
-				bundle.plugins.push(new ManifestPlugin({
-
-					fileName: `manifest.json`,
-
-					seed: Object.assign({
-						"short_name": package.short_name,
-						"name": package.name,
-						"start_url": ``,
-						"background_color": "#3367D6",
-						"display": "standalone",
-						"orientation": "landscape",
-						"scope": "/",
-						"theme_color": "#3367D6",
-
-					},scripts[1]),
-
-					map: (file) => {
-
-						file.name = file.name.replace(/\./g, '');
-						return file;
-					}
-
-				}));
-
-			};
-*/
-
 };
 
 module.exports = build;

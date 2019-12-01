@@ -2,9 +2,8 @@
  * webpack.analyze.js
  * merges config/webpack.master.js, and adds BundleAnalyzerPlugin
  * @param env
- * @returns {*[]}
+ * @returns {{mode, devtool, output, entry, performance, resolve, optimization, plugins, module, externals}[]}
  */
-
 module.exports = function(env){
 
     const config = require("./webpack.master");

@@ -4,10 +4,9 @@
  * @param env
  * @returns {{mode: string, devtool: string, stats: {assets: boolean, children: boolean, chunks: boolean, timings: boolean, chunkModules: boolean, colors: boolean, hash: boolean, modules: boolean}, optimization: {minimizer: Array}, plugins: (ModuleConcatenationPlugin|any)[]}[]}
  */
-
 module.exports = function(env){
     const webpack = require('webpack');
-    //const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+    //const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"); //TODO: css in here or user dependent?
     return [
         {
             mode: 'production',
@@ -29,7 +28,7 @@ module.exports = function(env){
             ],
             optimization: {
                 minimizer: [
-                    /*
+                    /* //TODO: css in here or user dependent?
                     new OptimizeCSSAssetsPlugin({
                         assetNameRegExp: /\.optimize\.css$/g,
                         cssProcessor: require('cssnano'),
