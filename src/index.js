@@ -67,7 +67,7 @@ class etk {
         //}
         window.addEventListener('load',etk.load);
 
-        await etk.#debug?console.log("[Etk] requestAnimationFrame ",window.etk.default === etk,  window.etk):null;
+        await etk.#debug?console.log("[Etk] requestAnimationFrame ",window?.etk?.default === etk,  window.etk):null;
 
         const engine = await etk.#implement(DOMHighResTimeStamp);
         await etk.#debug?console.log("[Etk] runtime "+etk.time+"ms"):null;
@@ -95,7 +95,7 @@ class etk {
     };
 
     static #readystatechange():Function<void> {
-        console.log('[Etk] readyState:' + document.readyState, window.etk.default === etk, window.etk);
+        console.log('[Etk] readyState:' + document.readyState, window?.etk?.default === etk, window.etk);
         etk.#timestamps.set('readystatechange', new Date().getTime());
     };
 
@@ -108,7 +108,7 @@ class etk {
 
         etk.#timestamps.set('load', etk.time);
         if (etk.#debug){
-            console.log("[Etk] Works!", window.etk.default === etk, window.etk);
+            console.log("[Etk] Works!", window?.etk?.default === etk, window.etk);
             if (etk.#demo) {
                 document.body.insertAdjacentHTML(`afterbegin`, etk.#demo_template)
             }
