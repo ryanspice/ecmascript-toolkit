@@ -13,7 +13,7 @@ module.exports = env => {
                 strict: true
             }),
             new (require('circular-dependency-plugin'))({
-                exclude: /a\.js|node_modules/,
+                exclude: /a\.js|node_modules|.ejs|index.js/, // excludes index and ejs as false positives were being flagged
                 include: /src/,
                 failOnError: true,
                 allowAsyncCycles: false, // e.g. via import(/* webpackMode: "weak" */ './file.js')
@@ -75,7 +75,6 @@ module.exports = env => {
                     return true;
                 }
             })
-
              */
             new (require('webpack-manifest-plugin'))({
 
