@@ -1,10 +1,11 @@
+
 /**
  * webpack.plugins.js
  * merged in webpack.config.js, all additional plugins
  * @type {{}}
  */
 module.exports = env => {
-    const pkg = require(`../package`).short_name;
+    const pkg = require(`../package`);
     const name = pkg.short_name;
     return{
         plugins:[
@@ -23,11 +24,11 @@ module.exports = env => {
             new (require('html-webpack-plugin'))({
                 inject: 'head',
                 template: ('./src/index.ejs'),
-                headHtmlSnippet: `<link rel="manifest" href="./manifest.json">`,
+                //headHtmlSnippet: `<link rel="manifest" href="./manifest.json">`,
                 bodyHtmlSnippet:``,
                 fileName: `index.html`,
                 baseHref: `./`,
-                title: `${name}`,
+                title: name,
                 cache: false,
                 minify: env.production?{
                     collapseWhitespace: true,
