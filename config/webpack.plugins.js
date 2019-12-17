@@ -1,7 +1,7 @@
 /**
  * webpack.plugins.js
  * merged in webpack.config.js, all additional plugins
- * @type {{plugins: DuplicatePackageCheckerPlugin[]}}
+ * @type {{}}
  */
 module.exports = env => {
     const pkg = require(`../package`).short_name;
@@ -23,7 +23,7 @@ module.exports = env => {
             new (require('html-webpack-plugin'))({
                 inject: 'head',
                 template: ('./src/index.ejs'),
-                headHtmlSnippet:`<link rel="manifest" href="manifest.json">`,
+                headHtmlSnippet: `<link rel="manifest" href="./manifest.json">`,
                 bodyHtmlSnippet:``,
                 fileName: `index.html`,
                 baseHref: `./`,
