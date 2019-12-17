@@ -1,10 +1,14 @@
+
 /**
  * webpack.config.js
  * entry config, merges all others
  * @param env
  * @returns {Array}
  */
-const app = env => {
+
+const app = async env => {
+
+  	env = getDefaultEnvState(env);
 
     const merge = require('webpack-merge');
     const name = require("./package.json").short_name;
@@ -54,6 +58,17 @@ const app = env => {
             )):null;
     */
     return builds;
+};
+
+/**/
+
+function getDefaultEnvState(env) {
+
+    return env?env:{
+        legacy: false,
+        production: false
+    };
+
 };
 
 /**/
