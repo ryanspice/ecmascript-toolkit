@@ -19,23 +19,45 @@ class etk {
             html, body {
             font-family:Niramit;
             }
-            body{color:honeydew;background:darkslategrey;text-align:center; } li{list-style: none;} article {max-width:320px; margin:0px auto;text-align:left;}
+            body{color:honeydew;background:darkslategrey;text-align:center; } 
+            h1 {margin-bottom:0px;}
+            h2 {max-width:320px; margin:0px auto;text-align:center;}
+            h5 {margin-top:0px;}
+            section {max-width:320px; margin:0px auto;text-align:center;}
+            li{list-style: none;} 
+            ul {padding-inline-start: 0px;}
         </style>
+        
         <main>
-          <h1>${etk.title}</h1>
-          <h2>v${etk.version}</h2>
-          <h3>release notes</h3>
-          <article>
+            <h1>${etk.title}</h1>
+            <h5>release notes</h5>
+            <h3>v${etk.version}</h3>
             <p>
               <ul>
-                <li>- hooks</li>
-                <li>- timestamps</li>
-                <li>- private scope</li>
-                <li>- exports</li>
+                <li>hooks</li>
+                <li>timestamps</li>
+                <li>private scope</li>
               </ul>
             </p>
-          </article>
-      </main>`;
+            <section>
+            <h4>v1.0.0-alpha.2</h4>
+            <p>
+              <ul>
+                <li>analytics</li>
+                <li>exports</li>
+                <li>server</li>
+              </ul>
+            </p>
+            </section>
+            <section>
+            <h4>v1.0.0-alpha.1</h4>
+            <p>
+              <ul>
+                <li>initial release</li>
+              </ul>
+            </p>
+            </section>
+        </main>`;
 
     static get time(){
         return ((Date.now()-etk.#time)/1000);
