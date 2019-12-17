@@ -14,4 +14,4 @@ module.exports ={
 		 secure: false,
 		 changeOrigin: true
 	 }
-}
+};

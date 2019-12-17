@@ -4,6 +4,12 @@
  * @param env
  * @returns {Array}
  */
+
+const states = {
+    legacy: false,
+    production: false
+};
+
 const app = env => {
 
     const merge = require('webpack-merge');
@@ -11,6 +17,10 @@ const app = env => {
     const entry = {};
     entry[name] = `./src/index.js`;
     const builds = [];
+
+    if (!env) {
+        env = states;
+    }
 
     // override env for parallel-webpack implementation
     process.argv.forEach(e=>{
