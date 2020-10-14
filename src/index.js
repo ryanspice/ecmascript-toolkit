@@ -19,15 +19,15 @@ class etk {
             html, body {
             font-family:Niramit;
             }
-            body{color:honeydew;background:darkslategrey;text-align:center; } 
+            body{color:honeydew;background:darkslategrey;text-align:center; }
             h1 {margin-bottom:0px;}
             h2 {max-width:320px; margin:0px auto;text-align:center;}
             h5 {margin-top:0px;}
             section {max-width:320px; margin:0px auto;text-align:center;}
-            li{list-style: none;} 
+            li{list-style: none;}
             ul {padding-inline-start: 0px;}
         </style>
-        
+
         <main>
             <h1>${etk.title}</h1>
             <h5>release notes</h5>
