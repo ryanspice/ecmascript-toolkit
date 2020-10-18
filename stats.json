@@ -1,0 +1,2144 @@
+
+{
+  "hash": "56f5e0ca57969f324cb9",
+  "version": "5.1.3",
+  "time": 1381,
+  "builtAt": 1603006679199,
+  "publicPath": "auto",
+  "outputPath": "C:\\Dev\\ecmascript-toolkit\\dist",
+  "assetsByChunkName": {
+    "main": [
+      "main.bundle.js"
+    ],
+    "runtime": [
+      "runtime.bundle.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "asset",
+      "name": "runtime.bundle.js",
+      "size": 88086,
+      "chunkNames": [
+        "runtime"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "minimized": true,
+        "size": 88086
+      },
+      "related": {},
+      "chunks": [
+        666
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "main.bundle.js",
+      "size": 18487,
+      "chunkNames": [
+        "main"
+      ],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "minimized": true,
+        "size": 18487
+      },
+      "related": {},
+      "chunks": [
+        179
+      ],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    },
+    {
+      "type": "asset",
+      "name": "index.html",
+      "size": 198,
+      "chunkNames": [],
+      "chunkIdHints": [],
+      "auxiliaryChunkNames": [],
+      "auxiliaryChunkIdHints": [],
+      "emitted": true,
+      "comparedForEmit": false,
+      "cached": false,
+      "info": {
+        "size": 198
+      },
+      "related": {},
+      "chunks": [],
+      "auxiliaryChunks": [],
+      "isOverSizeLimit": false
+    }
+  ],
+  "chunks": [
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": false,
+      "recorded": false,
+      "size": 9736,
+      "sizes": {
+        "javascript": 9736
+      },
+      "names": [
+        "main"
+      ],
+      "idHints": [],
+      "runtime": [
+        "runtime"
+      ],
+      "files": [
+        "main.bundle.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "b60c920a1ee57943bea6",
+      "childrenByOrder": {},
+      "id": 179,
+      "siblings": [
+        666
+      ],
+      "parents": [],
+      "children": [],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/esm",
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\esm\\defineProperty.js",
+          "name": "./node_modules/@babel/runtime/helpers/esm/defineProperty.js",
+          "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\esm\\defineProperty.js",
+          "index": 3,
+          "preOrderIndex": 3,
+          "index2": 2,
+          "postOrderIndex": 2,
+          "size": 269,
+          "sizes": {
+            "javascript": 269
+          },
+          "cacheable": true,
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 0,
+                "resolving": 0,
+                "restoring": 0,
+                "building": 0,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 0,
+                "dependencies": 0
+              },
+              "id": 880
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 10,
+            "resolving": 7,
+            "restoring": 0,
+            "building": 3,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 7,
+            "dependencies": 0
+          },
+          "id": 156,
+          "issuerId": 880,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "amd require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:/Dev/ecmascript-toolkit/node_modules/@babel/runtime/helpers/esm/defineProperty",
+              "moduleId": 880,
+              "resolvedModuleId": 880
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "default"
+          ],
+          "optimizationBailout": [],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+          "name": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+          "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+          "index": 1,
+          "preOrderIndex": 1,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "size": 147,
+          "sizes": {
+            "javascript": 147
+          },
+          "cacheable": true,
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 0,
+                "resolving": 0,
+                "restoring": 0,
+                "building": 0,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 0,
+                "dependencies": 0
+              },
+              "id": 880
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 318,
+          "issuerId": 880,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+              "module": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+              "moduleName": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+              "resolvedModule": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "7:0-14",
+              "moduleId": 318,
+              "resolvedModuleId": 318
+            },
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:/Dev/ecmascript-toolkit/node_modules/@babel/runtime/helpers/interopRequireDefault",
+              "loc": "1:573-667",
+              "moduleId": 880,
+              "resolvedModuleId": 880
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 7:0-14",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "json",
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\package.json",
+          "name": "./package.json",
+          "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\package.json",
+          "index": 2,
+          "preOrderIndex": 2,
+          "index2": 1,
+          "postOrderIndex": 1,
+          "size": 3123,
+          "sizes": {
+            "javascript": 3123
+          },
+          "cacheable": true,
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": true,
+          "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "issuerName": "./src/index.js",
+          "issuerPath": [
+            {
+              "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "name": "./src/index.js",
+              "profile": {
+                "total": 0,
+                "resolving": 0,
+                "restoring": 0,
+                "building": 0,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 0,
+                "dependencies": 0
+              },
+              "id": 880
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 3,
+            "resolving": 3,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 3,
+            "dependencies": 0
+          },
+          "id": 306,
+          "issuerId": 880,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "cjs require",
+              "active": true,
+              "explanation": "",
+              "userRequest": "../package",
+              "loc": "1:3903-3924",
+              "moduleId": 880,
+              "resolvedModuleId": 880
+            }
+          ],
+          "usedExports": true,
+          "providedExports": [
+            "author",
+            "dependencies",
+            "description",
+            "devDependencies",
+            "license",
+            "name",
+            "peerDependencies",
+            "private",
+            "scripts",
+            "short_name",
+            "version"
+          ],
+          "optimizationBailout": [],
+          "depth": 1
+        },
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "name": "./src/index.js",
+          "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 3,
+          "postOrderIndex": 3,
+          "size": 6197,
+          "sizes": {
+            "javascript": 6197
+          },
+          "cacheable": true,
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 880,
+          "issuerId": null,
+          "chunks": [
+            179
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "module": "./src/index.js",
+              "moduleName": "./src/index.js",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "resolvedModule": "./src/index.js",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:476-480",
+              "moduleId": 880,
+              "resolvedModuleId": 880
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+              "loc": "main",
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: this is used directly at 1:476-480",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        }
+      ],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "C:\\Dev\\ecmascript-toolkit\\src\\index.js"
+        }
+      ]
+    },
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 30887,
+      "sizes": {
+        "runtime": 30887
+      },
+      "names": [
+        "runtime"
+      ],
+      "idHints": [],
+      "runtime": [
+        "runtime"
+      ],
+      "files": [
+        "runtime.bundle.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "400eff0c9922679a7e50",
+      "childrenByOrder": {},
+      "id": 666,
+      "siblings": [
+        179
+      ],
+      "parents": [],
+      "children": [],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/css loading",
+          "name": "webpack/runtime/css loading",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 2553,
+          "sizes": {
+            "runtime": 2553
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/define property getters",
+          "name": "webpack/runtime/define property getters",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 308,
+          "sizes": {
+            "runtime": 308
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/get javascript update chunk filename",
+          "name": "webpack/runtime/get javascript update chunk filename",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 209,
+          "sizes": {
+            "runtime": 209
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/get mini-css chunk filename",
+          "name": "webpack/runtime/get mini-css chunk filename",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 260,
+          "sizes": {
+            "runtime": 260
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/get update manifest filename",
+          "name": "webpack/runtime/get update manifest filename",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 83,
+          "sizes": {
+            "runtime": 83
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/getFullHash",
+          "name": "webpack/runtime/getFullHash",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 52,
+          "sizes": {
+            "runtime": 52
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/global",
+          "name": "webpack/runtime/global",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 221,
+          "sizes": {
+            "runtime": 221
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/hasOwnProperty shorthand",
+          "name": "webpack/runtime/hasOwnProperty shorthand",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 86,
+          "sizes": {
+            "runtime": 86
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/hot module replacement",
+          "name": "webpack/runtime/hot module replacement",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 8512,
+          "sizes": {
+            "runtime": 8512
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/jsonp chunk loading",
+          "name": "webpack/runtime/jsonp chunk loading",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 15958,
+          "sizes": {
+            "runtime": 15958
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/load script",
+          "name": "webpack/runtime/load script",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 1504,
+          "sizes": {
+            "runtime": 1504
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/make namespace object",
+          "name": "webpack/runtime/make namespace object",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 274,
+          "sizes": {
+            "runtime": 274
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        },
+        {
+          "type": "module",
+          "moduleType": "runtime",
+          "identifier": "webpack/runtime/publicPath",
+          "name": "webpack/runtime/publicPath",
+          "nameForCondition": null,
+          "index": null,
+          "preOrderIndex": null,
+          "index2": null,
+          "postOrderIndex": null,
+          "size": 867,
+          "sizes": {
+            "runtime": 867
+          },
+          "built": false,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "dependent": false,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "id": "",
+          "chunks": [
+            666
+          ],
+          "assets": [],
+          "reasons": [],
+          "usedExports": null,
+          "providedExports": [],
+          "optimizationBailout": [],
+          "depth": null
+        }
+      ],
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "main",
+          "request": "C:\\Dev\\ecmascript-toolkit\\src\\index.js"
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+      "name": "./src/index.js",
+      "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+      "index": 0,
+      "preOrderIndex": 0,
+      "index2": 3,
+      "postOrderIndex": 3,
+      "size": 6197,
+      "sizes": {
+        "javascript": 6197
+      },
+      "cacheable": true,
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "issuer": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 0,
+        "resolving": 0,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 0,
+        "dependencies": 0
+      },
+      "id": 880,
+      "issuerId": null,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "1:476-480",
+          "moduleId": 880,
+          "resolvedModuleId": 880
+        },
+        {
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "resolvedModuleIdentifier": null,
+          "resolvedModule": null,
+          "type": "entry",
+          "active": true,
+          "explanation": "",
+          "userRequest": "C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "loc": "main",
+          "moduleId": null,
+          "resolvedModuleId": null
+        }
+      ],
+      "usedExports": null,
+      "providedExports": null,
+      "optimizationBailout": [
+        "CommonJS bailout: this is used directly at 1:476-480",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/auto",
+      "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+      "name": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+      "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+      "index": 1,
+      "preOrderIndex": 1,
+      "index2": 0,
+      "postOrderIndex": 0,
+      "size": 147,
+      "sizes": {
+        "javascript": 147
+      },
+      "cacheable": true,
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 880
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 0,
+        "resolving": 0,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 0,
+        "dependencies": 0
+      },
+      "id": 318,
+      "issuerId": 880,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+          "module": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+          "moduleName": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+          "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\interopRequireDefault.js",
+          "resolvedModule": "./node_modules/@babel/runtime/helpers/interopRequireDefault.js",
+          "type": "cjs self exports reference",
+          "active": true,
+          "explanation": "",
+          "userRequest": null,
+          "loc": "7:0-14",
+          "moduleId": 318,
+          "resolvedModuleId": 318
+        },
+        {
+          "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "C:/Dev/ecmascript-toolkit/node_modules/@babel/runtime/helpers/interopRequireDefault",
+          "loc": "1:573-667",
+          "moduleId": 880,
+          "resolvedModuleId": 880
+        }
+      ],
+      "usedExports": null,
+      "providedExports": null,
+      "optimizationBailout": [
+        "CommonJS bailout: module.exports is used directly at 7:0-14",
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "json",
+      "identifier": "C:\\Dev\\ecmascript-toolkit\\package.json",
+      "name": "./package.json",
+      "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\package.json",
+      "index": 2,
+      "preOrderIndex": 2,
+      "index2": 1,
+      "postOrderIndex": 1,
+      "size": 3123,
+      "sizes": {
+        "javascript": 3123
+      },
+      "cacheable": true,
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 880
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 3,
+        "resolving": 3,
+        "restoring": 0,
+        "building": 0,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 3,
+        "dependencies": 0
+      },
+      "id": 306,
+      "issuerId": 880,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "cjs require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "../package",
+          "loc": "1:3903-3924",
+          "moduleId": 880,
+          "resolvedModuleId": 880
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "author",
+        "dependencies",
+        "description",
+        "devDependencies",
+        "license",
+        "name",
+        "peerDependencies",
+        "private",
+        "scripts",
+        "short_name",
+        "version"
+      ],
+      "optimizationBailout": [],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "javascript/esm",
+      "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\esm\\defineProperty.js",
+      "name": "./node_modules/@babel/runtime/helpers/esm/defineProperty.js",
+      "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\node_modules\\@babel\\runtime\\helpers\\esm\\defineProperty.js",
+      "index": 3,
+      "preOrderIndex": 3,
+      "index2": 2,
+      "postOrderIndex": 2,
+      "size": 269,
+      "sizes": {
+        "javascript": 269
+      },
+      "cacheable": true,
+      "built": true,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "issuer": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+      "issuerName": "./src/index.js",
+      "issuerPath": [
+        {
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "name": "./src/index.js",
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 880
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "profile": {
+        "total": 10,
+        "resolving": 7,
+        "restoring": 0,
+        "building": 3,
+        "integration": 0,
+        "storing": 0,
+        "additionalResolving": 0,
+        "additionalIntegration": 0,
+        "factory": 7,
+        "dependencies": 0
+      },
+      "id": 156,
+      "issuerId": 880,
+      "chunks": [
+        179
+      ],
+      "assets": [],
+      "reasons": [
+        {
+          "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "module": "./src/index.js",
+          "moduleName": "./src/index.js",
+          "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\babel-loader\\lib\\index.js??ruleSet[1].rules[3].use!C:\\Dev\\ecmascript-toolkit\\src\\index.js",
+          "resolvedModule": "./src/index.js",
+          "type": "amd require",
+          "active": true,
+          "explanation": "",
+          "userRequest": "C:/Dev/ecmascript-toolkit/node_modules/@babel/runtime/helpers/esm/defineProperty",
+          "moduleId": 880,
+          "resolvedModuleId": 880
+        }
+      ],
+      "usedExports": true,
+      "providedExports": [
+        "default"
+      ],
+      "optimizationBailout": [],
+      "depth": 1
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/css loading",
+      "name": "webpack/runtime/css loading",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 2553,
+      "sizes": {
+        "runtime": 2553
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/define property getters",
+      "name": "webpack/runtime/define property getters",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 308,
+      "sizes": {
+        "runtime": 308
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/get javascript update chunk filename",
+      "name": "webpack/runtime/get javascript update chunk filename",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 209,
+      "sizes": {
+        "runtime": 209
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/get mini-css chunk filename",
+      "name": "webpack/runtime/get mini-css chunk filename",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 260,
+      "sizes": {
+        "runtime": 260
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/get update manifest filename",
+      "name": "webpack/runtime/get update manifest filename",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 83,
+      "sizes": {
+        "runtime": 83
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/getFullHash",
+      "name": "webpack/runtime/getFullHash",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 52,
+      "sizes": {
+        "runtime": 52
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/global",
+      "name": "webpack/runtime/global",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 221,
+      "sizes": {
+        "runtime": 221
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/hasOwnProperty shorthand",
+      "name": "webpack/runtime/hasOwnProperty shorthand",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 86,
+      "sizes": {
+        "runtime": 86
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/hot module replacement",
+      "name": "webpack/runtime/hot module replacement",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 8512,
+      "sizes": {
+        "runtime": 8512
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/jsonp chunk loading",
+      "name": "webpack/runtime/jsonp chunk loading",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 15958,
+      "sizes": {
+        "runtime": 15958
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/load script",
+      "name": "webpack/runtime/load script",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 1504,
+      "sizes": {
+        "runtime": 1504
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/make namespace object",
+      "name": "webpack/runtime/make namespace object",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 274,
+      "sizes": {
+        "runtime": 274
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    },
+    {
+      "type": "module",
+      "moduleType": "runtime",
+      "identifier": "webpack/runtime/publicPath",
+      "name": "webpack/runtime/publicPath",
+      "nameForCondition": null,
+      "index": null,
+      "preOrderIndex": null,
+      "index2": null,
+      "postOrderIndex": null,
+      "size": 867,
+      "sizes": {
+        "runtime": 867
+      },
+      "built": false,
+      "codeGenerated": true,
+      "cached": false,
+      "optional": false,
+      "orphan": false,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "id": "",
+      "chunks": [
+        666
+      ],
+      "assets": [],
+      "reasons": [],
+      "usedExports": null,
+      "providedExports": [],
+      "optimizationBailout": [],
+      "depth": null
+    }
+  ],
+  "entrypoints": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        666,
+        179
+      ],
+      "assets": [
+        {
+          "name": "runtime.bundle.js",
+          "size": 88086
+        },
+        {
+          "name": "main.bundle.js",
+          "size": 18487
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 106573,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        666,
+        179
+      ],
+      "assets": [
+        {
+          "name": "runtime.bundle.js",
+          "size": 88086
+        },
+        {
+          "name": "main.bundle.js",
+          "size": 18487
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": 106573,
+      "auxiliaryAssets": [],
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {},
+      "isOverSizeLimit": false
+    }
+  },
+  "errors": [],
+  "errorsCount": 0,
+  "warnings": [],
+  "warningsCount": 0,
+  "children": [
+    {
+      "name": "HtmlWebpackCompiler",
+      "hash": "4f2b3ac9af8ba068eb5e",
+      "version": "5.1.3",
+      "time": 71,
+      "builtAt": 1603006677914,
+      "publicPath": "auto",
+      "outputPath": "C:\\Dev\\ecmascript-toolkit\\dist",
+      "assetsByChunkName": {
+        "HtmlWebpackPlugin_0": [
+          "__child-HtmlWebpackPlugin_0"
+        ]
+      },
+      "assets": [
+        {
+          "type": "asset",
+          "name": "__child-HtmlWebpackPlugin_0",
+          "size": 1833,
+          "chunkNames": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "chunkIdHints": [],
+          "auxiliaryChunkNames": [],
+          "auxiliaryChunkIdHints": [],
+          "emitted": false,
+          "comparedForEmit": false,
+          "cached": true,
+          "info": {},
+          "related": {},
+          "chunks": [
+            443
+          ],
+          "auxiliaryChunks": [],
+          "isOverSizeLimit": false
+        }
+      ],
+      "chunks": [
+        {
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "recorded": false,
+          "size": 452,
+          "sizes": {
+            "javascript": 452
+          },
+          "names": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "idHints": [],
+          "runtime": [
+            "HtmlWebpackPlugin_0"
+          ],
+          "files": [
+            "__child-HtmlWebpackPlugin_0"
+          ],
+          "auxiliaryFiles": [],
+          "hash": "0c14fcff45365e5ea6bc",
+          "childrenByOrder": {},
+          "id": 443,
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "modules": [
+            {
+              "type": "module",
+              "moduleType": "javascript/auto",
+              "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+              "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+              "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+              "index": 0,
+              "preOrderIndex": 0,
+              "index2": 0,
+              "postOrderIndex": 0,
+              "size": 452,
+              "sizes": {
+                "javascript": 452
+              },
+              "cacheable": true,
+              "built": true,
+              "codeGenerated": true,
+              "cached": false,
+              "optional": false,
+              "orphan": false,
+              "dependent": false,
+              "issuer": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "profile": {
+                "total": 0,
+                "resolving": 0,
+                "restoring": 0,
+                "building": 0,
+                "integration": 0,
+                "storing": 0,
+                "additionalResolving": 0,
+                "additionalIntegration": 0,
+                "factory": 0,
+                "dependencies": 0
+              },
+              "id": 565,
+              "issuerId": null,
+              "chunks": [
+                443
+              ],
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+                  "module": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+                  "moduleName": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+                  "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+                  "resolvedModule": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+                  "type": "cjs self exports reference",
+                  "active": true,
+                  "explanation": "",
+                  "userRequest": null,
+                  "loc": "1:96-110",
+                  "moduleId": 565,
+                  "resolvedModuleId": 565
+                },
+                {
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "resolvedModuleIdentifier": null,
+                  "resolvedModule": null,
+                  "type": "entry",
+                  "active": true,
+                  "explanation": "",
+                  "userRequest": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+                  "loc": "HtmlWebpackPlugin_0",
+                  "moduleId": null,
+                  "resolvedModuleId": null
+                },
+                {
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "resolvedModuleIdentifier": null,
+                  "resolvedModule": null,
+                  "type": null,
+                  "active": true,
+                  "explanation": "used as library export",
+                  "userRequest": null,
+                  "moduleId": null,
+                  "resolvedModuleId": null
+                }
+              ],
+              "usedExports": null,
+              "providedExports": null,
+              "optimizationBailout": [
+                "CommonJS bailout: module.exports is used directly at 1:96-110",
+                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+              ],
+              "depth": 0
+            }
+          ],
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "HtmlWebpackPlugin_0",
+              "request": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html"
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "type": "module",
+          "moduleType": "javascript/auto",
+          "identifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+          "nameForCondition": "C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+          "index": 0,
+          "preOrderIndex": 0,
+          "index2": 0,
+          "postOrderIndex": 0,
+          "size": 452,
+          "sizes": {
+            "javascript": 452
+          },
+          "cacheable": true,
+          "built": true,
+          "codeGenerated": true,
+          "cached": false,
+          "optional": false,
+          "orphan": false,
+          "issuer": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "profile": {
+            "total": 0,
+            "resolving": 0,
+            "restoring": 0,
+            "building": 0,
+            "integration": 0,
+            "storing": 0,
+            "additionalResolving": 0,
+            "additionalIntegration": 0,
+            "factory": 0,
+            "dependencies": 0
+          },
+          "id": 565,
+          "issuerId": null,
+          "chunks": [
+            443
+          ],
+          "assets": [],
+          "reasons": [
+            {
+              "moduleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+              "module": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+              "moduleName": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+              "resolvedModuleIdentifier": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+              "resolvedModule": "./node_modules/html-webpack-plugin/lib/loader.js!./src/template.html",
+              "type": "cjs self exports reference",
+              "active": true,
+              "explanation": "",
+              "userRequest": null,
+              "loc": "1:96-110",
+              "moduleId": 565,
+              "resolvedModuleId": 565
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": "entry",
+              "active": true,
+              "explanation": "",
+              "userRequest": "C:\\Dev\\ecmascript-toolkit\\node_modules\\html-webpack-plugin\\lib\\loader.js!C:\\Dev\\ecmascript-toolkit\\src\\template.html",
+              "loc": "HtmlWebpackPlugin_0",
+              "moduleId": null,
+              "resolvedModuleId": null
+            },
+            {
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "resolvedModuleIdentifier": null,
+              "resolvedModule": null,
+              "type": null,
+              "active": true,
+              "explanation": "used as library export",
+              "userRequest": null,
+              "moduleId": null,
+              "resolvedModuleId": null
+            }
+          ],
+          "usedExports": null,
+          "providedExports": null,
+          "optimizationBailout": [
+            "CommonJS bailout: module.exports is used directly at 1:96-110",
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        }
+      ],
+      "entrypoints": {
+        "HtmlWebpackPlugin_0": {
+          "name": "HtmlWebpackPlugin_0",
+          "chunks": [
+            443
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_0"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "namedChunkGroups": {
+        "HtmlWebpackPlugin_0": {
+          "name": "HtmlWebpackPlugin_0",
+          "chunks": [
+            443
+          ],
+          "assets": [
+            {
+              "name": "__child-HtmlWebpackPlugin_0"
+            }
+          ],
+          "filteredAssets": 0,
+          "assetsSize": null,
+          "auxiliaryAssets": [],
+          "filteredAuxiliaryAssets": 0,
+          "auxiliaryAssetsSize": 0,
+          "children": {},
+          "childAssets": {},
+          "isOverSizeLimit": false
+        }
+      },
+      "errors": [],
+      "errorsCount": 0,
+      "warnings": [],
+      "warningsCount": 0,
+      "children": []
+    }
+  ]
+}
