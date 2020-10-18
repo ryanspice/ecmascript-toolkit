@@ -2,8 +2,15 @@
  * EcmaToolkit - designed to be an entry point for webpack configs
  */
 
+import css from "./template.scss";
+
+const _package_ = require("../package");
+const _default_font_ = "https://fonts.googleapis.com/css?family=Niramit";
+
 class etk {
-  static package = require("../package");
+  static package = _package_;
+  static css = css;
+
   static version: number = etk.package.version;
   static title: number = "E c m a T o o l K i t";
 
@@ -14,7 +21,7 @@ class etk {
   static #demo: boolean = true;
   static #demo_template: string = `
       <style>
-            @import url("https://fonts.googleapis.com/css?family=Niramit");
+            @import url(${_default_font_});
             html, body {
             font-family:Niramit;
             }
@@ -33,11 +40,21 @@ class etk {
             <h3>v${etk.version}</h3>
             <p>
               <ul>
+                <li>webpack 5</li>
+                <li>latest babel</li>
+                <li>eslint + prettier</li>
+              </ul>
+            </p>
+            <section>
+            <h4>v1.0.0-alpha.3</h4>
+            <p>
+              <ul>
                 <li>hooks</li>
                 <li>timestamps</li>
                 <li>private scope</li>
               </ul>
             </p>
+            </section>
             <section>
             <h4>v1.0.0-alpha.2</h4>
             <p>
@@ -64,7 +81,7 @@ class etk {
 
   static get info() {
     return {
-      timestamps: etk.#timestamps,
+      timestamps: etk.#timestamps
     };
   }
 
@@ -74,9 +91,7 @@ class etk {
   static onPostLoad(): Function<any> {}
 
   // To avoid interfering with the browser, init during 'requestAnimationFrame'
-  static async requestAnimationFrame(
-    DOMHighResTimeStamp: number
-  ): Function<void> {
+  static async requestAnimationFrame(DOMHighResTimeStamp: number): Function<void> {
     etk.#timestamps.set("requestAnimationFrame", etk.time);
     //if (document.readyState==="complete") {
     //k.#DOMContentLoaded();
@@ -90,11 +105,7 @@ class etk {
     window.addEventListener("load", etk.load);
 
     (await etk.#debug)
-      ? console.log(
-          "[Etk] requestAnimationFrame ",
-          window?.etk?.default === etk,
-          window.etk
-        )
+      ? console.log("[Etk] requestAnimationFrame ", window?.etk?.default === etk, window.etk)
       : null;
 
     const engine = await etk.#implement(DOMHighResTimeStamp);
@@ -105,7 +116,7 @@ class etk {
     if (!window?.etk?.default) {
       window.etk = {
         default: etk,
-        __esModule: false,
+        __esModule: false
       };
 
       etk.#debug
@@ -119,12 +130,7 @@ class etk {
       return window.etk;
     }
 
-    etk.#debug
-      ? console.info(
-          "[Etk]",
-          "Running on Server at " + DOMHighResTimeStamp + "ms"
-        )
-      : null;
+    etk.#debug ? console.info("[Etk]", "Running on Server at " + DOMHighResTimeStamp + "ms") : null;
 
     return etk;
   };

@@ -4,5 +4,5 @@
  * @type {{devtool: string}}
  */
 module.exports = {
-	devtool:'eval-source-map'
+	devtool:'inline-source-map'
 };

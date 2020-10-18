@@ -1,0 +1,18 @@
+[ignore]
+
+[include]
+
+[libs]
+./flow-typed
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore
+
+module.system=haste
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+esproposal.decorators=ignore
+
+module.file_ext=.js
+# webpack module alias
+module.name_mapper='^src/\(.*\)$' -> '<PROJECT_ROOT>/src/\1'
