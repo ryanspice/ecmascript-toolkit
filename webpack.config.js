@@ -130,6 +130,19 @@ module.exports = (env = _default_environment_) => {
 			new webpack.DefinePlugin({
 				'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH) ,
 			}),
+			new webpack.ProvidePlugin({
+				"log": 'LogLevel',
+				"env": [path.resolve('./.env'), 'default'],
+				"pkg": [
+					path.resolve('./package.json')
+				],
+				"lang": [
+					path.resolve('./src/lang/en.json')
+				],
+				"runtime": [
+					path.resolve('./src/utils/runtime'), 'default'
+				]
+			}),
 			new PrettierPlugin(require(path.resolve('./config/prettier.config.js'))),
 			new WebpackBar(),
 			new WebpackMessages({
@@ -178,7 +191,7 @@ module.exports = (env = _default_environment_) => {
 			new (require("script-ext-html-webpack-plugin"))({
 				//defaultAttribute: 'async',
 				preload: /\.js$/,
-				module: /\.js$/,
+				//module: /\.js$/,
 				// prefetch: /\.js$/,
 				inline:[
 					// `${name}.entry.js`

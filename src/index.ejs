@@ -58,11 +58,10 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       if (htmlWebpackPlugin.files.jsIntegrity) { %>
     <script async
       src="<%= htmlWebpackPlugin.files.chunks[key].entry %>"
-      type="module"
       integrity="<%= htmlWebpackPlugin.files.jsIntegrity[htmlWebpackPlugin.files.js.indexOf(htmlWebpackPlugin.files.chunks[key].entry)] %>"
       crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script><%
       } else { %>
-    <script async    src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" type="module"></script><%
+    <script async    src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" </script><%
       } %><%
     }
 		%>
@@ -77,35 +76,53 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
 
   </head>
   <script async defer="defer" type="application/javascript" >
-    const DEBUG = true;
-    let EcmaToolkit;
-    DEBUG?console.info('[EtkHtml] ', window.etk):null;
-    document.addEventListener('readystatechange', () => {
-      DEBUG?console.log('[EtkHtml] readyState:' + document.readyState,window.etk):null;
-      if (document.readyState == 'complete'){
-        let Etk = window.etk.default;
-        Etk.onLoad = ()=>{
-          console.log("[EtkHtml] Works! (overridden)")
-          console.log("[EtkHtml] Timestamps", etk.default.info.timestamps )
+    "use strict";
 
+    var DEBUG = true;
+    var EcmaToolkit;
+    DEBUG ? console.info('[EtkHtml] ', window.etk) : null;
+    document.addEventListener('readystatechange', function () {
+      DEBUG ? console.log('[EtkHtml] readyState:' + document.readyState, window.etk) : null;
+
+      if (document.readyState == 'complete') {
+        //console.log(window.etk)
+        //var Etk = window.etk.default;
+
+        // Etk.onLoad = function () {
+        //   console.log("[EtkHtml] Works! (overridden)");
+        //   console.log("[EtkHtml] Timestamps", etk.default.info.timestamps);
+        // };
+
+        //EcmaToolkit = new Etk();
+      }
+    });
+    document.addEventListener('ETKContentLoaded', function () {
+      DEBUG ? console.log('[Etk] readyState:' + document.readyState, window.etk) : null;
+
+      if (document.readyState == 'complete') {
+        console.log(window.etk)
+        var Etk = window.etk.default;
+
+        Etk.onLoad = function () {
+          console.log("[Etk] Works! (overridden)");
+          console.log("[Etk] Timestamps", etk.default.info.timestamps);
         };
-        EcmaToolkit =  new Etk();
-      };
 
+        EcmaToolkit = new Etk();
+      }
     });
-    document.addEventListener('DOMContentLoaded',function(){
-      DEBUG?console.info('[EtkHtml]  DOMContentLoaded', window.etk):null;
+    document.addEventListener('DOMContentLoaded', function () {
+      DEBUG ? console.info('[EtkHtml]  DOMContentLoaded', window.etk) : null;
     });
-    window.addEventListener('load',function(){
-      DEBUG?console.info('[EtkHtml]  load', window.etk):null;
+    window.addEventListener('load', function () {
+      DEBUG ? console.info('[EtkHtml]  load', window.etk) : null;
       return;
-      if (!window.etk)
-      setTimeout(function(){
-        DEBUG?console.info('[EtkHtml]  +200ms', window.etk):null;
-        if (!window.etk)
-        setTimeout(function(){
-          DEBUG?console.info('[EtkHtml]  +600ms', window.etk):null; },600)
-      },200)
+      if (!window.etk) setTimeout(function () {
+        DEBUG ? console.info('[EtkHtml]  +200ms', window.etk) : null;
+        if (!window.etk) setTimeout(function () {
+          DEBUG ? console.info('[EtkHtml]  +600ms', window.etk) : null;
+        }, 600);
+      }, 200);
     });
   </script>
   <body>

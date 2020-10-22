@@ -2,7 +2,7 @@
  * bable.config.js
  * merges into webpack.config.js, is babel config
  */
-
+const isLegacy = true;
 module.exports = {
 
 	loader: "babel-loader?cacheDirectory",
@@ -24,11 +24,8 @@ module.exports = {
 				"shippedProposals": true, // not sure about this one
 
 				"targets": {
-
-					"browsers": false === "legacy" ? "last 1 year, cover 97% in CA, not ie<=11" : "cover 4% in CA, not ie<11"
-					//"browsers":"> 2%, not dead, not IE 11"
-					//	,"esmodules":type != "legacy"?true:false // This seems to create a larger bundle???
-
+					"browsers":isLegacy?"last 1 year, cover 99% in CA, not ie<=11":"cover 4% in CA, not ie<11",
+					"esmodules": !isLegacy
 				},
 
 				//"loose": true
