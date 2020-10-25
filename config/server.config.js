@@ -1,8 +1,7 @@
 const {_build_to_minify_} = require("./constants");
 /**
- * webpack.server.js
- * merged in webpack.config.babel.js, all devServer options
- * @type {{devServer: {historyApiFallback: boolean, inline: boolean, compress: boolean, stats: {assets: boolean, children: boolean, chunks: boolean, warnings: boolean, timings: boolean, publicPath: boolean, version: boolean, hash: boolean, modules: boolean}, after: module.exports.devServer.after, hot: boolean, watchOptions: {ignored: string[]}}}}
+ * server.config.js
+ * all devServer options
  */
 module.exports = {
 	devServer:{
@@ -12,7 +11,7 @@ module.exports = {
 		//writeToDisk: true,
 		//"contentBase": "./dist",
 		//"contentBase": false,
-		"hot": true,
+		//"hot": true,
 		"inline": true,
 		"compress": _build_to_minify_,
 		"stats": {
