@@ -22,7 +22,7 @@ Using **ecmascript-toolkit** as a centralized point for your microforontend can 
 
 
 ```javascript
-const master = require('ecmascript-toolkit/webpack.config.js');
+const master = require('ecmascript-toolkit/webpack.config.babel.js');
 const merge = require('webpack-merge');
 
 module.exports = merge(

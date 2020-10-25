@@ -9,34 +9,30 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-var ManifestPlugin = require('webpack-manifest-plugin');
-var PrettierPlugin = require("prettier-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
+const PrettierPlugin = require("prettier-webpack-plugin");
 
+const {
+	_mode_is_legacy_,
 
-const isLegacy = false !== "legacy" ? true : false;
+	_default_colour_,
+	_default_settings_,
+	_default_environment_
 
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+} = require("./config/constants");
+
 
 // Try the environment variable, otherwise use root
 const ASSET_PATH = process.env.ASSET_PATH || '/';
-
-
-const _default_colour_ = "#1F787F"
-const _default_settings_ = require('./config/webpack.settings.js');
-const _default_environment_ = {
-	NODE_ENV: "development",
-	production: "true"
-};
 
 const _package_ = path.resolve(__dirname, './package.js');
 
 const _output_name_ = _package_.short_name;
 const _output_path_ = './dist';
-const _output_filename_ = isLegacy ? `[name].js` : `[name].legacy.js`;
+const _output_filename_ = !_mode_is_legacy_ ? `[name].mjs` : `[name].legacy.js`;
 
-const _chunk_filename_ = isLegacy ? `module~[name].js` : `module~[name].legacy.js`;
-const _chunk_filenameProd_ = isLegacy ? `module~[name].[contenthash].js` : `module~[name].[contenthash].legacy.js`;
+const _chunk_filename_ = !_mode_is_legacy_ ? `module~[name].mjs` : `module~[name].legacy.js`;
+const _chunk_filenameProd_ = !_mode_is_legacy_ ? `module~[name].[contenthash].mjs` : `module~[name].[contenthash].legacy.js`;
 
 const _self_ = {};
 const _entry_ = {};
@@ -57,6 +53,11 @@ _entry_[_output_name_] = './src/index.js';
  */
 
 module.exports = (env = _default_environment_) => {
+
+
+
+	console.log(env);
+
 	return {
 		// Set the mode to development or production
 		mode: 'development',
@@ -126,7 +127,7 @@ module.exports = (env = _default_environment_) => {
 		},
 		//
 		plugins: [
-			new CleanWebpackPlugin(),
+			new (require('clean-webpack-plugin').CleanWebpackPlugin)(),
 			new webpack.DefinePlugin({
 				'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH) ,
 			}),
@@ -261,8 +262,7 @@ module.exports = (env = _default_environment_) => {
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/docker$/}),
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/lib$/}),
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/node_modules/}),
-			new webpack.IgnorePlugin({resourceRegExp: /^\.\/dist$/}),
-			//new ManifestPlugin()
+			new webpack.IgnorePlugin({resourceRegExp: /^\.\/dist$/})
 		],
 		//
 		module: {
@@ -322,7 +322,7 @@ module.exports = (env = _default_environment_) => {
 
 					],
 
-					use: require(path.resolve('./config/babel.config.js')),
+					use: require(path.resolve('./config/babel.config.js'))({_mode_is_legacy_}),
 
 					include: [
 

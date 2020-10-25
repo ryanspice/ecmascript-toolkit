@@ -79,21 +79,23 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     "use strict";
 
     var DEBUG = true;
+    var run = false;
     var EcmaToolkit;
     DEBUG ? console.info('[EtkHtml] ', window.etk) : null;
     document.addEventListener('readystatechange', function () {
       DEBUG ? console.log('[EtkHtml] readyState:' + document.readyState, window.etk) : null;
 
       if (document.readyState == 'complete') {
-        //console.log(window.etk)
-        //var Etk = window.etk.default;
+        run = true;
+        console.log(window.etk)
+        var Etk = window.etk.default;
 
-        // Etk.onLoad = function () {
-        //   console.log("[EtkHtml] Works! (overridden)");
-        //   console.log("[EtkHtml] Timestamps", etk.default.info.timestamps);
-        // };
+        Etk.onLoad = function () {
+          console.log("[EtkHtml] Works! (overridden)");
+          console.log("[EtkHtml] Timestamps", etk.default.info.timestamps);
+        };
 
-        //EcmaToolkit = new Etk();
+        EcmaToolkit = new Etk();
       }
     });
     document.addEventListener('ETKContentLoaded', function () {

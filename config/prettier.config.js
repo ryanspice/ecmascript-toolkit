@@ -1,6 +1,6 @@
 /**
  * prettier.config.js
- * merges into webpack.config.js, is prettier config
+ * merges into webpack.config.babel.js, is prettier config
  */
 
 module.exports = {

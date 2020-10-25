@@ -22,7 +22,8 @@ module.exports = [
 	'Object.assign',
 	'Array.from',
 	'Promise',
-	'fetch'
+	'fetch',
+	'WeakMap'
 ]
 
 /* Polyfill service v3.27.1

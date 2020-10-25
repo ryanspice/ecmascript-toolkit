@@ -1,3 +1,4 @@
+const {_proxy_} = require("./constants");
 /**
  * proxy.config.js
  * defaults to ryanspice.come TODO: remove in post alpha builds (externalize?)
@@ -5,12 +6,12 @@
  */
 module.exports ={
 	 '/api/**': {
-		 target: 'https://ryanspice.com',
+		 target: _proxy_,
 		 secure: false,
 		 changeOrigin: true
 	 },
 	 '/images/**': {
-		 target: 'https://ryanspice.com',
+		 target: _proxy_,
 		 secure: false,
 		 changeOrigin: true
 	 }
