@@ -69,13 +69,13 @@ module.exports = (env) => {
 				"@babel/plugin-syntax-flow",
 				[
 					"@babel/plugin-proposal-class-properties", {
-						"loose": true,
+						"loose": false,
 						"ignoreUninitialized": true
 					}
 				],
 				[
 					"@babel/plugin-proposal-private-methods", {
-						"loose": true
+						"loose": false
 					}
 				],
 				"@babel/plugin-proposal-json-strings"

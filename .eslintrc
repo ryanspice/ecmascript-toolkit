@@ -1,12 +1,14 @@
 {
+  "parser": "./node_modules/babel-eslint/lib",
+  "ignorePatterns": ["**/*.scss","**/*.css","*.scss"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": false
   },
   "plugins": [
-    "import",
     "babel",
+    "import",
     "flowtype",
     "prettier"
     //"classPrivateProperties",
@@ -27,8 +29,6 @@
     "ecmaVersion": 2020,
     "sourceType": "module",
     "babelOptions": {
-      "classPrivateProperties": true,
-      "classPrivateMethods": true,
       "configFile": "./config/babel.config.js"
     },
     "allowImportExportEverywhere": true,
