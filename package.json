@@ -36,7 +36,8 @@
   "license": "MIT",
   "peerDependencies": {
     "webpack-cli": "latest",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "ecstatic":"latest"
   },
   "dependencies": {
     "@babel/core": "latest",
