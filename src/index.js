@@ -1,35 +1,36 @@
+(function () {
+  window.WeakSet = b;
+  var c = Date.now() % 1e9;
+  function b(a) {
+    this.name = "__st" + ((1e9 * Math.random()) >>> 0) + (c++ + "__");
+    a && a.forEach && a.forEach(this.add, this);
+  }
+  var e = b.prototype;
+  e.add = function (a) {
+    var d = this.name;
+    a[d] || Object.defineProperty(a, d, { value: !0, writable: !0 });
+    return this;
+  };
+  e["delete"] = function (a) {
+    if (!a[this.name]) return !1;
+    a[this.name] = void 0;
+    return !0;
+  };
+  e.has = function (a) {
+    return !!a[this.name];
+  };
+})();
+
 /**
  * EcmaToolkit - designed to be an entry point for webpack configs
  */
-// (function () {
-//   window.WeakSet = b;
-//   var c = Date.now() % 1e9;
-//   function b(a) {
-//     this.name = "__st" + ((1e9 * Math.random()) >>> 0) + (c++ + "__");
-//     a && a.forEach && a.forEach(this.add, this);
-//   }
-//   var e = b.prototype;
-//   e.add = function (a) {
-//     var d = this.name;
-//     a[d] || Object.defineProperty(a, d, { value: !0, writable: !0 });
-//     return this;
-//   };
-//   e["delete"] = function (a) {
-//     if (!a[this.name]) return !1;
-//     a[this.name] = void 0;
-//     return !0;
-//   };
-//   e.has = function (a) {
-//     return !!a[this.name];
-//   };
-// })();
 
-//import css from "./template.scss";
+//import css from "./index.scss";
 const _package_ = pkg;
 const _default_font_ = "https://fonts.googleapis.com/css?family=Niramit";
 class etk {
   static package = _package_;
-  //  static css = css;
+  //static css = css;
 
   static version: number = etk.package.version;
   static title: number = "E c m a T o o l K i t";

@@ -69,7 +69,7 @@ function getDefaultEnvState(env) {
         production: false
     };
 
-};
+}
 
 /**/
 

@@ -1,10 +1,10 @@
+const webpack = require('webpack');
 /**
  * webpack.prod.js
  * prod values/plugins
  * @param env
 */
 module.exports = function (env) {
-	const webpack = require('webpack');
 	return {
 		mode: 'production',
 		devtool: 'source-map',

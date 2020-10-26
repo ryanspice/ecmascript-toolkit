@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+//const ESLintPlugin = require('eslint-webpack-plugin');
 const {
-	_babel_
+	_babel_,
+	_build_is_server_
 } = require("./constants");
 /**/
-module.exports = () => {
+module.exports = (env) => {
 	return {
 		module: {
 			rules: [
@@ -35,8 +37,15 @@ module.exports = () => {
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/lib$/}),
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/node_modules/}),
 			new webpack.IgnorePlugin({resourceRegExp: /^\.\/dist$/}),
-			new (require('clean-webpack-plugin').CleanWebpackPlugin)(),
+			new (require('clean-webpack-plugin').CleanWebpackPlugin)({
+				dry: !env.legacy
+			}),
+			// new ESLintPlugin({
+			// 	context:path.resolve(__dirname,'../src'),
+			// 	failOnError:false
+			// }),
 			new (require("prettier-webpack-plugin"))(require(path.resolve('./config/prettier.config.js'))),
+
 		]
 	}
 };

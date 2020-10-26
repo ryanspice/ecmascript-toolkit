@@ -2,9 +2,7 @@
  * bable.config.js
  * merges into webpack.config.babel.js, is babel config
  */
-const {_mode_is_legacy_} = require("./constants");
-const {_browserslist_} = require("./constants");
-module.exports = ()=> {
+module.exports = (env) => {
 	return {
 		loader: "babel-loader?cacheDirectory",
 		options: {
@@ -12,15 +10,16 @@ module.exports = ()=> {
 			"presets": [
 				[
 					"@babel/preset-env", {
-						"modules": 'umd',
-						"useBuiltIns": false,
-						"shippedProposals": true, // not sure about this one
-						"targets": {
-							"browsers": _browserslist_,
-							//"esmodules": !_mode_is_legacy_
-						},
-						//"loose": true
-					}
+					"modules": env.legacy ? 'umd' : 'auto',
+					"useBuiltIns": false,
+					"shippedProposals": true, // not sure about this one
+					"targets": {
+						"browsers": env.legacy ?
+							"last 5 years, cover 96% in CA, not ie<=10" : "supports es6-module",
+						"esmodules": !env.legacy
+					},
+					//"loose": true
+				}
 				],
 				"@babel/flow",
 				[
@@ -52,7 +51,7 @@ module.exports = ()=> {
 						"corejs": false,
 						"helpers": true,
 						"regenerator": true,
-						"useESModules": true
+						"useESModules": !env.legacy
 					}
 				],
 				"@babel/plugin-proposal-optional-chaining",
@@ -70,15 +69,19 @@ module.exports = ()=> {
 				"@babel/plugin-syntax-flow",
 				[
 					"@babel/plugin-proposal-class-properties", {
-					//"loose": false,
-					"ignoreUninitialized": true
-				}
+						"loose": true,
+						"ignoreUninitialized": true
+					}
 				],
-				"@babel/plugin-proposal-json-strings",
-				"@babel/plugin-proposal-private-methods"
+				[
+					"@babel/plugin-proposal-private-methods", {
+						"loose": true
+					}
+				],
+				"@babel/plugin-proposal-json-strings"
 			]
 
 		}
 
 	};
-};
+}

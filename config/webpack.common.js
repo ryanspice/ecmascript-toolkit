@@ -16,13 +16,13 @@ module.exports = (config) =>{
 		externals: _externals_,
 		devtool: _source_maps_,
 		resolve: {
-			//extensions: ['.html','.json','.ts','.tsx', '.js'] ,
-			//plugins: [],
+			extensions: ['.html','.json','.ts','.tsx', '.js'] ,
+			plugins: [],
 			modules: [
 				path.resolve(__dirname, 'src'),
 				'node_modules',
 			],
-			//alias: { }
+			alias: { }
 		},
 		plugins: [
 			new webpack.DefinePlugin({

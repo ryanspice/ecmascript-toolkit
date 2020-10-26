@@ -1,18 +1,37 @@
 {
-  "parser": "babel-eslint",
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "jest": false
   },
-  "plugins": ["react", "react-hooks", "flowtype", "prettier"],
-  "extends": ["plugin:react/recommended", "plugin:flowtype/recommended", "plugin:prettier/recommended",
+  "plugins": [
+    "import",
+    "babel",
+    "flowtype",
+    "prettier"
+    //"classPrivateProperties",
+    //"classPrivateMethods"
+  ],
+  "extends": [
+    //"plugin:react/recommended",
+    //"plugin:flowtype/recommended",
+    "plugin:prettier/recommended",
+    "prettier/standard",
     "prettier/flowtype",
-    "prettier/react",
-    "prettier/standard"],
+    "prettier/babel"
+    //"prettier/react",
+  ],
   "parserOptions": {
-    "ecmaVersion": 11,
+    "mode": "auto",
+    "parser": "@babel/eslint-parser",
+    "ecmaVersion": 2020,
     "sourceType": "module",
+    "babelOptions": {
+      "classPrivateProperties": true,
+      "classPrivateMethods": true,
+      "configFile": "./config/babel.config.js"
+    },
+    "allowImportExportEverywhere": true,
     "ecmaFeatures": {
       "arrowFunctions": true,
       "binaryLiterals": true,
@@ -39,7 +58,7 @@
     }
   },
   "globals": {
-    "Raven": true,
+    "Raven": false,
     "__DEV__": true,
     "__dirname": false,
     "__fbBatchedBridgeConfig": false,
@@ -72,14 +91,9 @@
     "window": false,
     "XMLHttpRequest": false,
     "pit": false,
-
-    "ReactComponent": false,
-    "ReactClass": false,
-    "ReactElement": false,
-    "ReactPropsCheckType": false,
-    "ReactPropsChainableTypeChecker": false,
-    "ReactPropTypes": false,
     "SyntheticEvent": false,
+    "$": true,
+    "$$": true,
     "$Either": false,
     "$All": false,
     "$Tuple": false,
@@ -95,21 +109,62 @@
     "$FixMe": false
   },
   "rules": {
-    "flowtype/boolean-style": [2, "boolean"],
+    "no-invalid-this": 0,
+    "babel/new-cap": 1,
+    "babel/camelcase": 1,
+    "babel/no-invalid-this": 1,
+    "babel/object-curly-spacing": 1,
+    "babel/quotes": 1,
+    "babel/semi": 0,
+    "babel/no-unused-expressions": 1,
+    "babel/valid-typeof": 1,
+    "@babel/new-cap": 1,
+    "@babel/no-invalid-this": 1,
+    "@babel/no-unused-expressions": 1,
+    "@babel/object-curly-spacing": 1,
+    "@babel/semi": 0,
+    "flowtype/boolean-style": [
+      2,
+      "boolean"
+    ],
     "flowtype/define-flow-type": 1,
-    "flowtype/delimiter-dangle": [0, "never"],
-    "flowtype/generic-spacing": [2, "never"],
+    "flowtype/delimiter-dangle": [
+      0,
+      "never"
+    ],
+    "flowtype/generic-spacing": [
+      2,
+      "never"
+    ],
     "flowtype/no-mixed": 2,
     "flowtype/no-primitive-constructor-types": 2,
     "flowtype/no-types-missing-file-annotation": 0,
-    "flowtype/object-type-delimiter": [2, "semicolon"],
+    "flowtype/object-type-delimiter": [
+      2,
+      "semicolon"
+    ],
     "flowtype/require-parameter-type": 2,
     "flowtype/require-valid-file-annotation": 2,
-    "flowtype/semi": [2, "always"],
-    "flowtype/space-after-type-colon": [2, "always"],
-    "flowtype/space-before-generic-bracket": [2, "never"],
-    "flowtype/space-before-type-colon": [2, "never"],
-    "flowtype/union-intersection-spacing": [2, "always"],
+    "flowtype/semi": [
+      2,
+      "always"
+    ],
+    "flowtype/space-after-type-colon": [
+      2,
+      "always"
+    ],
+    "flowtype/space-before-generic-bracket": [
+      2,
+      "never"
+    ],
+    "flowtype/space-before-type-colon": [
+      2,
+      "never"
+    ],
+    "flowtype/union-intersection-spacing": [
+      2,
+      "always"
+    ],
     "flowtype/use-flow-type": 1,
     "flowtype/valid-syntax": 1,
     "prefer-const": [
@@ -119,7 +174,8 @@
         "ignoreReadBeforeAssign": false
       }
     ],
-    "comma-dangle":0,
+    "classPrivateMethods": 1,
+    "comma-dangle": 0,
     "no-cond-assign": 1,
     "no-console": 0,
     "no-constant-condition": 0,
@@ -143,14 +199,16 @@
     "use-isnan": 1,
     "valid-jsdoc": 0,
     "valid-typeof": 1,
-
     "block-scoped-var": 0,
     "complexity": 0,
     "consistent-return": 0,
     "curly": 1,
     "default-case": 0,
     "dot-notation": 1,
-    "eqeqeq": [1, "allow-null"],
+    "eqeqeq": [
+      1,
+      "allow-null"
+    ],
     "guard-for-in": 0,
     "no-alert": 1,
     "no-caller": 1,
@@ -186,15 +244,20 @@
     "no-with": 1,
     "radix": 1,
     "semi-spacing": 1,
-    "space-before-blocks": [1, "always"],
+    "space-before-blocks": [
+      1,
+      "always"
+    ],
     "space-before-function-paren": [
       0
     ],
-    "space-in-parens": [1, "never"],
+    "space-in-parens": [
+      1,
+      "never"
+    ],
     "vars-on-top": 0,
     "wrap-iife": 0,
     "yoda": 1,
-
     "no-catch-shadow": 1,
     "no-delete-var": 1,
     "no-label-var": 1,
@@ -211,30 +274,40 @@
       }
     ],
     "no-use-before-define": 0,
-
     "key-spacing": 0,
-    "keyword-spacing": ["warn", { "after": true }],
-
-
+    "keyword-spacing": [
+      "warn",
+      {
+        "after": true
+      }
+    ],
     "comma-spacing": 0,
     "no-multi-spaces": 0,
     "brace-style": 0,
     "camelcase": 0,
-    "consistent-this": [1, "self"],
+    "consistent-this": [
+      1,
+      "self"
+    ],
     "eol-last": 0,
     "func-names": 0,
     "func-style": 0,
     "new-cap": 0,
     "new-parens": 1,
     "newline-before-return": 1,
-
     "no-nested-ternary": 0,
     "no-array-constructor": 1,
     "no-lonely-if": 0,
     "no-new-object": 1,
     "no-spaced-func": 1,
     "no-ternary": 0,
-    "no-trailing-spaces": ["warn", {  "ignoreComments": true, "skipBlankLines": true }],
+    "no-trailing-spaces": [
+      "warn",
+      {
+        "ignoreComments": true,
+        "skipBlankLines": true
+      }
+    ],
     "no-underscore-dangle": 0,
     "no-mixed-spaces-and-tabs": 1,
     "quote-props": 0,
@@ -253,7 +326,6 @@
     "max-nested-callbacks": 0,
     "one-var": 0,
     "wrap-regex": 0,
-
     "max-depth": 0,
     "max-len": 0,
     "max-params": 0,
@@ -274,22 +346,82 @@
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 0,
-
-
-    "function-paren-newline": ["error", "never"],
+    "function-paren-newline": [
+      "error",
+      "never"
+    ],
     "lines-between-class-members": 1,
     "padding-line-between-statements": [
       "error",
-      { "blankLine": "always", "prev": ["class", "block-like"], "next": "function" },
-      { "blankLine": "always", "prev": "*", "next": ["class", "block-like", "function"] },
-      { "blankLine": "always", "prev": "var", "next": "return" },
-      { "blankLine": "always", "prev": ["iife","class","function", "expression"], "next": "*"},
-      { "blankLine": "always", "prev": ["function","expression","block-like", "block", "let", "var"], "next": "*"},
-      { "blankLine": "always", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
-      { "blankLine": "always", "prev": "directive", "next": "*" }, { "blankLine": "any", "prev": "directive", "next": "directive" }
+      {
+        "blankLine": "always",
+        "prev": [
+          "class",
+          "block-like"
+        ],
+        "next": "function"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "class",
+          "block-like",
+          "function"
+        ]
+      },
+      {
+        "blankLine": "always",
+        "prev": "var",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "iife",
+          "class",
+          "function",
+          "expression"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "function",
+          "expression",
+          "block-like",
+          "block",
+          "let",
+          "var"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      },
+      {
+        "blankLine": "always",
+        "prev": "directive",
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": "directive",
+        "next": "directive"
+      }
     ],
-
-    "padded-blocks":  0,
+    "padded-blocks": 0,
     "lines-around-comment": [
       "error",
       {
@@ -303,9 +435,16 @@
         "allowObjectEnd": true,
         "allowArrayStart": true,
         "allowArrayEnd": true
-      }],
+      }
+    ],
     "arrow-parens": "warn",
-    "arrow-spacing": ["error", { "before": true, "after": true }]
+    "arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ]
   },
   "settings": {
     "prettier/prettier": "warn",
