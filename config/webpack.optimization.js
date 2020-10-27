@@ -14,8 +14,8 @@ module.exports = (env) => {
           terserOptions: {
             ecma: legacy ? undefined : 2020,
             mangle: production,
-            module: production && !legacy,
-            toplevel: production,
+            //module: false,//production && !legacy,
+            //toplevel: production,
             nameCache: null,
             ie8: false,
             keep_classnames: production,

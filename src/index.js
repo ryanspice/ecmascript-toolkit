@@ -1,3 +1,72 @@
+/* requestNextAnimationFrame */
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+// requestAnimationFrame polyfill by Erik Möller
+// fixes from Paul Irish and Tino Zijdel
+(function () {
+  var lastTime = 0;
+  var vendors = ["ms", "moz", "webkit", "o"];
+  for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+    window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
+    window.cancelAnimationFrame =
+      window[vendors[x] + "CancelAnimationFrame"] ||
+      window[vendors[x] + "CancelRequestAnimationFrame"];
+  }
+
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = function (callback, element) {
+      var currTime = new Date().getTime();
+      var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+      var id = window.setTimeout(function () {
+        callback(currTime + timeToCall);
+      }, timeToCall);
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+  }
+
+  if (!window.cancelAnimationFrame) {
+    window.cancelAnimationFrame = function (id) {
+      clearTimeout(id);
+    };
+  }
+})();
+(function () {
+  var ids = {};
+
+  function requestId() {
+    var id;
+    do {
+      id = Math.floor(Math.random() * 1e9);
+    } while (id in ids);
+    return id;
+  }
+
+  if (!window.requestNextAnimationFrame) {
+    window.requestNextAnimationFrame = function (callback, element) {
+      var id = requestId();
+
+      ids[id] = requestAnimationFrame(function () {
+        ids[id] = requestAnimationFrame(function (ts) {
+          delete ids[id];
+          callback(ts);
+        }, element);
+      }, element);
+
+      return id;
+    };
+  }
+
+  if (!window.cancelNextAnimationFrame) {
+    window.cancelNextAnimationFrame = function (id) {
+      if (ids[id]) {
+        cancelAnimationFrame(ids[id]);
+        delete ids[id];
+      }
+    };
+  }
+})();
+/* WeakSet */
 (function () {
   window.WeakSet = b;
   var c = Date.now() % 1e9;
@@ -113,9 +182,7 @@ class etk {
   static onLibraryLoad(): Function<any> {}
   static onPostLoad(): Function<any> {}
 
-  // To avoid interfering with the browser, init during 'requestAnimationFrame'
-  static async requestAnimationFrame(DOMHighResTimeStamp: number): Function<void> {
-    etk.#timestamps.set("requestAnimationFrame", etk.time);
+  static async initalize(TimeStamp: number): Function<void> {
     //if (document.readyState==="complete") {
     //k.#DOMContentLoaded();
     //etk.#readystatechange();
@@ -127,17 +194,19 @@ class etk {
     //}
     window.addEventListener("load", etk.load);
 
+    etk.#timestamps.set("initalize", etk.time);
+
     (await etk.#debug)
-      ? console.log("[Etk] requestAnimationFrame ", window?.etk?.default === etk, window.etk)
+      ? console.log("[Etk] initalize ", window?.etk?.default === etk, window.etk)
       : null;
 
-    const engine = await etk.#implement(DOMHighResTimeStamp);
+    const engine = await etk.#implement(TimeStamp);
     (await etk.#debug) ? console.log("[Etk] runtime " + etk.time + "ms") : null;
 
     document.dispatchEvent(await etk.#event, engine);
   }
 
-  static #implement: Function<etk> = (DOMHighResTimeStamp: number) => {
+  static #implement: Function<etk> = (TimeStamp: number) => {
     if (!window?.etk?.default) {
       window.etk = {
         default: etk,
@@ -147,7 +216,7 @@ class etk {
       etk.#debug
         ? console.info(
             "[Etk]",
-            "Injected into Webpack-Dev-Server at " + DOMHighResTimeStamp + "ms",
+            "Injected into Webpack-Dev-Server at " + TimeStamp + "ms",
             window.etk,
           )
         : null;
@@ -155,7 +224,7 @@ class etk {
       return window.etk;
     }
 
-    etk.#debug ? console.info("[Etk]", "Running on Server at " + DOMHighResTimeStamp + "ms") : null;
+    etk.#debug ? console.info("[Etk]", "Running on Server at " + TimeStamp + "ms") : null;
 
     return etk;
   };
@@ -202,6 +271,6 @@ class etk {
   }
 }
 
-requestAnimationFrame(etk.requestAnimationFrame);
+etk.initalize();
 
 export default etk;

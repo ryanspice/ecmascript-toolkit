@@ -1,7 +1,4 @@
-const { path, _default_environment_ } = require("./config/constants");
+const { resolve } = require("path");
 
-/**
- */
-
-module.exports = (env = _default_environment_) =>
-  require(path.resolve(__dirname, "./config/webpack.master.js"))(env);
+module.exports = (env) =>
+  require(resolve(__dirname, "./config/webpack.master.js"))(env);

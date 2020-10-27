@@ -1,6 +1,5 @@
 const webpack = require("webpack");
 const path = require("path");
-const { _babel_ } = require("./constants");
 module.exports = (env) => {
   return {
     module: {
@@ -8,8 +7,8 @@ module.exports = (env) => {
         { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: "asset/resource" },
         { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: "asset/inline" },
         {
-          test: /\.(mjs|js)?$/,
-          use: _babel_,
+          test: env.tests.js,
+          use: env.babel,
           include: [path.resolve("src"), path.resolve("test")],
         },
       ],

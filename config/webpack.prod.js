@@ -1,5 +1,4 @@
 const webpack = require("webpack");
-
 /**
  * webpack.prod.js
  * prod values/plugins
@@ -17,15 +16,14 @@ module.exports = function (env) {
       chunks: true,
       chunkModules: true,
       modules: true,
-      children: true
+      children: true,
     },
     plugins: [
       //new webpack.NamedModulesPlugin(),
       //new webpack.optimize.DedupePlugin(),
       //new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.ModuleConcatenationPlugin()
-
+      new webpack.optimize.ModuleConcatenationPlugin(),
       //new webpack.optimize.OccurrenceOrderPlugin(true)
-    ]
+    ],
   };
 };

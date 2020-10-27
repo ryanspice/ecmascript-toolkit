@@ -57,11 +57,13 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     for (key in htmlWebpackPlugin.files.chunks) { %><%
       if (htmlWebpackPlugin.files.jsIntegrity) { %>
     <script async
+            type="module"
       src="<%= htmlWebpackPlugin.files.chunks[key].entry %>"
       integrity="<%= htmlWebpackPlugin.files.jsIntegrity[htmlWebpackPlugin.files.js.indexOf(htmlWebpackPlugin.files.chunks[key].entry)] %>"
       crossorigin="<%= webpackConfig.output.crossOriginLoading %>"></script><%
       } else { %>
-    <script async    src="<%= htmlWebpackPlugin.files.chunks[key].entry %>" </script><%
+    <script async
+            type="module" src="<%= htmlWebpackPlugin.files.chunks[key].entry %>">> </script><%
       } %><%
     }
 		%>
@@ -69,7 +71,7 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
 		<%
     for (item of htmlWebpackPlugin.options.scripts) { %><%
       if (typeof item === 'string' || item instanceof String) { item = { src: item, type: 'text/javascript' } } %>
-    <script async <% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
+    <script async type="module" <% for (key in item) { %> <%= key %>="<%= item[key] %>"<% } %>></script><%
     } %>
 
       <!-- TESTING -->
@@ -85,10 +87,11 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
     document.addEventListener('readystatechange', function () {
       DEBUG ? console.log('[EtkHtml] readyState:' + document.readyState, window.etk) : null;
 
-      if (document.readyState == 'complete') {
+      if (document.readyState === 'complete') {
         run = true;
-        console.log(window.etk)
-        var Etk = window.etk.default;
+        var Etk = window.etk;
+        Etk = Etk?.default;
+        console.log(Etk)
 
         Etk.onLoad = function () {
           console.log("[EtkHtml] Works! (overridden)");
@@ -102,8 +105,9 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       DEBUG ? console.log('[Etk] readyState:' + document.readyState, window.etk) : null;
 
       if (document.readyState == 'complete') {
-        console.log(window.etk)
-        var Etk = window.etk.default;
+        var Etk = window.etk;
+        Etk = Etk?.default;
+        console.log(Etk)
 
         Etk.onLoad = function () {
           console.log("[Etk] Works! (overridden)");

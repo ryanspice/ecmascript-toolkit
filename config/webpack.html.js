@@ -11,11 +11,11 @@ module.exports = (env) => {
         template: "./src/index.ejs",
         headHtmlSnippet: '<link rel="manifest" href="./manifest.json">',
         bodyHtmlSnippet: "",
-        fileName: env.legacy?`index.tts`:`index.html`,
-        filename: "index.[contenthash].html",
+        filename: env.legacy ? "index.htm" : "index.html",
+        //filename: "index.[contenthash].html",
         baseHref: "./",
         title: env.output.library,
-        //cache: false,
+        cache: false,
         minify: env.production
           ? {
               collapseWhitespace: true,
@@ -33,15 +33,21 @@ module.exports = (env) => {
       }),
       new (require("script-ext-html-webpack-plugin"))({
         defaultAttribute: "async",
-        preload: /\.(mjs|js)$/,
-        module: !env.legacy ? /\.(mjs|js)$/ : null,
-        //module: /\.(mjs|js)$/,
-        prefetch: /\.js$/,
-        inline: [`${env.output.library}.entry.js`],
-        custom: env.server
+        preload: env.tests.js,
+        module: !env.legacy ? env.tests.js : undefined,
+        //module: env.tests.js,
+        prefetch: env.tests.js,
+        inline: {
+          test:[
+            `${env.output.library}.entry.js`,
+            `${env.output.library}.entry.mjs`,
+          ],
+          attribute: "async",
+        },
+        custom: !env.production
           ? [
               {
-                test: /\.(mjs|js)$/,
+                test: env.tests.js,
                 attribute: "crossorigin",
                 value: "anonymous",
               },

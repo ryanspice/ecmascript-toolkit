@@ -1,15 +1,15 @@
 const path = require("path");
-const {merge} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 
 const _package_ = require(path.resolve(__dirname, "../package.json"));
 
 const _config_ = {
   legacy: false,
-  webpackbar: false
+  webpackbar: false,
 };
 
 const _settings_ = {
-  webpackbar: false
+  webpackbar: false,
 };
 
 const _mode_ = "development";
@@ -20,19 +20,9 @@ const _browserslist_ = _config_.legacy
   ? "last 5 years, cover 96% in CA, not ie<=10"
   : "supports es6-module";
 
-const _default_postcss_ = {
-  plugins: {
-    //"postcss-normalize": {},
-    "postcss-preset-env": {
-      browsers: _config_.legacy ? "last 1 year, cover 92% in CA, not ie<=10" : "supports es6-module"
-    },
-    autoprefixer: {}
-  }
-};
-
 const _default_environment_ = {
   NODE_ENV: "development",
-  production: "true"
+  production: "true",
 };
 
 const _mode_is_production_ = (function () {
@@ -55,20 +45,43 @@ const _build_to_analyze_ = (function () {
   return false;
 })();
 
-const _babel_ = require(path.resolve("./config/babel.config.js"))({
-  _mode_is_legacy_: _config_.legacy
-});
 
 const _default_colour_ = "#1F787F";
+const constants = (env) => {
+  console.log(env.development)
+  if (!env) {
+    env = {};
+  }
+  env.development = env.hasOwnProperty("development") ? env.development === true : true;
+  env.production = env.hasOwnProperty("production") ? env.production === true : false;
+  env.legacy = env.hasOwnProperty("legacy") ? env.legacy === true : false;
+  env.static = env.hasOwnProperty("static") ? env.static === true : false;
+  env.server = env.hasOwnProperty("server") ? env.server === true : false;
+  env.analyze = env.hasOwnProperty("analyze") ? env.analyze === true : false;
+  env.configs = {
+    //name: process.env.npm_package_name,
+    //short_name: process.env.npm_package_short_name,
+    //babel: require(path.resolve(__dirname, "./babel.config.js"))(env),
+  };
+  env.output = {
+    // library:
+    //   env.configs.short_name ||
+    //   env.configs.name.replace(" ", "").toLowerCase()
+  };
+  env.tests = {
+    js: /\.(mjs|js)?$/,
+  };
+  env.babel = require(path.resolve(__dirname,"./babel.config.js"))(env);
+
+  return env;
+};
 
 module.exports = {
   _package_,
 
-  _babel_,
   _build_is_server_,
   _build_to_minify_,
   _build_to_analyze_,
-  _default_postcss_,
   _default_colour_,
   _default_environment_,
   _mode_,
@@ -80,5 +93,6 @@ module.exports = {
   _settings_,
 
   path,
-  merge
+  merge,
+  constants,
 };
