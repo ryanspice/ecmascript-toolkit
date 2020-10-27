@@ -45,19 +45,19 @@ const _build_to_analyze_ = (function () {
   return false;
 })();
 
-
 const _default_colour_ = "#1F787F";
 const constants = (env) => {
-  console.log(env.development)
   if (!env) {
     env = {};
   }
-  env.development = env.hasOwnProperty("development") ? env.development === true : true;
-  env.production = env.hasOwnProperty("production") ? env.production === true : false;
-  env.legacy = env.hasOwnProperty("legacy") ? env.legacy === true : false;
-  env.static = env.hasOwnProperty("static") ? env.static === true : false;
-  env.server = env.hasOwnProperty("server") ? env.server === true : false;
-  env.analyze = env.hasOwnProperty("analyze") ? env.analyze === true : false;
+  console.log(env);
+  // verify
+  env.development = env.hasOwnProperty("development") ? env.development === "true" : true;
+  env.production = env.hasOwnProperty("production") ? env.production === "true" : false;
+  env.legacy = env.hasOwnProperty("legacy") ? env.legacy === "true" : false;
+  env.static = env.hasOwnProperty("static") ? env.static === "true" : false;
+  env.server = env.hasOwnProperty("server") ? env.server === "true" : false;
+  env.analyze = env.hasOwnProperty("analyze") ? env.analyze === "true" : false;
   env.configs = {
     //name: process.env.npm_package_name,
     //short_name: process.env.npm_package_short_name,
@@ -71,7 +71,7 @@ const constants = (env) => {
   env.tests = {
     js: /\.(mjs|js)?$/,
   };
-  env.babel = require(path.resolve(__dirname,"./babel.config.js"))(env);
+  env.babel = require(path.resolve(__dirname, "./babel.config.js"))(env);
 
   return env;
 };
