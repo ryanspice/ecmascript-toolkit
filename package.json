@@ -14,12 +14,12 @@
     "clean:install": "yarn rimraf node_modules && yarn install",
     "clean:dist": "yarn rimraf dist",
     "clean:lib": "yarn rimraf lib",
-    "build": "yarn parallel --",
+    "build": "yarn webpack --",
     "prod": "parallel-webpack -- --env.production=true",
     "legacy": "parallel-webpack -- --env.legacy=true",
     "deploy": "parallel-webpack -- --env.legacy=false --env.production=true --env.analyze=false --env.static=false",
     "parallel": "parallel-webpack --",
-    "serve": "webpack serve",
+    "serve": "webpack serve -- --env server=true",
     "serve:local": "webpack serve --host=0.0.0.0 --port=8080",
     "serve:prod": "webpack serve -- --env production=true --env server=true",
     "serve:static": "parallel-webpack -- --env production=false --env server=false --env static=true  && http-server ./dist",
@@ -28,7 +28,8 @@
     "analyze:manual": "parallel-webpack --profile --json > stats.json -Encoding OEM && yarn analyze:scan",
     "analyze:scan": "yarn webpack-bundle-analyzer stats.json",
     "library": "yarn clean:lib && node ./config/script.minify.js",
-    "verify": "yarn clean:all && yarn build && yarn clean:all && yarn prod && yarn clean:all && yarn deploy && yarn library",
+    "verifyfull": "yarn clean:all && yarn build && yarn clean:all && yarn prod && yarn clean:all && yarn deploy && yarn library",
+    "verify": "yarn clean:all && yarn build && yarn prod && yarn library",
     "watch": "yarn build --watch"
   },
   "author": "Ryan Tyler Spice-Finnie <spice.ryan@hotmail.com>",
@@ -37,7 +38,7 @@
   "peerDependencies": {
     "webpack-cli": "latest",
     "rimraf": "^3.0.2",
-    "ecstatic":"latest"
+    "ecstatic": "latest"
   },
   "dependencies": {
     "@babel/core": "latest",
@@ -82,7 +83,8 @@
     "http-server": "latest",
     "mini-css-extract-plugin": "latest",
     "node-sass": "latest",
-    "optimize-css-assets-webpack-plugin": "latest",
+    "cssnano": "latest",
+    "css-minimizer-webpack-plugin": "latest",
     "parallel-webpack": "latest",
     "postcss": "latest",
     "postcss-loader": "latest",

@@ -1,6 +1,6 @@
 {
   "parser": "./node_modules/babel-eslint/lib",
-  "ignorePatterns": ["**/*.scss","**/*.css","*.scss"],
+  "ignorePatterns": ["**/*.scss","**/*.css","*.scss","*.webpack.**"],
   "env": {
     "browser": true,
     "es6": true,
@@ -15,13 +15,11 @@
     //"classPrivateMethods"
   ],
   "extends": [
-    //"plugin:react/recommended",
-    //"plugin:flowtype/recommended",
+    "plugin:flowtype/recommended",
     "plugin:prettier/recommended",
     "prettier/standard",
     "prettier/flowtype",
     "prettier/babel"
-    //"prettier/react",
   ],
   "parserOptions": {
     "mode": "auto",
@@ -58,7 +56,6 @@
     }
   },
   "globals": {
-    "Raven": false,
     "__DEV__": true,
     "__dirname": false,
     "__fbBatchedBridgeConfig": false,
@@ -111,18 +108,19 @@
   "rules": {
     "no-invalid-this": 0,
     "babel/new-cap": 1,
-    "babel/camelcase": 1,
+    "babel/camelcase": 0,
     "babel/no-invalid-this": 1,
-    "babel/object-curly-spacing": 1,
+    "babel/object-curly-spacing": 0,
     "babel/quotes": 1,
-    "babel/semi": 0,
+    "babel/semi": 1,
     "babel/no-unused-expressions": 1,
     "babel/valid-typeof": 1,
-    "@babel/new-cap": 1,
-    "@babel/no-invalid-this": 1,
-    "@babel/no-unused-expressions": 1,
-    "@babel/object-curly-spacing": 1,
-    "@babel/semi": 0,
+//    "@babel/new-cap": 1,
+//    "@babel/no-invalid-this": 1,
+//    "@babel/no-unused-expressions": 1,
+//    "@babel/object-curly-spacing": 0,
+//    "@babel/semi": 1,
+    "flowtype/require-parameter-type": 0,
     "flowtype/boolean-style": [
       2,
       "boolean"
@@ -143,7 +141,6 @@
       2,
       "semicolon"
     ],
-    "flowtype/require-parameter-type": 2,
     "flowtype/require-valid-file-annotation": 2,
     "flowtype/semi": [
       2,
@@ -174,7 +171,6 @@
         "ignoreReadBeforeAssign": false
       }
     ],
-    "classPrivateMethods": 1,
     "comma-dangle": 0,
     "no-cond-assign": 1,
     "no-console": 0,
@@ -294,7 +290,7 @@
     "func-style": 0,
     "new-cap": 0,
     "new-parens": 1,
-    "newline-before-return": 1,
+    //"newline-before-return": 1,
     "no-nested-ternary": 0,
     "no-array-constructor": 1,
     "no-lonely-if": 0,
@@ -332,111 +328,97 @@
     "max-statements": 0,
     "no-bitwise": 1,
     "no-plusplus": 0,
-    "react/display-name": 0,
-    "react/jsx-boolean-value": 0,
-    "react/jsx-no-duplicate-props": 2,
-    "react/jsx-no-undef": 1,
-    "react/jsx-sort-props": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-multi-comp": 0,
-    "react/no-string-refs": 0,
-    "react/no-unknown-property": 0,
-    "react/prop-types": 0,
-    "react/react-in-jsx-scope": 1,
-    "react/self-closing-comp": 1,
-    "react/wrap-multilines": 0,
-    "function-paren-newline": [
-      "error",
-      "never"
-    ],
-    "lines-between-class-members": 1,
-    "padding-line-between-statements": [
-      "error",
-      {
-        "blankLine": "always",
-        "prev": [
-          "class",
-          "block-like"
-        ],
-        "next": "function"
-      },
-      {
-        "blankLine": "always",
-        "prev": "*",
-        "next": [
-          "class",
-          "block-like",
-          "function"
-        ]
-      },
-      {
-        "blankLine": "always",
-        "prev": "var",
-        "next": "return"
-      },
-      {
-        "blankLine": "always",
-        "prev": [
-          "iife",
-          "class",
-          "function",
-          "expression"
-        ],
-        "next": "*"
-      },
-      {
-        "blankLine": "always",
-        "prev": [
-          "function",
-          "expression",
-          "block-like",
-          "block",
-          "let",
-          "var"
-        ],
-        "next": "*"
-      },
-      {
-        "blankLine": "always",
-        "prev": [
-          "const",
-          "let",
-          "var"
-        ],
-        "next": [
-          "const",
-          "let",
-          "var"
-        ]
-      },
-      {
-        "blankLine": "always",
-        "prev": "directive",
-        "next": "*"
-      },
-      {
-        "blankLine": "any",
-        "prev": "directive",
-        "next": "directive"
-      }
-    ],
+    //"function-paren-newline": [
+    //  "error",
+    //  "never"
+    //],
+//    "lines-between-class-members": 1,
+//    "padding-line-between-statements": [
+//      "error",
+//      {
+//        "blankLine": "always",
+//        "prev": [
+//          "class",
+//          "block-like"
+//        ],
+//        "next": "function"
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": "*",
+//        "next": [
+//          "class",
+//          "block-like",
+//          "function"
+//        ]
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": "var",
+//        "next": "return"
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": [
+//          "iife",
+//          "class",
+//          "function",
+//          "expression"
+//        ],
+//        "next": "*"
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": [
+//          "function",
+//          "expression",
+//          "block-like",
+//          "block",
+//          "let",
+//          "var"
+//        ],
+//        "next": "*"
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": [
+//          "const",
+//          "let",
+//          "var"
+//        ],
+//        "next": [
+//          "const",
+//          "let",
+//          "var"
+//        ]
+//      },
+//      {
+//        "blankLine": "always",
+//        "prev": "directive",
+//        "next": "*"
+//      },
+//      {
+//        "blankLine": "any",
+//        "prev": "directive",
+//        "next": "directive"
+//      }
+//    ],
     "padded-blocks": 0,
-    "lines-around-comment": [
-      "error",
-      {
-        "beforeBlockComment": true,
-        "afterBlockComment": false,
-        "beforeLineComment": true,
-        "afterLineComment": false,
-        "allowBlockStart": true,
-        "allowBlockEnd": true,
-        "allowObjectStart": true,
-        "allowObjectEnd": true,
-        "allowArrayStart": true,
-        "allowArrayEnd": true
-      }
-    ],
+//    "lines-around-comment": [
+//      "error",
+//      {
+//        "beforeBlockComment": true,
+//        "afterBlockComment": false,
+//        "beforeLineComment": true,
+//        "afterLineComment": false,
+//        "allowBlockStart": true,
+//        "allowBlockEnd": true,
+//        "allowObjectStart": true,
+//        "allowObjectEnd": true,
+//        "allowArrayStart": true,
+//        "allowArrayEnd": true
+//      }
+//    ],
     "arrow-parens": "warn",
     "arrow-spacing": [
       "error",

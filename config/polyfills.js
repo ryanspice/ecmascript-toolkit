@@ -1,36 +1,24 @@
-
-/*
-
-	Below are potential polyfills for IE
-	Add to array to enable additional polyfills
-
-*/
-
+/**
+ *	Below are potential polyfills for IE
+ *	Add to array to enable additional polyfills
+ */
 module.exports = [
-
-	// Cause of Boilerplate /
-
-	'String.prototype.startsWith',
-	'Array.prototype.fill',
-	'Object.entries',
-	'Symbol',
-
-	// Not included with Babel :: Some DOM, GLOBAL and stuff /
-
-	'Element.prototype.remove',
-	'Array.prototype.find',
-	'Object.assign',
-	'Array.from',
-	'Promise',
-	'fetch',
-	'WeakMap'
-]
-
+  "String.prototype.startsWith",
+  "Array.prototype.fill",
+  "Object.entries",
+  "Symbol",
+  // Not included with Babel :: Some DOM, GLOBAL and stuff /
+  "Element.prototype.remove",
+  "Array.prototype.find",
+  "Object.assign",
+  "Array.from",
+  "Promise",
+  "fetch",
+  "Map",
+];
 /* Polyfill service v3.27.1
  * For detailed credits and licence information see https://github.com/financial-times/polyfill-service.
- *
  * Features requested: default
- *
  * - _ESAbstract.IsCallable, License: CC0 (required by "Array.from", "default", "Map", "Set", "_ESAbstract.GetMethod", "Array.prototype.forEach", "URL", "Symbol", "Symbol.iterator", "Function.prototype.bind", "_ESAbstract.Construct", "Array.of", "Object.getOwnPropertyDescriptor", "Object.assign", "Array.prototype.filter", "Array.prototype.map", "_ESAbstract.OrdinaryToPrimitive", "_ESAbstract.ToPrimitive", "_ESAbstract.ToString", "Array.prototype.fill", "String.prototype.endsWith", "String.prototype.includes", "String.prototype.startsWith")
  * - _ESAbstract.CreateMethodProperty, License: CC0 (required by "Array.from", "default", "Array.of", "Array.prototype.fill", "Map", "Number.isNaN", "Object.assign", "Set", "String.prototype.endsWith", "String.prototype.includes", "String.prototype.startsWith", "Array.prototype.indexOf", "Element.prototype.after", "Element.prototype.before", "Array.isArray", "URL", "Object.create", "_ESAbstract.GetIterator", "_ESAbstract.OrdinaryCreateFromConstructor", "_ESAbstract.Construct", "Symbol", "Symbol.iterator", "Object.getOwnPropertyDescriptor", "Object.defineProperties", "Array.prototype.forEach", "Function.prototype.bind", "Object.getPrototypeOf", "Array.prototype.filter", "Array.prototype.map", "Object.getOwnPropertyNames", "Object.freeze")
  * - _ESAbstract.ToObject, License: CC0 (required by "Array.from", "default", "Array.prototype.fill", "Object.assign", "Array.prototype.indexOf", "Element.prototype.after", "Element.prototype.before", "Object.defineProperties", "URL", "Object.create", "Map", "Set", "_ESAbstract.GetIterator", "_ESAbstract.OrdinaryCreateFromConstructor", "_ESAbstract.Construct", "Array.of", "Symbol", "Symbol.iterator", "Array.prototype.forEach", "_ESAbstract.GetV", "_ESAbstract.GetMethod", "Array.prototype.filter", "Array.prototype.map")

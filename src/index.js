@@ -104,7 +104,7 @@ class etk {
 
   static get info() {
     return {
-      timestamps: etk.#timestamps
+      timestamps: etk.#timestamps,
     };
   }
 
@@ -141,14 +141,14 @@ class etk {
     if (!window?.etk?.default) {
       window.etk = {
         default: etk,
-        __esModule: false
+        __esModule: false,
       };
 
       etk.#debug
         ? console.info(
             "[Etk]",
             "Injected into Webpack-Dev-Server at " + DOMHighResTimeStamp + "ms",
-            window.etk
+            window.etk,
           )
         : null;
 
@@ -164,7 +164,7 @@ class etk {
     console.log(
       "[Etk] readyState:" + document.readyState,
       window?.etk?.default === etk,
-      window.etk
+      window.etk,
     );
     etk.#timestamps.set("readystatechange", new Date().getTime());
   }
