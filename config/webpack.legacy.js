@@ -10,7 +10,6 @@ module.exports = function (env) {
   entry[`${name}`] = `webpack-polyfill-injector?${JSON.stringify({
     modules: "./src",
   })}!`;
-
   return {
     entry: entry,
     output: {
