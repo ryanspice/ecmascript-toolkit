@@ -47,10 +47,16 @@ const _build_to_analyze_ = (function () {
 
 const _default_colour_ = "#1F787F";
 const constants = (env) => {
-  if (!env) {
-    env = {};
+  if (env === undefined) {
+    env = {
+      development: true,
+      production: false,
+      legacy: false,
+      static: false,
+      server: false,
+      analyze: false,
+    };
   }
-  console.log(env);
   // verify
 
   //env.development = env.hasOwnProperty("development") ? env.development === "true" : true;
@@ -108,7 +114,7 @@ const constants = (env) => {
     chunkFilename: env.chunkFilename,
     //chunkLoading: env.legacy ? "jsonp" : "import-scripts",
     scriptType: env.legacy ? "text/javascript" : "module",
-    path: path.resolve(__dirname, _output_path_),
+    path: !env.server ? path.resolve(__dirname, _output_path_) : path.resolve("./dist"),
     publicPath: "../",
     globalObject: "window",
   };

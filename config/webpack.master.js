@@ -3,7 +3,7 @@ const { resolve } = require("path");
 const { merge } = require("webpack-merge");
 /** webpack.master.js */
 const build = async (env) => {
-  await constants(env);
+  env = await constants(env);
   const common = await merge(
     require(resolve(__dirname, "./webpack.common.js"))(env),
     require(resolve(__dirname, "./webpack.console.js"))(env),
@@ -17,7 +17,7 @@ const build = async (env) => {
     env.production ? require(resolve(__dirname, "./webpack.prod.js"))(env) : {},
   );
   env.legacy = true;
-  await constants(env);
+  env = await constants(env);
   const legacy = await merge(
     require(resolve(__dirname, "./webpack.common.js"))(env),
     require(resolve(__dirname, "./webpack.console.js"))(env),

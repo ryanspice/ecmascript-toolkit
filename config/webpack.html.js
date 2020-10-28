@@ -26,19 +26,25 @@ module.exports = (env) => {
             }
           : false,
         // scripts: scripts[0] || [],
-        inlineManifestWebpackName: env.output.library + "Manifest",
+        inlineManifestWebpackName: env.legacy
+          ? env.output.library + "ManifestLegacy"
+          : env.output.library + "Manifest",
         inlineSource: ".(mjs|js|css|manifest)",
         meta: require("./meta.config.js"),
       }),
       new (require("script-ext-html-webpack-plugin"))({
         defaultAttribute: "async",
-        module: env.production ? undefined : !env.legacy ? env.tests.js : undefined,
-        // preload: env.tests.js,
-        // module: !env.legacy ? env.tests.js : undefined,
-        // prefetch: env.tests.js,
+        preload: env.tests.js,
+        crossorigin: env.tests.js,
+        module: !env.legacy ? env.tests.js : undefined,
+        prefetch: env.tests.js,
         inline: env.production
           ? {
               test: [
+                `${env.output.library}.entry.mjs`,
+                `${env.output.library}.entry.js`,
+                `${env.output.library}.js`,
+                `${env.output.library}.mjs`,
                 `${env.output.library}.entry.[contenthash].js`,
                 `${env.output.library}.entry.[contenthash].mjs`,
                 `${env.output.library}.[contenthash].css`,
@@ -46,15 +52,15 @@ module.exports = (env) => {
               attribute: "async",
             }
           : undefined,
-        // custom: !env.production
-        //   ? [
-        //       {
-        //         test: env.tests.js,
-        //         attribute: "crossorigin",
-        //         value: "anonymous",
-        //       },
-        //     ]
-        //   : null,
+        custom: !env.production
+          ? [
+              {
+                test: env.tests.js,
+                attribute: "crossorigin",
+                value: "anonymous",
+              },
+            ]
+          : null,
       }),
       new (require("webpack-manifest-plugin"))({
         fileName: "manifest.json",

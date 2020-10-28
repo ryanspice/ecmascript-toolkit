@@ -5,12 +5,13 @@
 module.exports = function (env) {
   return {
     devServer: {
-      port: env.legacy ? (process.env.port + 1) || 8081 : (process.env.port) || 8080,
+      //port: env.legacy ? process.env.port + 1 || 8081 : process.env.port || 8080,
+      port: !env.legacy ? process.env.port + 1 || 8081 : process.env.port || 8080,
       //proxy: require("./proxy.config"),
       historyApiFallback: true,
       //bonjour: true,
       //writeToDisk: true,
-      //"contentBase": "./dist",
+      contentBase: "./dist",
       //"contentBase": false,
       //"hot": true,
       inline: true,

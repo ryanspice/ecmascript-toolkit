@@ -1,6 +1,5 @@
-const webpack = require("webpack");
-const path = require("path");
-
+const { resolve } = require("path");
+const { DefinePlugin, ProvidePlugin } = require("webpack");
 /** webpack.common.js */
 module.exports = (env) => {
   return {
@@ -12,22 +11,22 @@ module.exports = (env) => {
     resolve: {
       extensions: [".html", ".json", ".ts", ".tsx", ".js", ".mjs"],
       plugins: [],
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      modules: [resolve(__dirname, "src"), "node_modules"],
       alias: {},
     },
     plugins: [
-      new webpack.DefinePlugin({
+      new DefinePlugin({
         "process.env": {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
         "typeof window": JSON.stringify("object"),
       }),
-      new webpack.ProvidePlugin({
+      new ProvidePlugin({
         log: "LogLevel",
-        env: [path.resolve("./.env"), "default"],
-        pkg: [path.resolve("./package.json")],
-        lang: [path.resolve("./src/lang/en.json")],
-        runtime: [path.resolve("./src/utils/runtime"), "default"],
+        env: [resolve("./.env"), "default"],
+        pkg: [resolve("./package.json")],
+        lang: [resolve("./src/lang/en.json")],
+        runtime: [resolve("./src/utils/runtime"), "default"],
       }),
     ],
   };

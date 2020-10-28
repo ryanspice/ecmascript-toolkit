@@ -1,4 +1,6 @@
 /**
+ * webpack.css.js
+ * Inject CSS into the head with source maps, or use MiniCssExtractPlugin
  */
 module.exports = (env) => {
   const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -6,7 +8,6 @@ module.exports = (env) => {
     resolve: {
       extensions: [".scss", ".sass", ".less", ".css"],
     },
-    // Inject CSS into the head with source maps, or use MiniCssExtractPlugin
     module: {
       rules: [
         {
@@ -21,12 +22,6 @@ module.exports = (env) => {
                     modules: {
                       namedExport: false,
                     },
-                    // publicPath: (resourcePath, context) => {
-                    // 	// publicPath is the relative path of the resource to the context
-                    // 	// e.g. for ./css/admin/main.css the publicPath will be ../../
-                    // 	// while for ./css/main.css the publicPath will be ../
-                    // 	return path.relative(path.dirname(resourcePath), context) + '/';
-                    // },
                   },
                 },
             {
@@ -37,7 +32,6 @@ module.exports = (env) => {
                 esModule: !env.legacy,
                 modules: {
                   namedExport: false,
-                  //localIdentName: 'foo__[name]__[local]',
                 },
               },
             },
@@ -47,7 +41,7 @@ module.exports = (env) => {
                 sourceMap: true,
                 postcssOptions: {
                   plugins: {
-                    //"postcss-normalize": {},
+                    "postcss-normalize": {},
                     "postcss-preset-env": {
                       browsers: env.legacy
                         ? "last 1 year, cover 92% in CA, not ie<=10"
