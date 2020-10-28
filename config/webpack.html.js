@@ -38,7 +38,11 @@ module.exports = (env) => {
         // prefetch: env.tests.js,
         inline: env.production
           ? {
-              test: [`${env.output.library}.entry.js`, `${env.output.library}.entry.mjs`],
+              test: [
+                `${env.output.library}.entry.[contenthash].js`,
+                `${env.output.library}.entry.[contenthash].mjs`,
+                `${env.output.library}.[contenthash].css`,
+              ],
               attribute: "async",
             }
           : undefined,

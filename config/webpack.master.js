@@ -2,8 +2,9 @@ const { constants } = require("./constants");
 const { resolve } = require("path");
 const { merge } = require("webpack-merge");
 /** webpack.master.js */
-const build = (env) => {
-  const common = merge(
+const build = async (env) => {
+  await constants(env);
+  const common = await merge(
     require(resolve(__dirname, "./webpack.common.js"))(env),
     require(resolve(__dirname, "./webpack.console.js"))(env),
     require(resolve(__dirname, "./webpack.optimization.js"))(env),
@@ -16,7 +17,8 @@ const build = (env) => {
     env.production ? require(resolve(__dirname, "./webpack.prod.js"))(env) : {},
   );
   env.legacy = true;
-  const legacy = merge(
+  await constants(env);
+  const legacy = await merge(
     require(resolve(__dirname, "./webpack.common.js"))(env),
     require(resolve(__dirname, "./webpack.console.js"))(env),
     require(resolve(__dirname, "./webpack.optimization.js"))(env),
@@ -31,4 +33,4 @@ const build = (env) => {
   );
   return [common, legacy];
 };
-module.exports = (env) => build(constants(env));
+module.exports = (env) => build(env);

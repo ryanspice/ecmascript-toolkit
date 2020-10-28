@@ -1,4 +1,3 @@
-const path = require("path");
 /**
  */
 module.exports = (env) => {
@@ -20,7 +19,7 @@ module.exports = (env) => {
                   options: {
                     esModule: !env.legacy,
                     modules: {
-                      namedExport: !env.legacy,
+                      namedExport: false,
                     },
                     // publicPath: (resourcePath, context) => {
                     // 	// publicPath is the relative path of the resource to the context
@@ -37,7 +36,7 @@ module.exports = (env) => {
                 importLoaders: 1,
                 esModule: !env.legacy,
                 modules: {
-                  namedExport: !env.legacy,
+                  namedExport: false,
                   //localIdentName: 'foo__[name]__[local]',
                 },
               },

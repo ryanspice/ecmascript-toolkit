@@ -50,35 +50,72 @@ const constants = (env) => {
   if (!env) {
     env = {};
   }
-  //console.log(env);
+  console.log(env);
   // verify
-  env.development = env.hasOwnProperty("development") ? env.development === "true" : true;
-  env.production = env.hasOwnProperty("production") ? env.production === "true" : false;
-  env.legacy = env.hasOwnProperty("legacy") ? env.legacy === "true" : false;
-  env.static = env.hasOwnProperty("static") ? env.static === "true" : false;
-  env.server = env.hasOwnProperty("server") ? env.server === "true" : false;
-  env.analyze = env.hasOwnProperty("analyze") ? env.analyze === "true" : false;
-  env.configs = {
-    //name: process.env.npm_package_name,
-    //short_name: process.env.npm_package_short_name,
-    //babel: require(path.resolve(__dirname, "./babel.config.js"))(env),
-  };
-  env.output = {
-    // library:
-    //   env.configs.short_name ||
-    //   env.configs.name.replace(" ", "").toLowerCase()
-  };
+
+  //env.development = env.hasOwnProperty("development") ? env.development === "true" : true;
+  // env.production = env.hasOwnProperty("production") ? env.production === "true" : false;
+  // env.legacy = env.hasOwnProperty("legacy") ? env.legacy === "true" : false;
+  // env.static = env.hasOwnProperty("static") ? env.static === "true" : false;
+  // env.server = env.hasOwnProperty("server") ? env.server === "true" : false;
+  // env.analyze = env.hasOwnProperty("analyze") ? env.analyze === "true" : false;
+
+  // env.configs = {
+  //   //name: process.env.npm_package_name,
+  //   //short_name: process.env.npm_package_short_name,
+  //   //babel: require(path.resolve(__dirname, "./babel.config.js"))(env),
+  // };
+  // env.output = {
+  //   // library:
+  //   //   env.configs.short_name ||
+  //   //   env.configs.name.replace(" ", "").toLowerCase()
+  // };
   env.tests = {
     js: /\.(mjs|js)?$/,
   };
   env.babel = require(path.resolve(__dirname, "./babel.config.js"))(env);
 
+  env.extension = env.legacy ? "js" : "mjs";
+  env.maps = "inline-source-map";
+  const _output_name_ =
+    process.env.npm_package_short_name ||
+    process.env.npm_package_name.replace(" ", "").toLowerCase();
+  const _output_path_ = "../dist";
+  const _output_filename_ = !env.legacy ? "[name]." + env.extension : "[name]." + env.extension;
+  const _output_filename_prod_ = !env.legacy
+    ? "[name].[contenthash]." + env.extension
+    : "[name].[contenthash]." + env.extension;
+  const _chunk_filename_ = !env.legacy ? "[name]." + env.extension : "[name]." + env.extension;
+  const _chunk_filenameProd_ = !env.legacy
+    ? "[name].[contenthash]." + env.extension
+    : "[name].[contenthash]." + env.extension;
+  env.entry = {};
+  env.entry[_output_name_] = ["./src/index.js", "./src/index.scss"];
+  const _self_ = {};
+  _self_[_output_name_] = _output_name_;
+  env.externals = [_self_];
+  //env.externals.push(_self_);
+  env.container = env.legacy ? "index.htm" : "index.html";
+  env.filename = env.production ? _output_filename_prod_ : _output_filename_;
+  env.chunkFilename =
+    env.chunkFilename || (env.production ? _chunk_filenameProd_ : _chunk_filename_);
+  env.polyfill = env.production ? "polyfill.[contenthash].js" : "polyfill.js";
+  env.output = {
+    filename: env.filename,
+    library: _output_name_,
+    //libraryTarget: "umd",
+    umdNamedDefine: true,
+    chunkFilename: env.chunkFilename,
+    //chunkLoading: env.legacy ? "jsonp" : "import-scripts",
+    scriptType: env.legacy ? "text/javascript" : "module",
+    path: path.resolve(__dirname, _output_path_),
+    publicPath: "../",
+    globalObject: "window",
+  };
   return env;
 };
-
 module.exports = {
   _package_,
-
   _build_is_server_,
   _build_to_minify_,
   _build_to_analyze_,
@@ -88,10 +125,8 @@ module.exports = {
   _browserslist_,
   _mode_is_analyze_,
   _mode_is_production_,
-
   _config_,
   _settings_,
-
   path,
   merge,
   constants,

@@ -1,47 +1,14 @@
 const webpack = require("webpack");
 const path = require("path");
+
 /** webpack.common.js */
 module.exports = (env) => {
-  const _maps_ = "inline-source-map";
-  const _output_name_ =
-    process.env.npm_package_short_name ||
-    process.env.npm_package_name.replace(" ", "").toLowerCase();
-  const _output_path_ = "../dist";
-  const _output_filename_ = !env.legacy ? "[name].mjs" : "[name].js";
-  const _output_filename_prod_ = !env.legacy
-    ? "[name].[contenthash].mjs"
-    : "[name].[contenthash].js";
-  const _chunk_filename_ = !env.legacy ? "[name].mjs" : "[name].js";
-  const _chunk_filenameProd_ = !env.legacy ? "[name].[contenthash].mjs" : "[name].[contenthash].js";
-  const _entry_ = {};
-  _entry_[_output_name_] = ["./src/index.js", "./src/index.scss"];
-  const _self_ = {};
-  _self_[_output_name_] = _output_name_;
-  const _externals_ = [];
-  _externals_.push(_self_);
-  env.container = env.legacy ? "index.htm" : "index.html";
-  env.filename = env.production ? _output_filename_prod_ : _output_filename_;
-  env.chunkFilename = env.production ? _chunk_filenameProd_ : _chunk_filename_;
-  env.polyfill = env.production ? "polyfill.[contenthash].js" : "polyfill.js";
-  const _output_ = (env.output = {
-    filename: env.filename,
-    library: _output_name_,
-    //libraryTarget: "umd",
-    umdNamedDefine: true,
-    chunkFilename: env.chunkFilename,
-    //chunkLoading: env.legacy ? "jsonp" : "import-scripts",
-    scriptType: env.legacy ? "text/javascript" : "module",
-    path: path.resolve(__dirname, _output_path_),
-    publicPath: "../",
-    globalObject: "window",
-  });
-  console.info(env);
   return {
-    mode: !env.production ? "development" : "production",
-    entry: _entry_,
-    output: _output_,
-    externals: _externals_,
-    devtool: _maps_,
+    mode: !env.production && !env.release ? "development" : "production",
+    entry: env.entry,
+    output: env.output,
+    externals: env.externals,
+    devtool: env.maps,
     resolve: {
       extensions: [".html", ".json", ".ts", ".tsx", ".js", ".mjs"],
       plugins: [],

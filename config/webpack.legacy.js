@@ -6,13 +6,24 @@ const { _package_ } = require("./constants");
 module.exports = function (env) {
   const name = _package_.short_name;
   const entry = {};
-  entry[`${name}`] = `webpack-polyfill-injector?${JSON.stringify({
-    modules: "./src",
-  })}!`;
+  entry[`${env.output.library}_legacy`] = [
+    `webpack-polyfill-injector?${JSON.stringify({
+      modules: "./src/index.js",
+    })}!`,
+    "./src/index.scss",
+  ];
+
+  env.filename = env.filename || (env.production ? _output_filename_prod_ : _output_filename_);
+
+  env.chunkFilename =
+    env.chunkFilename || (env.production ? _chunk_filenameProd_ : _chunk_filename_);
+
+  env.extension = env.legacy ? "js" : "mjs";
+
   return {
     entry: entry,
     output: {
-      library: `${name}`,
+      library: `${env.output.library}`,
       chunkFilename: env.chunkFilename,
       filename: env.filename,
     },
