@@ -5,7 +5,6 @@ const { _package_ } = require("./constants");
  */
 module.exports = function (env) {
   const name = _package_.short_name;
-  const PolyfillInjectorPlugin = require("webpack-polyfill-injector");
   const entry = {};
   entry[`${name}`] = `webpack-polyfill-injector?${JSON.stringify({
     modules: "./src",
@@ -14,14 +13,14 @@ module.exports = function (env) {
     entry: entry,
     output: {
       library: `${name}`,
-      chunkFilename: "[name].legacy.js",
-      filename: "[name].legacy.js",
+      chunkFilename: env.chunkFilename,
+      filename: env.filename,
     },
     plugins: [
-      new PolyfillInjectorPlugin({
-        minify: true,
+      new (require("webpack-polyfill-injector"))({
+        minify: env.production,
         singleFile: true,
-        filename: "polyfill.js",
+        filename: env.polyfill,
         polyfills: require("./polyfills.js"),
       }),
     ],

@@ -1,10 +1,7 @@
 const { constants } = require("./constants");
 const { resolve } = require("path");
 const { merge } = require("webpack-merge");
-/**
- * master config all others merge into
- * @param env
- */
+/** webpack.master.js */
 const build = (env) => {
   const common = merge(
     require(resolve(__dirname, "./webpack.common.js"))(env),
@@ -34,7 +31,4 @@ const build = (env) => {
   );
   return [common, legacy];
 };
-
-module.exports = (env) => {
-  return build(constants(env));
-};
+module.exports = (env) => build(constants(env));

@@ -50,7 +50,7 @@ const constants = (env) => {
   if (!env) {
     env = {};
   }
-  console.log(env);
+  //console.log(env);
   // verify
   env.development = env.hasOwnProperty("development") ? env.development === "true" : true;
   env.production = env.hasOwnProperty("production") ? env.production === "true" : false;

@@ -1,5 +1,5 @@
 /**
- * bable.config.js
+ * babel.config.js
  * merges into webpack.config.babel.js, is babel config
  */
 module.exports = (env) => {

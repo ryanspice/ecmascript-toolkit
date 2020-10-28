@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const path = require("path");
+const { resolve } = require("path");
 module.exports = (env) => {
   return {
     module: {
@@ -9,7 +9,7 @@ module.exports = (env) => {
         {
           test: env.tests.js,
           use: env.babel,
-          include: [path.resolve("src"), path.resolve("test")],
+          include: [resolve("src"), resolve("test")],
         },
       ],
     },
@@ -18,12 +18,10 @@ module.exports = (env) => {
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/lib$/ }),
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/node_modules/ }),
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/dist$/ }),
-      new (require("clean-webpack-plugin").CleanWebpackPlugin)({
-        dry: true//env.legacy && !env.server,
-      }),
-      new (require("prettier-webpack-plugin"))(
-        require(path.resolve("./config/prettier.config.js")),
-      ),
+      //new (require("clean-webpack-plugin").CleanWebpackPlugin)({
+      //  dry: !env.legacy, //env.legacy && !env.server,
+      //}),
+      new (require("prettier-webpack-plugin"))(require(resolve("./config/prettier.config.js"))),
     ],
   };
 };

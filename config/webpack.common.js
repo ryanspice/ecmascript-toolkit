@@ -7,23 +7,28 @@ module.exports = (env) => {
     process.env.npm_package_short_name ||
     process.env.npm_package_name.replace(" ", "").toLowerCase();
   const _output_path_ = "../dist";
-  const _output_filename_ = !env.legacy ? "[name].mjs" : "[name].legacy.js";
-  const _chunk_filename_ = !env.legacy ? "module~[name].mjs" : "module~[name].legacy.js";
-  const _chunk_filenameProd_ = !env.legacy
-    ? "module~[name].[contenthash].mjs"
-    : "module~[name].[contenthash].legacy.js";
+  const _output_filename_ = !env.legacy ? "[name].mjs" : "[name].js";
+  const _output_filename_prod_ = !env.legacy
+    ? "[name].[contenthash].mjs"
+    : "[name].[contenthash].js";
+  const _chunk_filename_ = !env.legacy ? "[name].mjs" : "[name].js";
+  const _chunk_filenameProd_ = !env.legacy ? "[name].[contenthash].mjs" : "[name].[contenthash].js";
   const _entry_ = {};
   _entry_[_output_name_] = ["./src/index.js", "./src/index.scss"];
   const _self_ = {};
   _self_[_output_name_] = _output_name_;
   const _externals_ = [];
   _externals_.push(_self_);
+  env.container = env.legacy ? "index.htm" : "index.html";
+  env.filename = env.production ? _output_filename_prod_ : _output_filename_;
+  env.chunkFilename = env.production ? _chunk_filenameProd_ : _chunk_filename_;
+  env.polyfill = env.production ? "polyfill.[contenthash].js" : "polyfill.js";
   const _output_ = (env.output = {
-    filename: _output_filename_,
+    filename: env.filename,
     library: _output_name_,
     //libraryTarget: "umd",
     umdNamedDefine: true,
-    chunkFilename: env.production ? _chunk_filenameProd_ : _chunk_filename_,
+    chunkFilename: env.chunkFilename,
     //chunkLoading: env.legacy ? "jsonp" : "import-scripts",
     scriptType: env.legacy ? "text/javascript" : "module",
     path: path.resolve(__dirname, _output_path_),

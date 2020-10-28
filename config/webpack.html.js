@@ -11,8 +11,7 @@ module.exports = (env) => {
         template: "./src/index.ejs",
         headHtmlSnippet: '<link rel="manifest" href="./manifest.json">',
         bodyHtmlSnippet: "",
-        filename: env.legacy ? "index.htm" : "index.html",
-        //filename: "index.[contenthash].html",
+        filename: env.container,
         baseHref: "./",
         title: env.output.library,
         cache: false,
@@ -33,26 +32,25 @@ module.exports = (env) => {
       }),
       new (require("script-ext-html-webpack-plugin"))({
         defaultAttribute: "async",
-        preload: env.tests.js,
-        module: !env.legacy ? env.tests.js : undefined,
-        //module: env.tests.js,
-        prefetch: env.tests.js,
-        inline: {
-          test:[
-            `${env.output.library}.entry.js`,
-            `${env.output.library}.entry.mjs`,
-          ],
-          attribute: "async",
-        },
-        custom: !env.production
-          ? [
-              {
-                test: env.tests.js,
-                attribute: "crossorigin",
-                value: "anonymous",
-              },
-            ]
-          : null,
+        module: env.production ? undefined : !env.legacy ? env.tests.js : undefined,
+        // preload: env.tests.js,
+        // module: !env.legacy ? env.tests.js : undefined,
+        // prefetch: env.tests.js,
+        inline: env.production
+          ? {
+              test: [`${env.output.library}.entry.js`, `${env.output.library}.entry.mjs`],
+              attribute: "async",
+            }
+          : undefined,
+        // custom: !env.production
+        //   ? [
+        //       {
+        //         test: env.tests.js,
+        //         attribute: "crossorigin",
+        //         value: "anonymous",
+        //       },
+        //     ]
+        //   : null,
       }),
       new (require("webpack-manifest-plugin"))({
         fileName: "manifest.json",
@@ -63,7 +61,7 @@ module.exports = (env) => {
           start_url: "/",
           background_color: _default_colour_,
           display: "standalone",
-          theme_color: `${_default_colour_}00`,
+          theme_color: `${_default_colour_}`,
         },
         map: (file) => {
           file.name = file.name.replace(/\./g, "");
