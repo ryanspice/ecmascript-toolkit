@@ -9,14 +9,10 @@ module.exports = function (env) {
       modules: "./src/index.js",
     })}!`,
   ];
-  env.filename = env.filename || (env.production ? _output_filename_prod_ : _output_filename_);
-  env.chunkFilename =
-    env.chunkFilename || (env.production ? _chunk_filenameProd_ : _chunk_filename_);
-  env.extension = env.legacy ? "js" : "mjs";
   return {
     entry: entry,
     output: {
-      library: `${env.output.library}_legacy`,
+      library: `${env.output.library}`,
       chunkFilename: env.chunkFilename,
       filename: env.filename,
     },

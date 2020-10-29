@@ -90,7 +90,8 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
       if (document.readyState === 'complete') {
         run = true;
         var Etk = window.etk;
-        Etk = Etk?.default;
+        console.log(window.etk)
+        Etk = Etk.default;
 
         Etk.onLoad = function () {
           console.log("[EtkHtml] Works! (overridden)");
@@ -105,8 +106,8 @@ htmlWebpackPlugin.options.scripts = htmlWebpackPlugin.options.scripts || []
 
       if (document.readyState == 'complete') {
         var Etk = window.etk;
-        Etk = Etk?.default;
-        console.log(Etk)
+        console.log(window.etk)
+        Etk = Etk.default;
 
         Etk.onLoad = function () {
           console.log("[Etk] Works! (overridden)");

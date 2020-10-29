@@ -15,7 +15,7 @@ module.exports = function (env) {
       //"contentBase": false,
       //"hot": true,
       inline: true,
-      compress: env.production,
+      //compress: env.production,
       stats: {
         assets: true,
         children: false,

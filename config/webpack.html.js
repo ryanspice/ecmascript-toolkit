@@ -5,6 +5,9 @@ const { _default_colour_ } = require("./constants");
  */
 module.exports = (env) => {
   return {
+    target: env.legacy
+      ? "browserslist:last 5 years, cover 96% in CA, not ie<=10"
+      : "browserslist:supports es6-module",
     plugins: [
       new (require("html-webpack-plugin"))({
         inject: "head",
@@ -34,11 +37,8 @@ module.exports = (env) => {
       }),
       new (require("script-ext-html-webpack-plugin"))({
         defaultAttribute: "async",
-        preload: env.tests.js,
-        crossorigin: env.tests.js,
-        module: !env.legacy ? env.tests.js : undefined,
-        prefetch: env.tests.js,
-        inline: env.production
+
+        inline: !env.legacy
           ? {
               test: [
                 `${env.output.library}.entry.mjs`,
@@ -52,15 +52,6 @@ module.exports = (env) => {
               attribute: "async",
             }
           : undefined,
-        custom: !env.production
-          ? [
-              {
-                test: env.tests.js,
-                attribute: "crossorigin",
-                value: "anonymous",
-              },
-            ]
-          : null,
       }),
       new (require("webpack-manifest-plugin"))({
         fileName: "manifest.json",
