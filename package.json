@@ -11,7 +11,7 @@
     "start:static": "yarn serve:static",
     "docs": "yarn esdoc",
     "clean:all": "yarn clean:dist && yarn clean:lib",
-    "clean:install": "yarn rimraf yarn.lock && yarn rimraf node_modules && yarn install",
+    "clean:install": "yarn rimraf node_modules && yarn install",
     "clean:dist": "yarn rimraf dist",
     "clean:lib": "yarn rimraf lib",
     "build": "yarn clean:dist && yarn dev",
