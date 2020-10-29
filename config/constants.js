@@ -115,5 +115,4 @@ module.exports = {
   merge,
   constants,
   resolve,
-  coagulate,
 };
