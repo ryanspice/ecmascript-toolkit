@@ -2,7 +2,6 @@
  * prettier.config.js
  * merges into webpack.config.babel.js, is prettier config
  */
-
 module.exports = {
   ignore: [
     //'**/*.json',

@@ -1,17 +1,16 @@
-const { resolve } = require("path");
 /** webpack.plugins.js */
 module.exports = (env) => {
   return {
     plugins: [
       new (require("duplicate-package-checker-webpack-plugin"))({
         // Also show module that is requiring each duplicate package (default: false)
-        verbose: true,
+        verbose: env.production,
         // Emit errors instead of warnings (default: false)
-        emitError: true,
+        emitError: env.production,
         // Show help message if duplicate packages are found (default: true)
         showHelp: !env.production,
         // Warn also if major versions differ (default: true)
-        strict: true,
+        strict: env.production,
         //  /**
         // * Exclude instances of packages from the results.
         // * If all instances of a package are excluded, or all instances except one,
@@ -31,7 +30,7 @@ module.exports = (env) => {
         // excludes index and ejs as false positives were being flagged
         exclude: /a\.js|node_modules|.scss|.ejs|index.js/,
         include: /src/,
-        failOnError: true,
+        failOnError: env.production,
         // e.g. via import(/* webpackMode: "weak" */ './file.js')
         allowAsyncCycles: false,
         // set the current working directory for displaying module paths
@@ -51,10 +50,6 @@ module.exports = (env) => {
         //     console.log('end detecting webpack modules cycles');
         // },
       }),
-      new (require("babel-minify-webpack-plugin"))(
-        env.production ? require(resolve("./config/minify.config.js")) : {},
-      ),
-      //new (require("babel-minify-webpack-plugin"))(evt.production?require(path.resolve('./config/minify.config.js')):{}),
       /*
 			new (require('flow-webpack-plugin'))({ CURRENTLY BREAKS :: NEEDS TO BE UPDATED TO WEBPACK 4+ TODO UPDATE: 2020 recheck
 					failOnError: false,

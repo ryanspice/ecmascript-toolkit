@@ -4,6 +4,7 @@ const { DefinePlugin, ProvidePlugin } = require("webpack");
 module.exports = (env) => {
   return {
     mode: "development",
+    stats: env.stats,
     entry: env.entry,
     output: env.output,
     externals: env.externals,

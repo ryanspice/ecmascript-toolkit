@@ -1,6 +1,8 @@
 const path = require("path");
 const { resolve } = require("path");
 const { merge } = require("webpack-merge");
+const log = require("loglevel");
+log.enableAll();
 const _package_ = require(path.resolve(__dirname, "../package.json"));
 const _config_ = {
   legacy: false,
@@ -11,7 +13,7 @@ const _settings_ = {
 };
 const _mode_ = "development";
 const _browserslist_ = _config_.legacy
-  ? "last 5 years, cover 96% in CA, not ie<=10"
+  ? "last 5 years, cover 96% in CA, not ie<=11"
   : "supports es6-module";
 const _default_environment_ = {
   NODE_ENV: "development",
@@ -51,6 +53,25 @@ const constants = (env) => {
     js: /\.(mjs|js)?$/,
     css: /\.(css|scss)?$/,
   };
+  env.flags = {
+    fancy: false,
+    colour: "#FFFFFF",
+  };
+  env.log = log;
+  env.stats = Object.assign(
+    {
+      preset: "minimal",
+      colors: false,
+      hash: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      chunkModules: false,
+      modules: false,
+      children: false,
+    },
+    env.stats,
+  );
   //
   env.development = env.development === "true" || env.development || true;
   env.production = env.production === "true" || env.production || false;
@@ -59,6 +80,10 @@ const constants = (env) => {
   env.server = env.server === "true" || env.server || false;
   env.analyze = env.analyze === "true" || env.analyze || false;
   //
+  env.browsers = env.legacy ? "last 1 year, cover 92% in CA, not ie<=11" : "supports es6-module";
+  env.browserslist = env.legacy
+    ? "browserslist:last 5 years, cover 96% in CA, not ie<=10"
+    : "browserslist:supports es6-module";
   env.babel = require(path.resolve(__dirname, "./babel.config.js"))(env);
   env.extension = env.legacy ? "js" : "mjs";
   env.maps = "inline-source-map";

@@ -12,9 +12,7 @@ module.exports = (env) => {
             useBuiltIns: false,
             shippedProposals: true, // not sure about this one
             targets: {
-              browsers: env.legacy
-                ? "last 5 years, cover 96% in CA, not ie<=10"
-                : "supports es6-module",
+              browsers: env.browsers,
               esmodules: !env.legacy,
             },
             //"loose": true

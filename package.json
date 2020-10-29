@@ -41,7 +41,8 @@
   "peerDependencies": {
     "webpack-cli": "latest",
     "rimraf": "^3.0.2",
-    "ecstatic": "latest"
+    "ecstatic": "latest",
+    "loglevel": "latest"
   },
   "dependencies": {
     "@babel/core": "latest",

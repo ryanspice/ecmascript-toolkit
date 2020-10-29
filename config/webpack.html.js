@@ -1,13 +1,10 @@
-const { _default_colour_ } = require("./constants");
 /**
  * webpack.html.js
  *  generate html, manifest, and scripts
  */
 module.exports = (env) => {
   return {
-    target: env.legacy
-      ? "browserslist:last 5 years, cover 96% in CA, not ie<=10"
-      : "browserslist:supports es6-module",
+    target: env.browserslist,
     plugins: [
       new (require("html-webpack-plugin"))({
         inject: "head",
@@ -37,7 +34,7 @@ module.exports = (env) => {
       }),
       new (require("script-ext-html-webpack-plugin"))({
         defaultAttribute: "async",
-
+        module: !env.legacy ? env.tests.js : undefined,
         inline: !env.legacy
           ? {
               test: [
@@ -60,9 +57,9 @@ module.exports = (env) => {
           short_name: env.output.library,
           name: process.env.npm_package_name,
           start_url: "/",
-          background_color: _default_colour_,
+          background_color: env.flags.colour,
           display: "standalone",
-          theme_color: `${_default_colour_}`,
+          theme_color: `${env.flags.colour}`,
         },
         map: (file) => {
           file.name = file.name.replace(/\./g, "");

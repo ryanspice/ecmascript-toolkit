@@ -20,7 +20,7 @@ module.exports = (env) => {
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/dist$/ }),
       new (require("clean-webpack-plugin").CleanWebpackPlugin)({
         dry: env.legacy,
-        verbose: env.production,
+        verbose: env.analyze,
       }),
       new (require("prettier-webpack-plugin"))(require(resolve("./config/prettier.config.js"))),
     ],

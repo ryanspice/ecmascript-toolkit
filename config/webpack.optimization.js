@@ -18,7 +18,7 @@ module.exports = (env) => {
             ie8: false,
             keep_classnames: env.production,
             keep_fnames: env.production,
-            safari10: env.production && env.legacy,
+            safari10: false,
             output: {
               comments: env.production,
             },
@@ -50,5 +50,36 @@ module.exports = (env) => {
       usedExports: true,
       concatenateModules: true,
     },
+    plugins: [
+      new (require("babel-minify-webpack-plugin"))(
+        env.production
+          ? {
+              booleans: true,
+              builtIns: true,
+              consecutiveAdds: true,
+              deadcode: true,
+              evaluate: false,
+              flipComparisons: true,
+              guards: true,
+              infinity: true,
+              memberExpressions: true,
+              mergeVars: true,
+              numericLiterals: true,
+              propertyLiterals: true,
+              regexpConstructors: true,
+              replace: true,
+              simplify: true,
+              simplifyComparisons: true,
+              typeConstructors: true,
+              removeConsole: false,
+              removeDebugger: false,
+              removeUndefined: true,
+              undefinedToVoid: true,
+              mangle: true,
+              keepFnName: true,
+            }
+          : {},
+      ),
+    ],
   };
 };

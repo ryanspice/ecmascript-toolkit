@@ -40,9 +40,7 @@ module.exports = (env) => {
                   plugins: {
                     "postcss-normalize": {},
                     "postcss-preset-env": {
-                      browsers: env.legacy
-                        ? "last 1 year, cover 92% in CA, not ie<=10"
-                        : "supports es6-module",
+                      browsers: env.browsers,
                     },
                     autoprefixer: {},
                   },

@@ -1,15 +1,15 @@
-const _proxy_ = process.env.proxy || null;
+const proxy = process.env.proxy || null;
 /**
  * proxy.config.js
  */
 module.exports = {
   "/api/**": {
-    target: _proxy_,
+    target: proxy,
     secure: false,
     changeOrigin: true,
   },
   "/images/**": {
-    target: _proxy_,
+    target: proxy,
     secure: false,
     changeOrigin: true,
   },
