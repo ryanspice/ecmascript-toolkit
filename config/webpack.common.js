@@ -3,7 +3,7 @@ const { DefinePlugin, ProvidePlugin } = require("webpack");
 /** webpack.common.js */
 module.exports = (env) => {
   return {
-    mode: !env.production && !env.release ? "development" : "production",
+    mode: "development",
     entry: env.entry,
     output: env.output,
     externals: env.externals,

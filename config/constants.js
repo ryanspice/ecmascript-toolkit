@@ -1,4 +1,5 @@
 const path = require("path");
+const { resolve } = require("path");
 const { merge } = require("webpack-merge");
 const _package_ = require(path.resolve(__dirname, "../package.json"));
 const _config_ = {
@@ -32,6 +33,9 @@ const _build_to_analyze_ = (function () {
   return false;
 })();
 const _default_colour_ = "#1F787F";
+//
+//const coagulate = (...args) => args.map((arg) => require(resolve("./config/", arg)));
+//
 const constants = (env) => {
   if (env === undefined) {
     env = {
@@ -46,6 +50,14 @@ const constants = (env) => {
   env.tests = {
     js: /\.(mjs|js)?$/,
   };
+  //
+  env.development = env.development === "true" || env.development || true;
+  env.production = env.production === "true" || env.production || false;
+  env.legacy = env.legacy === "true" || env.legacy || false;
+  env.static = env.static === "true" || env.static || false;
+  env.server = env.server === "true" || env.server || false;
+  env.analyze = env.analyze === "true" || env.analyze || false;
+  //
   env.babel = require(path.resolve(__dirname, "./babel.config.js"))(env);
   env.extension = env.legacy ? "js" : "mjs";
   env.maps = "inline-source-map";
@@ -102,4 +114,6 @@ module.exports = {
   path,
   merge,
   constants,
+  resolve,
+  coagulate,
 };

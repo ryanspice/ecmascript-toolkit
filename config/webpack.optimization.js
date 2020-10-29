@@ -1,31 +1,29 @@
 module.exports = (env) => {
-  const production = env.production === true;
-  const legacy = env.legacy === true;
   return {
     performance: {
-      hints: production ? false : "warning",
-      maxEntrypointSize: !production ? (legacy ? 8560000 : 1060000) : 500000,
-      maxAssetSize: !production ? (legacy ? 8500000 : 1000000) : 400000,
+      hints: env.production ? false : "warning",
+      maxEntrypointSize: !env.production ? (env.legacy ? 8560000 : 1060000) : 500000,
+      maxAssetSize: !env.production ? (env.legacy ? 8500000 : 1000000) : 400000,
     },
     optimization: {
-      minimize: production,
+      minimize: env.production,
       minimizer: [
         new (require("terser-webpack-plugin"))({
           terserOptions: {
-            ecma: legacy ? undefined : 2020,
-            mangle: production,
-            module: production && !legacy,
-            //toplevel: production,
+            ecma: env.legacy ? undefined : 2020,
+            mangle: env.production,
+            module: env.production && !env.legacy,
+            toplevel: env.production,
             nameCache: null,
             ie8: false,
-            keep_classnames: production,
-            keep_fnames: production,
-            safari10: production && legacy,
+            keep_classnames: env.production,
+            keep_fnames: env.production,
+            safari10: env.production && env.legacy,
             output: {
-              comments: production,
+              comments: env.production,
             },
           },
-          extractComments: production,
+          extractComments: env.production,
         }),
         "...",
         new (require("css-minimizer-webpack-plugin"))({

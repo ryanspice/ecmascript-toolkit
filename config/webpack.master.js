@@ -33,4 +33,4 @@ const build = async (env) => {
   );
   return [common, legacy];
 };
-module.exports = (env) => build(env);
+module.exports = async (env) => await build(env);

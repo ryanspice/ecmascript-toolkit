@@ -1,9 +1,4 @@
-const webpack = require("webpack");
-/**
- * webpack.prod.js
- * prod values/plugins
- * @param env
- */
+/** webpack.prod.js */
 module.exports = function (env) {
   return {
     mode: "production",
@@ -22,7 +17,7 @@ module.exports = function (env) {
       //new webpack.NamedModulesPlugin(),
       //new webpack.optimize.DedupePlugin(),
       //new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.ModuleConcatenationPlugin(),
+      new (require("webpack").optimize.ModuleConcatenationPlugin)(),
       //new webpack.optimize.OccurrenceOrderPlugin(true)
     ],
   };

@@ -1,10 +1,6 @@
-const path = require("path");
-const { _build_to_minify_ } = require("./constants");
-/**
- * webpack.plugins.js
- *  extra plugins
- */
-module.exports = (evt) => {
+const { resolve } = require("path");
+/** webpack.plugins.js */
+module.exports = (env) => {
   return {
     plugins: [
       new (require("duplicate-package-checker-webpack-plugin"))({
@@ -13,7 +9,7 @@ module.exports = (evt) => {
         // Emit errors instead of warnings (default: false)
         emitError: true,
         // Show help message if duplicate packages are found (default: true)
-        showHelp: !evt.production,
+        showHelp: !env.production,
         // Warn also if major versions differ (default: true)
         strict: true,
         //  /**
@@ -40,7 +36,6 @@ module.exports = (evt) => {
         allowAsyncCycles: false,
         // set the current working directory for displaying module paths
         cwd: process.cwd(),
-
         // // `onStart` is called before the cycle detection starts
         // onStart({ compilation }) {
         //     console.log('start detecting webpack modules cycles');
@@ -57,7 +52,7 @@ module.exports = (evt) => {
         // },
       }),
       new (require("babel-minify-webpack-plugin"))(
-        _build_to_minify_ ? require(path.resolve("./config/minify.config.js")) : {},
+        env.production ? require(resolve("./config/minify.config.js")) : {},
       ),
       //new (require("babel-minify-webpack-plugin"))(evt.production?require(path.resolve('./config/minify.config.js')):{}),
       /*
