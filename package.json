@@ -42,6 +42,7 @@
     "webpack-cli": "latest",
     "rimraf": "^3.0.2",
     "ecstatic": "latest",
+    "yargs-parser": "latest-13",
     "loglevel": "latest"
   },
   "dependencies": {
