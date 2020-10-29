@@ -16,6 +16,7 @@
     "clean:lib": "yarn rimraf lib",
     "build": "yarn clean:dist && yarn dev",
     "build:prod": "yarn clean:dist && yarn prod",
+    "local": "yarn http-server ./dist",
     "dev": "yarn webpack --",
     "prod": "parallel-webpack -- --env.production=true",
     "legacy": "parallel-webpack -- --env.legacy=true",

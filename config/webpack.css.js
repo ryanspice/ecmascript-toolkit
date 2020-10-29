@@ -1,9 +1,6 @@
-/**
- * webpack.css.js
- * Inject CSS into the head with source maps, or use MiniCssExtractPlugin
- */
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+/** webpack.css.js */
 module.exports = (env) => {
-  const MiniCssExtractPlugin = require("mini-css-extract-plugin");
   return {
     resolve: {
       extensions: [".scss", ".sass", ".less", ".css"],
@@ -11,7 +8,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.(scss|css)$/,
+          test: env.tests.css,
           use: [
             !env.production
               ? "style-loader"
@@ -62,7 +59,6 @@ module.exports = (env) => {
         filename: !env.production ? "[name].css" : "[name].[contenthash].css",
         chunkFilename: !env.production ? "[id].css" : "[id].[contenthash].css",
       }),
-      //new webpack.HotModuleReplacementPlugin()
     ],
   };
 };

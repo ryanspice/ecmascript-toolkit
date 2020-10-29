@@ -12,7 +12,9 @@ module.exports = (env) => {
       extensions: [".html", ".json", ".ts", ".tsx", ".js", ".mjs"],
       plugins: [],
       modules: [resolve(__dirname, "src"), "node_modules"],
-      alias: {},
+      alias: {
+        components: resolve(__dirname, "src/components"),
+      },
     },
     plugins: [
       new DefinePlugin({

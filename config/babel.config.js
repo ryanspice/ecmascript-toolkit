@@ -1,7 +1,4 @@
-/**
- * babel.config.js
- * merges into webpack.config.babel.js, is babel config
- */
+/** babel.config.js */
 module.exports = (env) => {
   return {
     loader: "babel-loader?cacheDirectory",

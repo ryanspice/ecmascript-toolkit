@@ -49,6 +49,7 @@ const constants = (env) => {
   }
   env.tests = {
     js: /\.(mjs|js)?$/,
+    css: /\.(css|scss)?$/,
   };
   //
   env.development = env.development === "true" || env.development || true;
