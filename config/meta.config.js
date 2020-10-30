@@ -1,11 +1,8 @@
-const { _default_colour_ } = require("./constants");
-/**
- * meta.config.js
- */
+/** meta.config.js */
 module.exports = {
-  description: "Free Web tutorials",
-  keywords: "",
-  author: "",
+  description: process.env.npm_package_description,
+  version: process.env.npm_package_version,
+  author: process.env.npm_package_author,
   charset: "UTF-8",
   "apple-touch-startup-imag": "",
   "apple-mobile-web-app-title": "",
@@ -14,11 +11,6 @@ module.exports = {
   HandheldFriendly: "true",
   "X-UA-Compatible": "IE=edge",
   MobileOptimized: "width",
-  "": "",
-  "": "",
-  "": "",
-  "": "",
   viewport:
     "width=device-width, user-scalable=no, initial-scale=1,  maximum-scale=1, shrink-to-fit=no",
-  "theme-color": `${_default_colour_}00`,
 };
