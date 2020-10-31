@@ -22,7 +22,7 @@ module.exports = (env) => {
         dry: env.legacy,
         verbose: env.analyze,
       }),
-      new (require("prettier-webpack-plugin"))(require(resolve("./config/prettier.config.js"))),
+      new (require("prettier-webpack-plugin"))(require(resolve(__dirname, "./prettier.config.js"))),
     ],
   };
 };
