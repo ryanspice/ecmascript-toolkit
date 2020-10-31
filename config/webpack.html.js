@@ -11,6 +11,7 @@ module.exports = (env) => {
         template: "./src/index.ejs",
         headHtmlSnippet: '<link rel="manifest" href="./manifest.json">',
         bodyHtmlSnippet: "",
+        contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'assets')],
         filename: env.container,
         baseHref: "./",
         title: env.output.library,
