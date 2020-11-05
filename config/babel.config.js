@@ -1,7 +1,8 @@
 /** babel.config.js */
+const {resolve} = require("path");
 module.exports = (env) => {
   return {
-    loader: "babel-loader?cacheDirectory",
+    loader:resolve("./node_modules/babel-loader?cacheDirectory") ,
     options: {
       sourceType: "unambiguous",
       presets: [

@@ -17,6 +17,11 @@ module.exports = (env) => {
         components: resolve(__dirname, "src/components"),
       },
     },
+    resolveLoader:{
+      modules: ['node_modules','node_modules/ecmascript-toolkit/node_modules'],
+      extensions: ['.js', '.json'],
+      mainFields: ['loader', 'main']
+    },
     plugins: [
       new DefinePlugin({
         "process.env": {

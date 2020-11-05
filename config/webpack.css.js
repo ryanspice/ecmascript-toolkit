@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const {resolve} = require("path");
 /** webpack.css.js */
 module.exports = (env) => {
   return {
@@ -25,11 +26,8 @@ module.exports = (env) => {
               loader: "css-loader",
               options: {
                 sourceMap: true,
-                importLoaders: 1,
+                importLoaders:   1,
                 esModule: !env.legacy,
-                modules: {
-                  namedExport: false,
-                },
               },
             },
             {
@@ -37,12 +35,17 @@ module.exports = (env) => {
               options: {
                 sourceMap: true,
                 postcssOptions: {
+                  includePaths: [
+                    'src/theme', './node_modules'
+                  ],
                   plugins: {
                     "postcss-normalize": {},
                     "postcss-preset-env": {
-                      browsers: env.browsers,
+                      "overrideBrowserslist": env.browsers,
                     },
-                    autoprefixer: {},
+                    "autoprefixer":{
+                      'overrideBrowserslist': env.browsers
+                    }
                   },
                 },
               },
