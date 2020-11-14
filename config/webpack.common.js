@@ -9,18 +9,24 @@ module.exports = (env) => {
     output: env.output,
     externals: env.externals,
     devtool: env.maps,
+    resolveLoader:{
+     modules:[
+       resolve(__dirname, "../node_modules"),
+       "node_modules"
+     ]
+    },
     resolve: {
       extensions: [".html", ".json", ".ts", ".tsx", ".js", ".mjs"],
       plugins: [],
-      modules: [resolve(__dirname, "src"), "node_modules"],
+      modules: [
+        resolve(__dirname, "src"),
+        resolve(__dirname, "../node_modules"),
+        "node_modules"],
       alias: {
         components: resolve(__dirname, "src/components"),
+        '@toolkit': resolve(__dirname, "../config"),
+        '@toolkit': resolve(__dirname, "../src")
       },
-    },
-    resolveLoader:{
-      modules: ['node_modules','node_modules/ecmascript-toolkit/node_modules'],
-      extensions: ['.js', '.json'],
-      mainFields: ['loader', 'main']
     },
     plugins: [
       new DefinePlugin({

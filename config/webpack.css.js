@@ -1,10 +1,10 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {resolve} = require("path");
+const {resolve} = require('path');
 /** webpack.css.js */
 module.exports = (env) => {
   return {
     resolve: {
-      extensions: [".scss", ".sass", ".less", ".css"],
+      extensions: [".scss", ".sass", ".less", ".css", "./src/theme"],
     },
     module: {
       rules: [
@@ -26,8 +26,11 @@ module.exports = (env) => {
               loader: "css-loader",
               options: {
                 sourceMap: true,
-                importLoaders:   1,
+                importLoaders: 1,
                 esModule: !env.legacy,
+                modules: {
+                  namedExport: false,
+                },
               },
             },
             {
@@ -35,22 +38,35 @@ module.exports = (env) => {
               options: {
                 sourceMap: true,
                 postcssOptions: {
-                  includePaths: [
-                    'src/theme', './node_modules'
-                  ],
+                    includePaths: [
+                        resolve('./src/theme'),
+                        resolve(__dirname,'./src/theme'),
+                        resolve(__dirname,'../src/theme'),
+                        resolve(__dirname,'../node_modules'),
+                        resolve('./node_modules')
+                    ],
                   plugins: {
                     "postcss-normalize": {},
                     "postcss-preset-env": {
-                      "overrideBrowserslist": env.browsers,
+                      browsers: env.browsers,
                     },
-                    "autoprefixer":{
-                      'overrideBrowserslist': env.browsers
-                    }
+                    autoprefixer: {},
                   },
                 },
               },
             },
-            { loader: "sass-loader", options: { sourceMap: true } },
+            { loader: "sass-loader",
+              options: { sourceMap: true,
+              sassOptions:{
+
+                includePaths: [
+                  resolve('./src/theme'),
+                  resolve(__dirname,'./src/theme'),
+                  resolve(__dirname,'../src/theme'),
+                  resolve(__dirname,'../node_modules'),
+                  resolve('./node_modules')
+                ],
+              }} },
           ],
         },
       ],

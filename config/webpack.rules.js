@@ -11,6 +11,12 @@ module.exports = (env) => {
           use: env.babel,
           include: [resolve("src"), resolve("test")],
         },
+        {
+          test: /\.m?js/,
+          resolve: {
+            fullySpecified: false
+          }
+        },
       ],
     },
     plugins: [
@@ -22,7 +28,7 @@ module.exports = (env) => {
         dry: env.legacy,
         verbose: env.analyze,
       }),
-      new (require("prettier-webpack-plugin"))(require(resolve(__dirname, "./prettier.config.js"))),
+      new (require("prettier-webpack-plugin"))(require(resolve("./config/prettier.config.js"))),
     ],
   };
 };
