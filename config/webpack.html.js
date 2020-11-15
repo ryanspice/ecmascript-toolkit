@@ -2,6 +2,7 @@
  * webpack.html.js
  *  generate html, manifest, and scripts
  */
+const path = require('path');
 module.exports = (env) => {
   return {
     target: env.browserslist,
