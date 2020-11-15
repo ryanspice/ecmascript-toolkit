@@ -1,4 +1,65 @@
 module.exports = (env) => {
+
+  let minimizer = [];
+  let plugins = [];
+
+  if (env.production){
+
+    minimizer = [new (require("terser-webpack-plugin"))({
+      terserOptions: {
+        ecma: env.legacy ? undefined : 2020,
+        mangle: env.production,
+        module: env.production && !env.legacy,
+        toplevel: env.production,
+        nameCache: null,
+        ie8: false,
+        keep_classnames: !env.production,
+        keep_fnames: !env.production,
+        safari10: false,
+        output: {
+          comments: !env.production,
+        },
+      },
+      extractComments: !env.production,
+    }),
+      "...",
+      new (require("css-minimizer-webpack-plugin"))({
+        sourceMap: true,
+      }),];
+
+    plugins = [new (require("babel-minify-webpack-plugin"))(
+      {
+            booleans: true,
+            builtIns: true,
+            consecutiveAdds: true,
+            deadcode: true,
+            evaluate: false,
+            flipComparisons: true,
+            guards: true,
+            infinity: true,
+            memberExpressions: true,
+            mergeVars: true,
+            numericLiterals: true,
+            propertyLiterals: true,
+            regexpConstructors: true,
+            replace: true,
+            simplify: true,
+            simplifyComparisons: true,
+            typeConstructors: true,
+            removeConsole: false,
+            removeDebugger: false,
+            removeUndefined: true,
+            undefinedToVoid: true,
+            mangle: true,
+            keepFnName: true,
+          }
+      ),
+    ];
+
+  }
+
+  //
+
   return {
     performance: {
       hints: env.production ? false : "warning",
@@ -7,35 +68,13 @@ module.exports = (env) => {
     },
     optimization: {
       minimize: env.production,
-      minimizer: [
-        new (require("terser-webpack-plugin"))({
-          terserOptions: {
-            ecma: env.legacy ? undefined : 2020,
-            mangle: env.production,
-            module: env.production && !env.legacy,
-            toplevel: env.production,
-            nameCache: null,
-            ie8: false,
-            keep_classnames: env.production,
-            keep_fnames: env.production,
-            safari10: false,
-            output: {
-              comments: env.production,
-            },
-          },
-          extractComments: env.production,
-        }),
-        "...",
-        new (require("css-minimizer-webpack-plugin"))({
-          sourceMap: true,
-        }),
-      ],
+      minimizer: minimizer,
       splitChunks: {
         chunks: "all",
         automaticNameDelimiter: "~",
         cacheGroups: {
           styles: {
-            name: "styles",
+            name: "css",
             test: /\.css$/,
             chunks: "all",
             enforce: true,
@@ -50,36 +89,6 @@ module.exports = (env) => {
       usedExports: true,
       concatenateModules: true,
     },
-    plugins: [
-      new (require("babel-minify-webpack-plugin"))(
-        env.production
-          ? {
-              booleans: true,
-              builtIns: true,
-              consecutiveAdds: true,
-              deadcode: true,
-              evaluate: false,
-              flipComparisons: true,
-              guards: true,
-              infinity: true,
-              memberExpressions: true,
-              mergeVars: true,
-              numericLiterals: true,
-              propertyLiterals: true,
-              regexpConstructors: true,
-              replace: true,
-              simplify: true,
-              simplifyComparisons: true,
-              typeConstructors: true,
-              removeConsole: false,
-              removeDebugger: false,
-              removeUndefined: true,
-              undefinedToVoid: true,
-              mangle: true,
-              keepFnName: true,
-            }
-          : {},
-      ),
-    ],
+    plugins: plugins,
   };
 };

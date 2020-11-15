@@ -51,7 +51,7 @@ const constants = (env) => {
   }
   env.tests = {
     js: /\.(mjs|js)?$/,
-    css: /\.(css|scss)?$/,
+    css: /\.(sa|sc|c)ss$/,
   };
   env.flags = {
     fancy: false,
