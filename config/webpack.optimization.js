@@ -3,7 +3,7 @@ module.exports = (env) => {
   let minimizer = [];
   let plugins = [];
 
-  if (env.production){
+  if (env.production) {
 
     minimizer = [new (require("terser-webpack-plugin"))({
       terserOptions: {
@@ -29,31 +29,31 @@ module.exports = (env) => {
 
     plugins = [new (require("babel-minify-webpack-plugin"))(
       {
-            booleans: true,
-            builtIns: true,
-            consecutiveAdds: true,
-            deadcode: true,
-            evaluate: false,
-            flipComparisons: true,
-            guards: true,
-            infinity: true,
-            memberExpressions: true,
-            mergeVars: true,
-            numericLiterals: true,
-            propertyLiterals: true,
-            regexpConstructors: true,
-            replace: true,
-            simplify: true,
-            simplifyComparisons: true,
-            typeConstructors: true,
-            removeConsole: false,
-            removeDebugger: false,
-            removeUndefined: true,
-            undefinedToVoid: true,
-            mangle: true,
-            keepFnName: true,
-          }
-      ),
+        booleans: true,
+        builtIns: true,
+        consecutiveAdds: true,
+        deadcode: true,
+        evaluate: false,
+        flipComparisons: true,
+        guards: true,
+        infinity: true,
+        memberExpressions: true,
+        mergeVars: true,
+        numericLiterals: true,
+        propertyLiterals: true,
+        regexpConstructors: true,
+        replace: true,
+        simplify: true,
+        simplifyComparisons: true,
+        typeConstructors: true,
+        removeConsole: false,
+        removeDebugger: false,
+        removeUndefined: true,
+        undefinedToVoid: true,
+        mangle: true,
+        keepFnName: true,
+      }
+    ),
     ];
 
   }
@@ -69,18 +69,18 @@ module.exports = (env) => {
     optimization: {
       minimize: env.production,
       minimizer: minimizer,
-      splitChunks: {
-        chunks: "all",
-        automaticNameDelimiter: "~",
-        cacheGroups: {
-          styles: {
-            name: "css",
-            test: /\.css$/,
-            chunks: "all",
-            enforce: true,
-          },
-        },
-      },
+      // splitChunks: {
+      //   chunks: "all",
+      //   automaticNameDelimiter: "~",
+      //   cacheGroups: {
+      //     styles: {
+      //       name: "css",
+      //       test: /\.css$/,
+      //       chunks: "all",
+      //       enforce: true,
+      //     },
+      //   },
+      // },
       runtimeChunk: {
         name: (entrypoint) => `${entrypoint.name}.entry`,
       },

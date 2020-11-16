@@ -1,36 +1,36 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const {resolve} = require('path');
+const { resolve } = require('path');
 /** webpack.css.js */
 module.exports = (env) => {
   return {
     resolve: {
-      extensions: [".scss", ".sass", ".less", ".css", "./src/theme"],
+      extensions: [".scss", ".sass", ".less", ".css"],
     },
     module: {
       rules: [
         {
           test: env.tests.css,
           use: [
-            !env.production
-              ? "style-loader"
-              : {
-                  loader: MiniCssExtractPlugin.loader,
-                  options: {
-                    esModule: !env.legacy,
-                    modules: {
-                      namedExport: false,
-                    },
-                  },
+            !env.production ?
+            "style-loader"  :
+               {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  //esModule: !env.legacy,
+                  // modules: {
+                  //   namedExport: false,
+                  // },
                 },
+              },
             {
               loader: "css-loader",
               options: {
                 sourceMap: true,
                 importLoaders: 1,
                 esModule: !env.legacy,
-                modules: {
-                  namedExport: false,
-                },
+                // modules: {
+                //   namedExport: false,
+                // },
               },
             },
             {
@@ -38,35 +38,28 @@ module.exports = (env) => {
               options: {
                 sourceMap: true,
                 postcssOptions: {
-                    includePaths: [
-                        resolve('./src/theme'),
-                        resolve(__dirname,'./src/theme'),
-                        resolve(__dirname,'../src/theme'),
-                        resolve(__dirname,'../node_modules'),
-                        resolve('./node_modules')
-                    ],
+                  extract: true,
                   plugins: {
                     "postcss-normalize": {},
                     "postcss-preset-env": {
                       browsers: env.browsers,
                     },
-                    autoprefixer: {},
+                    "autoprefixer": {
+                      browserslistOverride: env.browsers,
+                    },
                   },
                 },
               },
             },
-            { loader: "sass-loader",
-              options: { sourceMap: true,
-              sassOptions:{
-
-                includePaths: [
-                  resolve('./src/theme'),
-                  resolve(__dirname,'./src/theme'),
-                  resolve(__dirname,'../src/theme'),
-                  resolve(__dirname,'../node_modules'),
-                  resolve('./node_modules')
-                ],
-              }} },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: true,
+                sassOptions: {
+                  includePaths: ["./src/theme", "./node_modules"],
+                }
+              }
+            },
           ],
         },
       ],
