@@ -66,6 +66,7 @@ module.exports = (env) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
+        fallback: 'style-loader',
         filename: !env.production ? "[name].css" : "[name].[contenthash].css",
         chunkFilename: !env.production ? "[id].css" : "[id].[contenthash].css",
       }),

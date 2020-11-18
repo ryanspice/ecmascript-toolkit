@@ -21,7 +21,7 @@ module.exports = (env) => {
     },
     plugins: [
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/docker$/ }),
-      new webpack.IgnorePlugin({ resourceRegExp: /^\.\/lib$/ }),
+      //new webpack.IgnorePlugin({ resourceRegExp: /^\.\/lib$/ }),
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/node_modules/ }),
       new webpack.IgnorePlugin({ resourceRegExp: /^\.\/dist$/ }),
       new (require("clean-webpack-plugin").CleanWebpackPlugin)({
