@@ -54,22 +54,22 @@ module.exports = (env) => {
             }
           : undefined,
       }),
-      new (require("webpack-manifest-plugin"))({
-        fileName: "manifest.json",
-        writeToFileEmit: !env.server,
-        seed: {
-          short_name: env.output.library,
-          name: process.env.npm_package_name,
-          start_url: "/",
-          background_color: env.flags.colour,
-          display: "standalone",
-          theme_color: `${env.flags.colour}`,
-        },
-        map: (file) => {
-          file.name = file.name.replace(/\./g, "");
-          return file;
-        },
-      }),
+      // new (require("webpack-manifest-plugin"))({
+      //   fileName: "manifest.json",
+      //   writeToFileEmit: !env.server,
+      //   seed: {
+      //     short_name: env.output.library,
+      //     name: process.env.npm_package_name,
+      //     start_url: "/",
+      //     background_color: env.flags.colour,
+      //     display: "standalone",
+      //     theme_color: `${env.flags.colour}`,
+      //   },
+      //   map: (file) => {
+      //     file.name = file.name.replace(/\./g, "");
+      //     return file;
+      //   },
+      // }),
     ],
   };
 };
