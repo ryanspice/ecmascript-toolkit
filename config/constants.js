@@ -3,6 +3,7 @@ const { resolve } = require("path");
 const { merge } = require("webpack-merge");
 const log = require("loglevel");
 log.enableAll();
+const _outputPathName_ = "dist";
 const _package_ = require(path.resolve(__dirname, "../package.json"));
 const _config_ = {
   legacy: false,
@@ -90,7 +91,7 @@ const constants = (env) => {
   const _output_name_ =
     process.env.npm_package_short_name ||
     process.env.npm_package_name.replace(" ", "").toLowerCase();
-  const _output_path_ = "../dist";
+  const _output_path_ = "../"+_outputPathName_;
   const _output_filename_ = !env.legacy ? "[name]." + env.extension : "[name]." + env.extension;
   const _output_filename_prod_ = !env.legacy
     ? "[name].[contenthash]." + env.extension

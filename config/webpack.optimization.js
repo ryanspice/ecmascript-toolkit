@@ -24,7 +24,7 @@ module.exports = (env) => {
     }),
       "...",
       new (require("css-minimizer-webpack-plugin"))({
-        sourceMap: true,
+        //sourceMap: true,
       }),];
 
     plugins = [new (require("babel-minify-webpack-plugin"))(
