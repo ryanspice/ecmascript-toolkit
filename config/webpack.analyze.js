@@ -1,4 +1,3 @@
-/** webpack.analyze.js */
 module.exports = (env) => {
   return {
     stats: {

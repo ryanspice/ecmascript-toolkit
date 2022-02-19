@@ -1,6 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { resolve } = require('path');
-/** webpack.css.js */
 module.exports = (env) => {
   return {
     resolve: {
